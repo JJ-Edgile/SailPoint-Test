@@ -8012,7 +8012,7 @@ import java.util.Iterator;
 String explanation = "";
 
 String logHeader = "Exclusion Rule: Removing Inactive Accounts";
-log.info(logHeader + ": Starting Rule....");
+log.info(logHeader + ": Starting Rule Again....");
     if (entity.getManager() != null) {
         for (Object item : items) {
             itemsToExclude.add(item);
