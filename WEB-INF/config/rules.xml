@@ -8010,7 +8010,7 @@ import org.apache.log4j.Level;
 import java.util.Iterator;
 
 String explanation = "";
-
+//testing
 String logHeader = "Exclusion Rule: Removing Inactive Accounts";
 log.info(logHeader + ": Starting Rule Again....");
     if (entity.getManager() != null) {
