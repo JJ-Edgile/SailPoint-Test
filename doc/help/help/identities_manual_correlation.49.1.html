@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Manual Correlation of Identity Cubes</title>
+    <link rel="StyleSheet" href="css/identities_manual_correlation.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_using.html">Section III  Using IdentityIQ</a> : <a class="WebWorks_Breadcrumb_Link" href="identities_management_overview.html">Identity Management</a> : Manual Correlation of Identity Cubes</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1"><a name="1155372">Manual Correlation of Identity Cubes</a></div>
+      <div class="BodyLevel1"><a name="1156340">Use the Identity Correlation page to maintain the IdentityIQ Identity Cubes which contain information about an individual user’s entitlements, activity and associated business context. Identity cubes are created when identity aggregation is performed on your identity authoritative source. An example of an identity authoritative source is a human resources application that is the main repository for employee information and the data source that is used to build most Identity Cubes.</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="1156347">If user accounts are discovered on at-risk applications that do not correlate to the IdentityIQ identities that were created based on the employee information in your identity authoritative sources, it may indicate a risk situation that needs to be addressed.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="1156504">Because each Identity Cube is associated with an identity authoritative source, it provides a single representation of each managed identity and associated user accounts. However, user accounts on applications may not correlate to IdentityIQ identities. Some examples include the following:</a></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1156568">An employee who no longer works for your enterprise. They were removed from the human resources application, however, their account was not removed from every application to which they had access.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1156612">Mismatched or redundant accounts.Accounts that were created on different applications at different times or by different administrators using variations of the employee’s name; Tom Jones, Thomas Jones, and tjones.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="1156522">To display detailed information about the account or identity, click an account ID or name. The details panels for an account and an identity can be open at the same time for comparison before you perform a merge.</a></div>
+      <div class="BodyLevel1"><a name="3279204">Accounts that are manually assigned to identities from this page can be reassigned if necessary from the identity Application Accounts tab. See </a><a href="javascript:WWHClickedPopup('help', 'identity_view_detail_page_user_rights_tab.html', '');" title="View Identity User Rights Tab">View Identity User Rights Tab</a>.</div>
+      <div class="BodyLevel1"><a name="1122175">Use the Correlated column of the Select Target Identity panel to manually change the correlation status of specific accounts. </a></div>
+      <div class="BodyLevel1"><a name="1122027">The Identity Correlation page is divided into two panels:</a></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3279216">Select Uncorrelated Accounts — a list of the accounts on a specific application that are not correlated with an account detected on an authoritative source. See </a><a href="javascript:WWHClickedPopup('help', 'identities_manual_correlation.49.1.html#3278922', '');" title="Manual Correlation of Identity Cubes">Select Uncorrelated Accounts Panel</a>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3279228">Select Target Identity — a list of all accounts detected on all applications monitored by IdentityIQ. See </a><a href="javascript:WWHClickedPopup('help', 'identities_manual_correlation.49.1.html#1156913', '');" title="Manual Correlation of Identity Cubes">Select Target Identity Panel</a>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3279240">Make selections in each panel to perform manual correlation. See </a><a href="javascript:WWHClickedPopup('help', 'identities_manual_correlation.49.2.html', '');" title="How to Perform Manual Identity Correlation">How to Perform Manual Identity Correlation</a>.</div>
+      <div class="BodyLevel1"><span style="color: #727272; font-family: Cambria; font-style: italic; font-weight: bold"><a name="3278888">Additional Information:</a></span></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'identities_manual_correlation.49.2.html', '');" title="How to Perform Manual Identity Correlation" name="3278897">How to Perform Manual Identity Correlation</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'identities_management_overview.html', '');" title="Identity Management" name="3278904">Identity Management</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'identity_view_detail_page_overview.html', '');" title="Identity Details Page" name="3278911">Identity Details Page</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'identities_list_page.html', '');" title="Identity Warehouse Page" name="3278919">Identity Warehouse Page</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3"><a name="3278922">Select Uncorrelated Accounts Panel	</a></div>
+      <div class="BodyLevel1"><a name="1156838">The Select Uncorrelated Accounts panel displays a list of the accounts on a specific application that are not correlated with an account detected on an authoritative source. From this list you can select accounts to merge with identities.</a></div>
+      <div class="BodyLevel1"><a name="1156845">Select an application from the </a><span class="Bold">Search</span> drop-down list or enter the first few letters of an application name and make a selection from the suggest box to populate the table. Use the filtering options to reduce the number of accounts displayed at one time.</div>
+      <div class="BodyLevel1"><a name="1156849">Use the Included Account Types filter to exclude specific account types from the uncorrelated list. For example, certain account types such as Service or Privileged accounts may never be assigned to specific users and, therefore, should never be correlated with a specific identity cube. To exclude a specific account type from the uncorrelated accounts list, click </a><span class="Bold">Included Account Types</span> and clear the check-box associated with that account type on the drop-down list.</div>
+      <div class="BodyLevel1"><a name="1156857">Click an Account ID to display detailed account information.</a></div>
+      <div class="BodyLevel1"><a name="1156860">The Select Uncorrelated Accounts panel contains the ID and user name associated with the account and the date the account was created, along with the following options:</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="1156865">The columns on this page can be configured and may display differently in your enterprise.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1156907">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 431.65152pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 1—<a name="1156870">Identity Correlation - Uncorrelated Accounts Panel Descriptions</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 81.70632pt">
+            <div class="CellHeading"><a name="1156874">Column</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 349.9452pt">
+            <div class="CellHeading"><a name="1156876">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156878">Account ID</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156880">Unique identifier associated with the account</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156882">Account Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156884">Name associated with the account.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156886">Create Date</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156888">The date when the account was created.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156890">Inactive Account</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156892">Inactive accounts have a value of true.<br />This column can be used for account type filtering.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156894">Last login</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156896">The date when the account was last accessed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156898">Service Account</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156900">Mark accounts as service accounts if appropriate.<br />This column can be used for account type filtering.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156902">Privileged Account</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1156904">Privileged accounts have a value of true.<br />This column can be used for account type filtering.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3"><a name="1156913">Select Target Identity Panel</a></div>
+      <div class="BodyLevel1"><a name="1122647">The Select Target Identity panel contains a list of all accounts detected on all applications that IdentityIQ monitors. From this list you can select an identity with which to merge the uncorrelated accounts on the selected application.</a></div>
+      <div class="BodyLevel1"><a name="1122780">Use the filtering options to display specific identities or click the filter icon to display every identity in IdentityIQ. Enter a letter string and click the search icon to search by user name or click </a><span class="Bold">Advanced Search</span> for more options.</div>
+      <div class="BodyLevel1"><a name="1135096">Click a Name to display detailed information about the selected identity.</a></div>
+      <div class="BodyLevel1"><a name="1122671">The Select Target Identity panel contains the a variety of information about the identity, including the following:</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="1122675">The columns on this page can be configured and may display differently in your enterprise.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="1122746">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 431.65152pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 2—<a name="1122907">Identity Correlation - Select Target Identity Descriptions</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 81.70632pt">
+            <div class="CellHeading"><a name="1122911">Column</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 349.9452pt">
+            <div class="CellHeading"><a name="1122913">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122927">Correlated</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122929">The correlation status of the identity.<br />Accounts marked as correlated no longer display on the uncorrelated accounts list or reports.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122931">Manager</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122933">Manager listed for this identity.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122935">Email</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122937">Full email address.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122997">Inactive</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1123000">Current status of the identity account, active or inactive.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122990">Last Refresh</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1122993">The date when the last identity refresh was performed on this identity cube.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top" colspan="2">
+            <div class="CellBody"><span class="Bold"><a name="1122939">Advanced Search Options:</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top" colspan="2">
+            <div class="CellBody"><span class="Bold"><a name="1123114">Standard Attributes:</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top" colspan="2">
+            <div class="CellBody"><a name="1123084">Standard attributes include name, username, email, and manager fields. Enter a letter string in any of these fields to return a list of identities that have a matching string in that identity attribute value.<br />For example, typing st in the first name field returns Steve and Hester.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1123046">Inactive</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1123049">True - only show active identities<br />False - only show inactive identities</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1123039">Correlated</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1123042">True - only show correlated identities<br />False - only show uncorrelated identities</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top" colspan="2">
+            <div class="CellBody"><span class="Bold"><a name="1123032">Searchable Attributes:</a></span><br />Searchable attributes are defined during configuration and vary for each installation of the product.</div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ImportAction PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ImportAction name="connectorRegistryUpdateAction">
+  <Application connector="sailpoint.connector.OpenConnectorAdapter"
+    featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, ENABLE, PASSWORD" icon="internetIcon" name="SCIM 2.0" 
+    type="SCIM 2.0">
+    <Attributes>
+      <Map>
+        <entry key="connectorClass" value="openconnector.connector.scim2.SCIM2Connector"/>
+        <entry key="pageSize"/>
+        <entry key="explicitAttributesRequest"/>
+        <entry key="formPath" value="scim2AttributesForm.xhtml"/>
+      </Map>
+    </Attributes>
+    <Schemas>
+      <Schema displayAttribute="userName" identityAttribute="id" nativeObjectType="User" objectType="account"/>
+      <Schema displayAttribute="displayName" identityAttribute="id" nativeObjectType="Entitlement" objectType="entitlements" aggregationType="group"/>
+      <Schema displayAttribute="displayName" identityAttribute="id" nativeObjectType="Role" objectType="roles" aggregationType="group"/>
+      <Schema displayAttribute="displayName" identityAttribute="id" nativeObjectType="Group" objectType="group"/>
+    </Schemas>
+    <ProvisioningForms>
+    <Form name="Create Account Form" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Create Account Form"/>
+        </Map>
+      </Attributes>
+      <Description>Provisioning form for create account.</Description>
+      <Section>
+        <Field displayName="User Name" name="userName" required="true" reviewRequired="true" type="string"/>
+        <Field displayName="Formatted Name" name="name.formatted" required="true" reviewRequired="true" type="string"/>
+        <Field displayName="Family Name" name="name.familyName" required="true" reviewRequired="true" type="string"/>
+        <Field displayName="Given Name" name="name.givenName" required="true" reviewRequired="true" type="string"/>
+        <Field displayName="Display Name" name="displayName" required="true" reviewRequired="true" type="string"/>
+        <Field displayName="Email" name="emails.work.value" required="true" reviewRequired="true" type="string"/>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  </Application>
+</ImportAction>

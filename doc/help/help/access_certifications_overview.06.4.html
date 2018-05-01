@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Certification Terms</title>
+    <link rel="StyleSheet" href="css/access_certifications_overview.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_access_certification.html">Section I Certification</a> : <a class="WebWorks_Breadcrumb_Link" href="access_certifications_overview.06.1.html">Certification Overview</a> : Certification Schedules : Certification Terms</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading2"><a name="1683941">Certification Terms</a></div>
+      <div class="BodyLevel1"><a name="1683945">A number of terms are used throughout the access reviews that make up certifications.</a></div>
+      <div class="BodyLevel1"><span class="Bold"><a name="1683951">Policies</a></span> are defined for your enterprise and used to monitor users that are in violation of those policies. For example, a separation of duties policy may disallow one person from requesting and approving purchase orders or an activity policy might disallow a user with the Human Resource role from updating the payroll application. If the policy with which a violation is associated is removed before the violation is acted on in the access review, some policy information might not be available.</div>
+      <div class="BodyLevel1"><a name="1683955">The Policy Violations are any violations of policy for an identity. You must take action on these violations before a certification is complete. If the policy with which a violation is associated is removed before the violation is acted on in the certification, some policy information might not be available.</a></div>
+      <div class="BodyLevel1"><a name="1683959">Policy violations can also be viewed and acted upon from the Policy Violations page or as part of another access review. Decisions made on a violation from another page are displayed below the summary information within the access review or within the revocation dialog.</a></div>
+      <div class="BodyLevel1"><span class="Bold"><a name="1683979">Roles</a></span> are made up of roles and profiles and are defined within IdentityIQ. Profiles are collections of entitlements on one specific application in the business model. An Entitlement is either a specific value for an account attribute, such as group membership, or a permission.</div>
+      <div class="BodyLevel1"><a name="1683983">Only the top-level roles are displayed in the roles section. For example, if a role contains required and permitted roles, only the top-level role is displayed and the required and permitted roles are certified as part of that role. Both assigned and detected roles are displayed in the roles section. Different role types are indicated with different icons and you can click the role name to expand the role information and view the role details and hierarchy.</a></div>
+      <div class="BodyLevel1"><a name="1683987">If an identity has a role assigned to it multiple times, that role is displayed multiple times and each one must be reviewed and acted on individually.</a></div>
+      <div class="BodyLevel1"><span class="Bold"><a name="1683994">Entitlements</a></span> are all entitlements to which the identity has access but that are not included as part of a role to which they have access. If the access review was scheduled with the IdentityIQ capabilities and scope included, these appear as additional entitlements on the IdentityIQ application as Capabilities and Authorized Scopes attributes. Revoking these entitlements has auto-remediation enabled by default. This means that when the revocation is processed (either when the access review is signed or immediately, based on the access review configuration) the capabilities and authorized scopes are removed from the identity.</div>
+      <div class="BodyLevel1"><a name="1686624">For addition information see </a>Access Review Pages.</div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

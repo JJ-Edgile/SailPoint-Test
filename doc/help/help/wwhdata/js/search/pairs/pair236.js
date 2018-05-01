@@ -1,0 +1,22 @@
+function FileData_Pairs(x)
+{
+x.t("delimited","file");
+x.t("file","application");
+x.t("status","report");
+x.t("iii","using");
+x.t("resource","reports");
+x.t("configured","resource");
+x.t("configured","applications");
+x.t("identityiq","reports");
+x.t("report","delimited");
+x.t("report","configured");
+x.t("section","iii");
+x.t("reports","configured");
+x.t("reports","section");
+x.t("archive","report");
+x.t("application","status");
+x.t("applications","archive");
+x.t("applications","detail");
+x.t("using","identityiq");
+x.t("detail","report");
+}

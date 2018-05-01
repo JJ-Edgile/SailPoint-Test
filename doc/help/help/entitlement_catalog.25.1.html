@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Entitlement Catalog</title>
+    <link rel="StyleSheet" href="css/entitlement_catalog.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_getting_started.html">Section II Configure IdentityIQ</a> : Entitlement Catalog</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="HelpHeading1"><a name="3315182">Entitlement Catalog</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="3315955">The terms account group and application object are use interchangeably in this document but have the same meaning. Some application can have multiple application objects. An account group can be the name of one of those objects.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3272289">Use the Entitlement Catalog page to view and manage all of your managed attributes including; entitlements, account groups/application objects and permissions. </a></div>
+      <div class="BodyLevel1"><a name="3272252">Managed attributes can be specific to one application or shared among multiple applications of the same type. Managed attributes can also be defined in multiple languages.</a></div>
+      <div class="BodyLevel1"><a name="3306433">A managed attribute is the value of an account attribute that has been promoted to a first-class object in the IdentityIQ database so the system can track other data related to these attributes, for example a description or an owner. Any attribute can become managed, but the most common attribute to be managed is one holding group memberships.</a></div>
+      <div class="BodyLevel1"><a name="1976425">A managed attribute is indicated by checking the </a><span class="Bold">Managed</span> box in the account schema on the Application Definition page.</div>
+      <div class="BodyLevel1"><a name="1976432">As accounts are aggregated IdentityIQ detects the values for each managed attribute and promotes these to ManagedAttribute objects. For example if location is managed, and we aggregate three accounts with locations Austin, Dallas, and Houston. There are three ManagedAttribute objects for those values. If the attribute is multi-valued, such as groups or memberOf, IdentityIQ creates one ManagedAttribute for each value in the list.</a></div>
+      <div class="BodyLevel1"><a name="1976439">The expectation is that most of the attributes that are managed are entitlement attributes, which usually means a group attribute. Because of this, the language in the product is oriented around the word entitlement. For example we refer to manage entitlements and the entitlement catalog. It is possible, however, to have managed attributes that are not entitlements, but it is unusual.</a></div>
+      <div class="BodyLevel1"><a name="1976443">Managed attributes that are also groups have additional features. If the connector supports group aggregation, IdentityIQ can import the definitions of those groups and store them in the ManagedAttribute object. Managed attributes for groups have editable tabs that contain the definition of the group that can, optionally, be used for provisioning. If a groups managed attribute is available for provisioning, any change made on the Group Properties tab is sent to a connector to modify the target application.</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="3268106">The additional Group Properties tab is only available if Lifecycle Manager is installed and the Enable Account Group Management options was selected during Lifecycle Manager configuration.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><span style="color: #727272; font-family: Cambria; font-style: italic; font-weight: bold"><a name="3315194">Additional Information:</a></span></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'entitlement_catalog.25.2.html', '');" title="View Entitlement Catalog" name="3315203">View Entitlement Catalog</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'entitlement_catalog.25.3.html', '');" title="Import and Export" name="3315210">Import and Export</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'entitlement_catalog.25.4.html', '');" title="New Entitlement Parameters" name="3315218">New Entitlement Parameters</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

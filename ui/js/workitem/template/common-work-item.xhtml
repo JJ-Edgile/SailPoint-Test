@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sp="http://sailpoint.com/ui">
+  <body>
+    <sp-register-config sp-config-key="workItemPriorityEditingEnabled"
+                        sp-config-value="#{sp:getSystemConfigurationValue('workItemPriorityEditingEnabled', false)}" />
+
+    <sp-register-config sp-config-key="uiApprovalItemsColumnsRole"
+                        sp-column-configs="#{sp:getColumnConfigJSON('uiApprovalItemsColumnsRole')}" />
+
+    <sp-register-config sp-config-key="uiApprovalItemsColumnsEntitlement"
+                        sp-column-configs="#{sp:getColumnConfigJSON('uiApprovalItemsColumnsEntitlement')}" />
+
+    <section class="container-fluid bg-white b-b">
+      <div sp-loading-mask="ctrl.getWorkItem()" class="row sp-page-header m-t-sm m-b-sm">
+        <div class="col-xs-12">
+          <button class="btn btn-sm btn-white m-t-n-xs m-r-xs" ng-click="ctrl.goBack()" role="button" tabindex="0">
+            <i class="fa fa-chevron-left" role="presentation"></i>
+            <span class="sr-only">{{ 'ui_button_back' | spTranslate }}</span>
+          </button>
+          <h1 class="inline">{{ ctrl.getWorkItem().getWorkItemTypeKey() | spTranslate }}</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="common-work-item container-fluid">
+      <div class="row m-t-xs m-b-sm work-item-row animated">
+        <div class="col-sm-12">
+          <sp-work-item ng-if="ctrl.getWorkItem()"
+                        sp-work-item="ctrl.workItem"
+                        sp-full="true"
+                        sp-completion-callback="ctrl.completionCallback" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

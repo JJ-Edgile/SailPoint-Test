@@ -1,0 +1,27 @@
+function FileData_Pairs(x)
+{
+x.t("mobile","approvals");
+x.t("mobile","approval");
+x.t("mobile","devices");
+x.t("details","view");
+x.t("complete","approval");
+x.t("forward","approval");
+x.t("tasks","mobile");
+x.t("tasks","complete");
+x.t("tasks","perform");
+x.t("tasks","section");
+x.t("edit","approval");
+x.t("perform","following");
+x.t("post","comments");
+x.t("identityiq","mobile");
+x.t("approvals","mobile");
+x.t("comments","edit");
+x.t("section","identityiq");
+x.t("approval","forward");
+x.t("approval","tasks");
+x.t("approval","view");
+x.t("view","details");
+x.t("view","post");
+x.t("following","tasks");
+x.t("devices","mobile");
+}

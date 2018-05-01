@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ImportAction PUBLIC "sailpoint.dtd" "sailpoint.dtd" >
+<ImportAction name="connectorRegistryUpdateAction">
+  <Application connector="sailpoint.connector.webservices.WebServicesConnector" featuresString="PROVISIONING, ENABLE, PASSWORD" name="Web Services" type="Web Services">
+    <Attributes>
+      <Map>
+        <entry key="formPath" value="WebServicesAttributesForm.xhtml"/>
+      </Map>
+    </Attributes>
+    <Schemas>
+        <Schema displayAttribute="" groupAttribute="" identityAttribute="" nativeObjectType="user" objectType="account">
+        </Schema>
+        <Schema displayAttribute="" identityAttribute="" nativeObjectType="group" objectType="group">
+        </Schema>
+    </Schemas>
+  </Application>
+</ImportAction>

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Identity Forwarding Report</title>
+    <link rel="StyleSheet" href="css/report_identity_and_user.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_using.html">Section III  Using IdentityIQ</a> : <a class="WebWorks_Breadcrumb_Link" href="reports.65.01.html">Reports</a> : <a class="WebWorks_Breadcrumb_Link" href="report_identity_and_user.73.01.html">Identity and User Reports</a> : Identity Forwarding Report</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading2"><a name="1816307">Identity Forwarding Report</a></div>
+      <div class="BodyLevel1"><a name="1816310">The Identity Forwarding Report includes forwarding information for users who are configured for forwarding. The report searches the identity cubes to extract the desired information, including the start and end dates of the forwarding period.</a></div>
+      <div class="BodyLevel1"><a name="1816314">This report includes information in the detailed results format that can be exported to Microsoft Excel and used as spreadsheets.</a></div>
+      <div class="BodyLevel1"><a name="1816319">The Identity Forwarding Report consists of the following sections:</a></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816325">Standard Properties</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816329">Identity Attributes</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816333">Identity Extended Attributes</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816337">Additional Identity Properties</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816342">Report Layout</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="1816345">All reports use a set of standard properties for basic information, such as naming and descriptions, and to set controls, such as scope and to required sign off.</a></div>
+      <div class="BodyLevel1"><a name="1816350">You must enter the following before running this report:</a></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="1816357">Name</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3726186">For more information on Standard Properties, see </a><a href="javascript:WWHClickedPopup('help', 'report_standard_properties.67.1.html', '');" title="Standard Report Properties">Standard Report Properties</a>.For more information on Report Layout, see <a href="javascript:WWHClickedPopup('help', 'report_standard_properties.67.2.html', '');" title="Report Layout">Report Layout</a>.For step by step instructions on creating or editing a report, see <a href="javascript:WWHClickedPopup('help', 'reports.65.05.html', '');" title="Working With Reports">Working With Reports</a>.</div>
+      <div class="BodyLevel1"><span style="color: #727272; font-family: Cambria; font-style: italic; font-weight: bold"><a name="3705840">Additional Information:</a></span></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'report_identity_and_user.73.01.html', '');" title="Identity and User Reports" name="3705849">Identity and User Reports</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'reports.65.01.html', '');" title="Reports" name="3705857">Reports</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading3"><a name="3705860">Identity Attributes</a></div>
+      <div class="BodyLevel1"><a name="1816686">The following criteria determines what information is included in this report. You can use any combination of options to build a report.</a></div>
+      <div class="Anchor"><a name="1816751">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 431.65152pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 9—<a name="1816694"> Identity Forwarding Report Identity Attributes Options</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 81.70632pt">
+            <div class="CellHeading"><a name="1816700">Option</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 349.9452pt">
+            <div class="CellHeading"><a name="1816703">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816707">First Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816710">Input the first name of the identity you wish the report to include. For example, if you input “John” in the field, the report includes information on identities whose first name is John.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816714">Last Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816717">Input the last name of the identity you wish the report to include. For example, if you input “Smith” in the field, the report includes information on identities whose last name is Smith.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816721">Display Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816724">Input the display name of the identity you wish the report to include. For example, if you input “John_Smith” in the field, the report includes information on identities whose display name is John_Smith.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816728">Email</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816731">Input the email address of the identity you wish the report to include. For example, if you input “John@email.com” in the field, the report includes information on identities whose email address is name is John@email.com.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816735">Manager</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816738">The manager list to include in this report. Only users who report to the selected managers are included in the report.<br />Click the arrow to the right of the suggestion field to a list of all managers, or enter a few letters in the field to display a list of managers that start with that letter string. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816742">Inactive</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816745">Choose how the report handles inactive identities. Select </a><span style="font-weight: bold">No selection</span> to include both inactive and active identities, <span style="font-weight: bold">True</span> to include only inactive identities, or <span style="font-weight: bold">False</span> to not include inactive identities.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3"><a name="1816759">Identity Extended Attributes</a></div>
+      <div class="BodyLevel1"><a name="1816763">The following criteria determines what information is included in this report. You can use any combination of options to build a report.</a></div>
+      <div class="Anchor"><a name="1816866">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 431.65152pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 10—<a name="1951704">Identity Forwarding Report Identity Extended Attributes Options</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 81.70632pt">
+            <div class="CellHeading"><a name="1951708">Option</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 349.9452pt">
+            <div class="CellHeading"><a name="1951710">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951712">Region</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951714">The user attributes on which to filter. Only users with the listed attributes are included in the report. This information is discovered during identity aggregation.</a></div>
+            <div class="CellNote">Note: <a name="1951717">Identity attributes are configurable and the attributes displayed might vary for each instance of the product.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951720">Department</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951722">The manager list to include in this report. Only users who report to the selected managers are included in the report.<br />Click the arrow to the right of the suggestion field to display a list of all managers, or enter a few letters in the field to display a list of managers that start with that letter string. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951724">Location</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951726">The groups or populations to include in the report.<br />Click the arrow to the right of the field and select </a><span class="Bold">Populations</span>, to display a select list of populations, or select a group factory name to display a select list of groups created by that factory. <br />Click on populations and groups from the select lists to create the inclusion list for this report.<br />Click an item in the inclusion list to remove it from the report.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951731">Employee ID</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951733">Select an operator from the list, Before or After, and specify a date manually or click the </a><span class="Bold">“...”</span> icon and select one using the calendar options.<br />Optionally include identities that have never been refresh.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951738">Job Title</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951740">Select an operator from the list, Before or After, and specify a date manually or click the </a><span class="Bold">“...”</span> icon and select one using the calendar options.<br />Optionally include identities that have never logged in to the product.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951769">Region Owner</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951772">Specify that the report should include only active or only inactive identities.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951776">Location Owner</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951779">The roles to include in the report. If no roles are specified, all roles are included. <br />Click the arrow to the right of the suggestion field to display a list of all roles, or enter a few letters in the field to display a list of roles that start with that letter string.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951783">DN</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951786">Specify a unique name for the Distinguished Name. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951753">Cost Center</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951755">Select the applications to include in the report. If no applications are specified, all applications are included. <br />Click the arrow to the right of the suggestion field to display a list of all applications, or enter a few letters in the field to display a list of applications that start with that letter string.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951757">Match Mode</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1951759">Select the capabilities to include in the report.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading3"><a name="1816874">Additional Identity Properties </a></div>
+      <div class="BodyLevel1"><a name="1816878">The following criteria determines what information is included in this report. You can use any combination of options to build a report.</a></div>
+      <div class="Anchor"><a name="1816955">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 431.65152pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 11—<a name="1816886">Identity Forwarding Report Additional Identity Properties Options</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 81.70632pt">
+            <div class="CellHeading"><a name="1816892">Option</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 349.9452pt">
+            <div class="CellHeading"><a name="1816895">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816899">Applications</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816902">Select the applications to include in the report. If no applications are specified, all applications are included. <br />Click the arrow to the right of the suggestion field to display a list of all applications, or enter a few letters in the field to display a list of applications that start with that letter string.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816906">Capabilities</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816909">Select the capabilities to include in the report.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816913">Roles</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816916">The roles to include in the report.<br />Click the arrow to the right of the field and select </a><span class="Bold" style="font-weight: normal">a role</span> to create the inclusion list for this report.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816924">Groups</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816927">The groups or populations to include in the report.<br />Click the arrow to the right of the field and select </a><span class="Bold" style="font-weight: normal">a group</span> to create the inclusion list for this report.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816935">Last Refresh Date</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816938">Select a date range to filter users based on when the user was last refreshed.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816946">Last Login Date</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="1816949">Select a date range to filter users based on when the user was last logged in.</a></div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+function FileData_Pairs(x)
+{
+x.t("violations","outside");
+x.t("violations","request");
+x.t("violations","number");
+x.t("violations","section");
+x.t("violations","click");
+x.t("violations","page");
+x.t("home","page");
+x.t("action","resolve");
+x.t("mobile","home");
+x.t("mobile","devices");
+x.t("outside","certifications");
+x.t("immediate","action");
+x.t("request","violations");
+x.t("identityiq","mobile");
+x.t("resolve","violations");
+x.t("number","violations");
+x.t("section","identityiq");
+x.t("click","request");
+x.t("page","request");
+x.t("page","manage");
+x.t("certifications","immediate");
+x.t("manage","violations");
+x.t("devices","mobile");
+x.t("devices","identityiq");
+}

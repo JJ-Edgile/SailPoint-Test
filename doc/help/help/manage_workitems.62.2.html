@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Work Item Administration</title>
+    <link rel="StyleSheet" href="css/manage_workitems.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_using.html">Section III  Using IdentityIQ</a> : <a class="WebWorks_Breadcrumb_Link" href="manage_workitems.62.1.html">Manage Work Items</a> : Work Item Administration</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1"><a name="3295416">Work Item Administration</a></div>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="3270676">The “Allow priority editing on work items” setting must be selected on the IdentityIQ Configuration page in order to edit priorities in IdentityIQ.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3270683">Use the drop-down list to specify if your table displays all work items assigned to you and any groups to which you belong, only your own, personal work items or only the work items assigned to a selected workgroup.</a></div>
+      <div class="BodyLevel1"><a name="3270687">To customize the information displayed in the Work Item Administration table, mouse over one of the header rows, click the drop-down arrow to reveal the sub-menu and select the desired columns from the Columns pop-out menu. </a></div>
+      <div class="BodyLevel1"><a name="3270694">If a work item is created for a user who is no longer active in IdentityIQ,the work item is forwarded to that user’s manager or supervisor. If no manager is listed, the work item is assigned to the IdentityIQ administrator. Use escalation rules to determine the proper escalation path for orphaned work items. Escalation rules are created and set during the configuration and implementation of the product. Orphaned work items are discovered and identified during the Perform Maintenance task.</a></div>
+      <div class="BodyLevel1"><span style="color: #727272; font-family: Cambria; font-style: italic; font-weight: bold"><a name="3295425">Additional Information:</a></span></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'manage_workitems.62.1.html', '');" title="Manage Work Items" name="3295434">Manage Work Items</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'manage_workitems.62.3.html', '');" title="How to Assign Work Items from the Work Items Page" name="3295441">How to Assign Work Items from the Work Items Page</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'manage_workitems.62.5.html', '');" title="Work Item Archive" name="3295449">Work Item Archive</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3295452">The Manage Work Items table contains the following information: </a></div>
+      <div class="Anchor"><a name="3270802">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 430.10784pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 1—<a name="3270738">Work Item Administration Column Descriptions</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 114.1884pt">
+            <div class="CellHeading"><a name="3270742">Column Name</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 315.91944pt">
+            <div class="CellHeading"><a name="3270744">Description</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270746">ID</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270748">Identification number assigned to the work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270750">Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270752">The name of the work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270754">Type</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270756">The type of work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270758">Requester</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270760">The name of the user that assigned this work item to you.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270762">Workgroup</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270764">Displays the workgroup to which this work item is assigned, if applicable.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270766">Owner</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270768">The name of the identity who has purview over the work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270770">Assignee</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270772">The name of the identity to whom you assigned the work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270774">Created</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270776">The date the work item was assigned.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270778">Expiration</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270780">The date when the work item must be completed, if applicable.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270782">Next Event Date</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270784">Specifies the next date and event (i.e. reminder, escalation, etc.) related to the work item is set to launch.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270786">Priority</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270788">Specifies the priority level to which the work item was designated. Use the drop-down list and edit the priority level. This edit is visible in the Work Items Manager.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270790">Reminders</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270792">Displays the number of reminders that were triggered for this work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270794">Escalations</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270796">Displays the number of escalations that were triggered for this work item.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270798">Access Request ID</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3270800">Identification number designated for the Lifecycle Manager access request.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Note1_outer" style="margin-left: 36pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Note1_inner" style="width: 36pt; white-space: nowrap">
+                <span class="GreyBold">Note:	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="Note1_inner"><a name="3280334">If you are presented with a work item, such as a form to complete and you do not complete it in the standard workflow, the unfinished work item goes to the page where you access your work items, such as My Work and the Notifications area. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3280590">Click a work item in the table to open the View Work Item or Access Review Details page.</a></div>
+      <div class="BodyLevel1"><a name="3280593">The Manager Work Items table includes the following types of work items:</a></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270816">Access Review — access reviews that are assigned to you. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270819">Delegation — work items that were delegated to you from another user’s access review requests or policy violations.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270823">Revocation — requests to remove specific user access to applications on which you have the authority to grant or remove privileges.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270827">Reassigned or Forwarded — work items that were forwarded or reassigned to you by another user. Reassigned work items are labeled reassigned, forwarded work items contain the forwarding user’s name in the description.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270831">Impact Analysis — work items to review an impact analysis report with the option to apply or discard pending changes.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3270835">Approval— work items to approve or reject changes, such as a candidate role that requires approval before it can become active in the modeler or an access change request that the Access Request Manager generates. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3274030">Forms — method used to solicit additional information from the user beyond an approval or rejection decision. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a name="3292294">Policy Violations — policy violations that are assigned to you. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="BodyLevel1"><a name="3295376">&nbsp;</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

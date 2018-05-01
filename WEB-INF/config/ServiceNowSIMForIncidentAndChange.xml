@@ -1,0 +1,421 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+
+<!--(c) Copyright 2016 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<!-- DOCUMENTATION
+     This document provides the required information for configuring IdentityIQ to integrate with ServiceNow Fuji instance and later.
+	 The IntegrationConfig xml file provides configuration for the following ServiceNow service operations.
+      1. Incident
+      2. Change Request
+
+     Search the required service operations by using the following respective strings:
+      1. for Incident -> #INCIDENT
+      2. for Change Request -> #CHANGE REQUEST
+
+	  Based on the searched service operation, uncomment it and enter the required entry keys.
+-->
+
+<sailpoint>
+
+    <!-- DOCUMENTATION
+	     Integration Rule.
+
+		 Expected return values are one of the following:
+		    1. nothing
+			2. null
+			3. sailpoint.integration.RequestResult
+			4. sailpoint.object.ProvisioningResult
+    -->
+	<Rule language='beanshell' name='ServiceNowSIMIncidentAndChangeRule' type='Integration'>
+	  <Description>
+		Use this rule to customize the data loaded into the Provisioning Plan object.
+		The provisioning plan and its integrationData object are used by Velocity to populate values in the XML templates for the web service calls.
+	  </Description>
+	  <Signature returnType='Object'>
+		<Inputs>
+		  <Argument name='identity'>
+			<Description>
+			  A sailpoint.object.Identity representing the person being remediated.
+			</Description>
+		  </Argument>
+		  <Argument name='plan'>
+			<Description>
+			  A sailpoint.object.ProvisioningPlan representing remediation.
+			</Description>
+		  </Argument>
+		  <Argument name='integration'>
+			<Description>
+			  A sailpoint.object.IntegrationConfig representing configuration object.
+			</Description>
+		  </Argument>
+		  <Argument name='context'>
+			<Description>
+			  A sailpoint.api.SailPointContext object that can be used to query the database to find the Rule.
+			</Description>
+		  </Argument>
+		  <Argument name='log'>
+			<Description>
+			  A Log object to help report and/or debug the Rule.
+			</Description>
+		  </Argument>
+		</Inputs>
+	  </Signature>
+	  <Source><![CDATA[
+        Map arguments = (Map)plan.getArguments();
+        arguments.put("identityName", identity.getName());
+        if (identity.getFirstname() != null) {
+            arguments.put("identityFirstname", identity.getFirstname());
+        }
+        if (identity.getLastname() != null) {
+            arguments.put("identityLastname", identity.getLastname());
+        }
+
+        //System.out.println ("Plan: "  + plan.toXml());
+        ]]>
+	  </Source>
+	</Rule>
+
+    <!-- DOCUMENTATION
+	     Integration Config <entry key> documentation
+         1> key='noProvisioningRequests'
+				 when set to true disables the saving of provisioning request objects.
+		 2> key='operations'
+                 Provides support operation for this integration configuration (Create,Modify,Delete,Enable,Unlock,SetPassword).
+		 3> key='dateFormat'
+                 Date format for dateTime XML data type.
+				 Default is - yyyy-MM-dd'T'HH:mm:ss
+		 4> key='username'
+		         Username for web service (SOAP) authentication.
+		 5> key='password'
+		         The current password for the user.
+		 6> key='authType'
+		         Authentication level for ServiceNow web service calls can be one of the following:
+				 1) Basic authentication - Set the value of authType as "Basic" or empty.
+				 2) WS-Security  - The value of authType should be "WS-Security".
+				 3) Basic and WS-Security - The value of authType should be "Basic And WS-Security".
+				 4) WS-Security and UsernameToken - The value of authType should be "WS-Security And UsernameToken".
+
+				 Please ensure you have defined WS Security profile and other relevant settings on ServiceNow side.
+         7> key='keystorePath'
+			     Full path of java keystore e.g. C:/kestore/testkeystore.jks
+		 8> key='keystorePass'
+	 			 Keystore password.
+         9> key='keystoreType'
+		         Keystore type e.g. jks
+		10> key='alias'
+		         Keystore alias which will be used to sign soap messages.
+		11> key='keyPass'
+		         KeyPassword of alias. It might be same as keystore password.
+        12> key='provision'
+			     Contains SOAP envelope template to send ticket creation request to ServiceNow. This uses SOAP over HTTP.
+				 It contains below <entry key> parameters.
+		         a> key='endpoint'
+				    ServiceNow endpoint to send create ticket request.
+                    1> For ServiceNow 'Incident' operation - https://demo.service-now.com/x_sapo_iiq_sim_incident.do?SOAP
+                    2> For ServiceNow 'Change Request' operation - https://demo.service-now.com/x_sapo_iiq_sim_change_request.do?SOAP
+		         b> key='prefix'
+				         The SOAP namespace prefix. default is 'x'.
+				 c> key='SOAPAction'
+			             The SOAPAction header is not required, but some customer may need it to verify the incoming SOAP request,
+						 using some 3rd party tools like xml gateway.
+						 e.g. http://demo.service-now.com/x_sapo_iiq_sim_ScRequestGenerator/insert
+				 d> key='responseElement'
+				         The SOAP response element.
+				 e> key='soapMessage'
+				         The SOAP envelope to send over HTTP.
+
+				    Note: For Change Request - Replace <state>1</state> with <state>-5</state> in the soapMessage if you are configuring
+				          for ServiceNow Geneva or later version.
+        13> key='statusMap'
+                The following IdentityIQ 'RequestResult' status codes are available, and you can use it in IntegrationConfig to relate to most suitable state of ServiceNow service operation.
+                    success
+                    failure
+                    committed
+                    retry
+                    warning
+                    notStarted
+                    inProcess
+
+                    Note: 1. For Incident - Uncomment the status entry in comment, if you are configuring for ServiceNow Helsinki or later version.
+                          2. For Change Request - Replace the staus map with below one if you are configuring for ServiceNow Geneva or later
+                             version.
+                             <entry key='statusMap'>
+                               <value>
+                                 <Map>
+                                   <entry key='-5' value='inProcess'/>
+                                   <entry key='-4' value='inProcess'/>
+                                   <entry key='-3' value='inProcess'/>
+                                   <entry key='-2' value='inProcess'/>
+                                   <entry key='-1' value='inProcess'/>
+                                   <entry key='0' value='inProcess'/>
+                                   <entry key='3' value='committed'/>
+                                   <entry key='4' value='failure'/>
+                                 </Map>
+                               </value>
+                             </entry>
+		14> key='statusMapCloserCode'
+                 Used only for service operation 'Incident'.
+		15> key='getRequestStatus'
+   			     Contains SOAP envelope template to get ticket status from ServiceNow. This uses SOAP over HTTP.
+				 It contains below <entry key> parameters.
+				 a> key='endpoint'
+                         ServiceNow endpoint to get ticket status.
+                         1> To get 'Incident' status - https://demo.service-now.com/incident.do?SOAP
+                         2> To get 'Change Request' status - https://demo.service-now.com/change_request.do?SOAP
+                 b> key='prefix'
+				         The SOAP namespace prefix.
+                         1> For 'Incident' - default is 'inc'.
+                         2> For 'Change Request' - default is 'chan'.
+				 c> key='SOAPAction'
+				        The SOAPAction header is not required, but some customer may need it to verify the incoming SOAP request,
+						 using some 3rd party tools like xml gateway.
+						 e.g. http://demo.service-now.com/sc_request/getRecords
+                 d> key='responseElement'
+				         The SOAP response element.
+				 e> key='soapMessage'
+				         The SOAP envelop to send over HTTP. 
+	-->
+
+	<IntegrationConfig name="ServiceNowSIMIncidentAndChange"
+					   executor="sailpoint.integration.servicenow.ServiceNowIntegrationExecutor"
+					   roleSyncStyle="none">
+
+	  <PlanInitializer>
+		<Reference class="sailpoint.object.Rule" name="ServiceNowSIMIncidentAndChangeRule"/>
+	  </PlanInitializer>
+
+	  <Attributes>
+	    <Map>
+		  <entry key='noProvisioningRequests' value='false'/>
+		  <entry key='operations' value='Create,Modify,Delete,Enable,Unlock,SetPassword'/>
+		  <entry key='dateFormat' value="yyyy-MM-dd'T'HH:mm:ss"/>
+		  <entry key='username' value=''/>
+		  <entry key='password' value=''/>
+		  <entry key='authType' value=''/>
+		  <entry key="keystorePath" value=''/>
+		  <entry key='keystorePass' value=''/>
+		  <entry key='keystoreType' value=''/>
+		  <entry key='alias' value=''/>
+		  <entry key='keyPass' value=''/>
+
+     <!-- #INCIDENT --> 
+		  <entry key='provision'>
+		    <value>
+			  <Map>
+			    <entry key='endpoint' value=''/>
+				<entry key='prefix' value='x'/>
+				<entry key='SOAPAction' value=''/>
+				<entry key='responseElement' value='display_value'/>
+				<entry key='soapMessage'>
+				  <value>
+				    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+				      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x="http://www.service-now.com/x_sapo_iiq_sim_incident">
+				  	    <soapenv:Header></soapenv:Header>
+						<soapenv:Body>
+						  <x:insert>
+						    <opened_by>$!config.username</opened_by>
+							<caller_id>$!provisioningPlan.integrationData.requester</caller_id>
+							<category>request</category>
+							<assignment_group>Service Desk</assignment_group>
+							<contact_type>email</contact_type>
+							<impact>3</impact>
+							<urgency>3</urgency>
+							<incident_state>1</incident_state>
+							<short_description>IdentityIQ provisioning request for: $!provisioningPlan.integrationData.identityName   $!provisioningPlan.integrationData.identityRequestId</short_description>
+							<description>#foreach ($request in $provisioningPlan.accountRequests)
+#if ($request.attributeRequests)
+#foreach ($att in $request.attributeRequests)
+$request.application $att.operation $att.name $att.value
+#end
+#elseif ($request.permissionRequests)
+For $request.nativeIdentity in application $request.application
+#foreach ($att in $request.permissionRequests)
+
+$att.operation Right $att.rights on $att.target
+#end
+#else
+$request.operation $request.application nativeIdentity $request.nativeIdentity
+#end
+#end
+
+Source Data:
+  type= $!provisioningPlan.integrationData.source
+  id= $!provisioningPlan.integrationData.sourceId
+  name= $!provisioningPlan.integrationData.sourceName
+                            </description>
+						  </x:insert>
+		                </soapenv:Body>
+		              </soapenv:Envelope> ]]>
+					</String>
+				  </value>
+				</entry>
+			  </Map>
+			</value>
+		  </entry>
+		  <entry key='statusMap'>
+		    <value>
+			  <Map>
+			    <entry key='1' value='inProcess'/>
+				<entry key='2' value='inProcess'/>
+				<entry key='3' value='inProcess'/>
+				<entry key='4' value='inProcess'/>
+				<entry key='5' value='inProcess'/>
+				<entry key='6' value='committed'/>
+				<entry key='7' value='committed'/>
+				<!-- Status entry for ServiceNow Helsinki or later version-->
+				<!--
+				<entry key='8' value='failure'/>
+				-->
+			  </Map>
+			</value>
+		  </entry>
+		  <entry key='statusMapCloserCode'>
+		    <value>
+			  <Map>
+			    <entry key='Solved (Work Around)' value='committed'/>
+				<entry key='Solved (Permanently)' value='committed'/>
+				<entry key='Solved Remotely (Work Around)' value='committed'/>
+				<entry key='Solved Remotely (Permanently)' value='committed'/>
+				<entry key='Closed/Resolved by Caller' value='committed'/>
+				<entry key='Not Solved (Not Reproducible)' value='failure'/>
+				<entry key='Not Solved (Too Costly)' value='failure'/>
+			  </Map>
+			</value>
+		  </entry>
+		  <entry key='getRequestStatus'>
+		    <value>
+			  <Map>
+			    <entry key='endpoint' value=''/>
+				<entry key='prefix' value='inc'/>
+				<entry key='SOAPAction' value=''/>
+				<entry key='responseElement' value='incident_state'/>
+				<entry key='closureInfoResponseElement' value='close_code'/>
+				<entry key='soapMessage'>
+				  <value>
+				    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+					  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inc="http://www.service-now.com/incident">
+					    <soapenv:Header></soapenv:Header>
+						<soapenv:Body>
+						  <inc:getRecords>
+							<number>$requestID</number>
+						  </inc:getRecords>
+						</soapenv:Body>
+					  </soapenv:Envelope>]]>
+					</String>
+				  </value>
+				</entry>
+			  </Map>
+			</value>
+		  </entry>
+
+     <!-- #CHANGE REQUEST 
+		  <entry key='provision'>
+		    <value>
+			  <Map>
+			    <entry key='endpoint' value=''/>
+				<entry key='prefix' value='x'/>
+				<entry key='SOAPAction' value=''/>
+				<entry key='responseElement' value='display_value'/>
+				<entry key='soapMessage'>
+				  <value>
+				    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+					  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x="http://www.service-now.com/x_sapo_iiq_sim_change_request">
+					    <soapenv:Header></soapenv:Header>
+						<soapenv:Body>
+	                      <x:insert>
+	                        <requested_by>$!config.username</requested_by>
+							<assignment_group>Service Desk</assignment_group>
+							<category>Other</category>
+							<state>1</state>
+	                        <priority>4</priority>
+	                        <risk>4</risk>
+	                        <impact>3</impact>
+	                        <short_description>IdentityIQ provisioning request for: $!provisioningPlan.integrationData.identityName   $!provisioningPlan.integrationData.identityRequestId</short_description>
+	                        <description>#foreach ($request in $provisioningPlan.accountRequests)
+#if ($request.attributeRequests)
+#foreach ($att in $request.attributeRequests)
+$request.application $att.operation $att.name $att.value
+#end
+#elseif ($request.permissionRequests)
+For $request.nativeIdentity in application $request.application
+#foreach ($att in $request.permissionRequests)
+
+$att.operation Right $att.rights on $att.target
+#end
+#else
+$request.operation $request.application nativeIdentity $request.nativeIdentity
+#end
+#end
+
+Source Data:
+  type= $!provisioningPlan.integrationData.source
+  id= $!provisioningPlan.integrationData.sourceId
+  name= $!provisioningPlan.integrationData.sourceName
+	                        </description>
+	                      </x:insert>
+	                    </soapenv:Body>
+	                  </soapenv:Envelope>]]>
+					</String>
+				  </value>
+				</entry>
+			  </Map>
+			</value>
+		  </entry>
+		  <entry key='statusMap'>
+		    <value>
+		      <Map>
+			    <entry key='-5' value='inProcess'/>
+			    <entry key='1' value='inProcess'/>
+			    <entry key='2' value='inProcess'/>
+			    <entry key='3' value='committed'/>
+			    <entry key='4' value='failure'/>
+			    <entry key='7' value='failure'/>
+			  </Map>
+		    </value>
+		  </entry>
+		  <entry key='getRequestStatus'>
+		    <value>
+		      <Map>
+			    <entry key='endpoint' value=''/>
+			    <entry key='prefix' value='chan'/>
+			    <entry key='SOAPAction' value=''/>
+			    <entry key='responseElement' value='state'/>
+			    <entry key='soapMessage'>
+			      <value>
+				    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+				      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chan="http://www.service-now.com/change_request">
+					    <soapenv:Header></soapenv:Header>
+					    <soapenv:Body>
+					      <chan:getRecords>
+						    <number>$requestID</number>
+						  </chan:getRecords>
+					    </soapenv:Body>
+					  </soapenv:Envelope>]]>
+			        </String>
+				  </value>
+			    </entry>
+			  </Map>
+		    </value>
+		  </entry>
+       -->
+
+	    </Map>
+	  </Attributes>
+
+	  <ManagedResources>
+	    <ManagedResource>
+	      <ApplicationRef>
+		    <Reference class="sailpoint.object.Application" name="Active_Directory"/>
+		  </ApplicationRef>
+	    </ManagedResource>
+	    <ManagedResource>
+	      <ApplicationRef>
+		    <Reference class="sailpoint.object.Application" name="Procurement_System"/>
+		  </ApplicationRef>
+	    </ManagedResource>
+	  </ManagedResources>
+
+	</IntegrationConfig>
+
+</sailpoint>

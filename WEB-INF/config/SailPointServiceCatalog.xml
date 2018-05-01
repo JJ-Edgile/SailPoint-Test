@@ -1,0 +1,599 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+
+<!-- (c) Copyright 2015 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<sailpoint>
+  
+  <!--
+   Rule called when the default LCM Provisioning and LCM Manage Passwords are
+   creating and updating tickets(for ServiceNow) as workflows go through thier lifecycles.
+ -->
+<Rule language="beanshell" name='SailPointServiceCatalogIntegration'>
+  <Signature>
+    <Inputs>
+      <Argument name="log">
+        <Description>
+          The log object associated with the SailPointContext.
+        </Description>
+      </Argument>
+      <Argument name="context">
+        <Description>
+          A sailpoint.api.SailPointContext object that can be used to query the database if necessary.
+        </Description>
+      </Argument>
+      <Argument name="wfc">
+        <Description>
+          The currently execution workflow context.
+        </Description>
+      </Argument>
+      <Argument name="project">
+        <Description>
+          The project that we are dealing with in the provisioning workflow.
+          This argument comes from the workflow context and is here for convenience.
+        </Description>
+      </Argument>
+      <Argument name="identityRequest">
+        <Description>
+          The object.IdentityRequest object that contains all of the current request information,
+          including approval and provisioning information depending on where in the process
+          we are being launched.
+
+          This argument comes from the workflow context and is here for convenience.
+        </Description>
+      </Argument>
+      <Argument name="appName">
+        <Description>
+          The name of the application that should handle the ticket management.
+        </Description>
+      </Argument>
+      <Argument name="application">
+        <Description>
+          The application object representing the application that should handle the ticket management.
+        </Description>
+      </Argument>
+    </Inputs>
+  </Signature>
+
+  <Description>
+    Given the current workflow context, using mostly the identityRequest
+    object build a plan that should represent the ticket data that
+    needs to be pushed into the Remedy Ticket.
+  </Description>
+
+  <Source>
+    <![CDATA[
+     import java.util.ArrayList;
+     import java.util.List;
+     import java.util.Date;
+     import java.util.Map;
+     import sailpoint.api.IdentityService;
+     import sailpoint.object.Application;
+     import sailpoint.object.Filter;
+     import sailpoint.object.Identity;
+     import sailpoint.object.IdentityRequest;
+     import sailpoint.object.IdentityRequestItem;
+     import sailpoint.object.Link;
+     import sailpoint.object.ProvisioningPlan;
+     import sailpoint.object.ProvisioningPlan.AccountRequest;
+     import sailpoint.object.ProvisioningPlan.AttributeRequest;
+     import sailpoint.object.ProvisioningPlan.Operation;
+     import sailpoint.object.ProvisioningPlan.ObjectRequest;
+     import sailpoint.object.ProvisioningPlan.ObjectOperation;
+     import sailpoint.object.QueryOptions;
+     import sailpoint.object.Schema;
+     import sailpoint.object.WorkItem;
+     import sailpoint.workflow.WorkflowContext;
+     import sailpoint.tools.Util;
+     import sailpoint.web.util.IdentityRequestSummarizer;
+
+     /**
+      * Fields
+      */
+     Date date = new Date();
+     String stdformat = Util.dateToString(date);
+
+     /**
+      * Provide the ServiceNow connector application name through which
+      * ServiceNow users are aggregated in IdentityIQ.
+      * The value for this parameter must be the name of the Connector Application
+      * pointing to ServiceNow instance where LIC is configured.
+      * Default value is Null.
+      */
+     String connectorAppName = null;
+
+     /**
+      * Add atribute name on schema of ServiceNow Connector application which
+      * will be used to set requested_for field in the ticket.
+      * Default value given is user_name.
+      */
+     String attName = "user_name";
+
+     /**
+      * populate transaction data (required for service now rest API)
+      */
+     private void getTransactionData( ObjectRequest req, IdentityRequest ir, String requestType ) {
+         req.add( new AttributeRequest( "transaction_type", requestType ) );
+         req.add( new AttributeRequest( "transaction_id", Util.uuid() ) );
+         req.add( new AttributeRequest( "transaction_date", ir.getCreated().toString() ) );
+     }
+
+     /**
+      *
+      * Returns the type Identity Request Item when the item is either and IIQ assigned and detectedRoles
+      * or attributes that are marked entitlement in the schema.
+      *
+      */
+     private String getIdentityRequestItemType(IdentityRequestItem item) {
+        String itemAttributeName = item.getName();
+        if ( null == itemAttributeName ) {
+             return null;
+        }
+        if ( Util.nullSafeEq(itemAttributeName, "assignedRoles" ) || Util.nullSafeEq(itemAttributeName, "detectedRoles" ) ) {
+             return "Role";
+        }
+
+        String app = item.getApplication();
+        if ( null == app ) {
+            return "unknown";
+        }
+        Application appObject = context.getObjectByName(Application.class, app);
+        if ( null != appObject ) {
+             Schema account = appObject.getAccountSchema();
+             if ( null != account ) {
+                  List entitlementAttributes = account.getEntitlementAttributeNames();
+                  if ( entitlementAttributes != null  ) {
+                       if ( entitlementAttributes.contains(itemAttributeName) )
+                            return "Entitlement";
+                  }
+             }
+        }
+        else {
+              return "unknown";
+        }
+        return "unknown";
+     }
+
+     /**
+      * Get ServiceNow Account name for Identity
+      */
+     private String getIdentityLink(Identity ident, Application app) {
+         String linkName = null;
+
+         if (ident != null && app != null) {
+             IdentityService idsvc = new IdentityService(context);
+             List<Link> links = idsvc.getLinks(ident, app);
+             Link link = null;
+             if (links != null && links.size() > 0) {
+                 link = links.get(0);
+             }
+
+             if (link != null) {
+                 String userName = (String) link.getAttribute(attName);
+                 if (Util.isNotNullOrEmpty(userName)) {
+                     linkName = userName;
+                 }
+             }
+        }
+
+        return linkName;
+  }
+
+     /**
+      * Add in specific "requestor" Identity information to the ticket
+      * using a project query to limit the database data we bring
+      * back.
+      */
+     private String addRequestorInfo(String requestor) {
+         String openedBy = requestor;
+
+         if (Util.isNotNullOrEmpty(connectorAppName)) {
+             // resolve a link property to find the proper ServiceNow user_name
+             Identity ident = context.getObjectByName(Identity.class, requestor);
+             Application app = context.getObjectByName(Application.class, connectorAppName);
+             openedBy = getIdentityLink(ident, app);
+         }
+
+         return (Util.isNotNullOrEmpty(openedBy)) ? openedBy : "unknown";
+
+     }
+
+     /**
+      * Add in specific "requested_for" Identity information to the ticket
+      * using a project query to limit the database data we bring
+      * back.
+      */
+     private String addIdentityInfo(String identityId) {
+         String rc = null;
+
+         if (Util.isNullOrEmpty(connectorAppName)) {
+             // if we don't provide an app name, we can use the default OOTB
+             // way of assuming identity.name = user_name in ServiceNow
+             QueryOptions ops = new QueryOptions();
+             ops.addFilter(Filter.eq("id", identityId));
+             Iterator rows = context.search(Identity.class, ops, "name");
+             while ( rows != null && rows.hasNext() ) {
+                 Object[] row = (Object[]) rows.next();
+                 if ( row != null && row.length == 1) {
+                     String name = row[0];
+                     if ( null != name ) {
+                         rc = name;
+                     }
+                 }
+             }
+         } else {
+             // if we must look up and resolve a link property to find the proper
+             // ServiceNow user_name, then we must pass in an ServiceNow connector 
+             // application name for the link search
+             Identity ident = context.getObjectById(Identity.class, identityId);
+             Application app = context.getObjectByName(Application.class, connectorAppName);
+             rc = getIdentityLink(ident, app);
+         }
+
+         return (Util.isNotNullOrEmpty(rc)) ? rc : "unknown";
+     }
+
+     /**
+      *  Method to return particular Item information from Identity Request object
+      */
+     private ArrayList getItemsList(IdentityRequest ir) {
+        ArrayList itemsList = new ArrayList ();
+        List exItems = ir.getItems();
+        if ( null != exItems && ( 0 != exItems.size() ) ) {
+             for ( IdentityRequestItem item : exItems ) {
+                   if ( null != item ) {
+                        Map exMap = new HashMap();
+                        exMap.put( "item_id", item.getId());
+                        exMap.put( "type", getIdentityRequestItemType( item ) );
+                        exMap.put( "value", item.getValue() );
+                        exMap.put( "application", item.getApplication() );
+                        exMap.put( "account_name", item.getNativeIdentity() );
+                        exMap.put( "operation", item.getOperation() );
+                        exMap.put( "approval_state", item.getApprovalState() );
+                        if ( item.ProvisioningState.Commited.equals(item.getProvisioningState()) ) {
+                            exMap.put( "provisioning_state", "Committed" );
+                        }
+                        else {
+                            exMap.put( "provisioning_state", item.getProvisioningState() );
+                        }
+                        if ( null != exMap && ( 0 != exMap.size() ) ) {
+                              itemsList.add( exMap );
+                        }
+                    }
+                }
+           }
+        if ( null != itemsList && ( 0 != itemsList.size() ) ) {
+               return (itemsList);
+        }
+
+        return (null);
+     }
+
+     /**
+      *  Method to return data information map
+      */
+     private Map getDataInfo(IdentityRequest ir) {
+        Map dataMap = new HashMap();
+
+        dataMap.put( "unique_key", ir.getName() );
+        dataMap.put( "requested_for", addIdentityInfo( ir.getTargetId() ) );
+        dataMap.put( "requestor", ( null != wfc.get("launcher") ) ? addRequestorInfo((String)wfc.get("launcher")) : "unknown" );
+
+        /**
+         * Using the identity request build up the Account request
+         * informtion.
+         */
+        List itemsList = getItemsList(ir);
+        if ( null != itemsList ) {
+             dataMap.put( "items", itemsList );
+        }
+
+        dataMap.put( "status", ("openNoApproval".equals(action)) ? "In Progress" : "Waiting Approval" );
+        dataMap.put( "created",  stdformat );
+        dataMap.put( "updated", stdformat );
+        dataMap.put( "comments", ( "openNoApproval".equals(action) ) ? "IdentityIQ Provisioning Request Started - No Approval"
+                : "IdentityIQ Provisioning Request Started - Awaiting Approval" );
+
+        return dataMap;
+     }
+
+     /**
+      * Add an ObjectRequest that will represent the ticket to the constructed plan,
+      * and return it.  Consumer can populate the attribute request's as
+      * required.
+      */
+     private ObjectRequest initPlan(ProvisioningPlan plan, String action, IdentityRequest ir, String application) {
+         ObjectRequest req = new ObjectRequest();
+         if ( action.startsWith("open") ) {
+            req.setOp( ObjectOperation.Create );
+         }
+         else {
+            req.setOp( ObjectOperation.Modify );
+            if ( ir != null )
+               req.setNativeIdentity(ir.getExternalTicketId());
+         }
+         req.setType("ticket");
+         req.setApplication(application);
+
+         /**
+          * add the request to the plan
+          */
+         plan.addObjectRequest(req);
+         return req;
+     }
+
+     /**
+      * Build out a plan that can be used by a ticketing system
+      * to open a ticket with enough information to understand
+      * what was requested.
+      */
+     private ProvisioningPlan buildOpenTicketPlan(String action, IdentityRequest ir, String application) {
+         ProvisioningPlan ticketPlan = new ProvisioningPlan();
+
+         ObjectRequest req = initPlan(ticketPlan, action, ir, application);
+
+         /**
+          * Using the identity request build up the base request informtion.
+          */
+         getTransactionData( req, ir, "request_create" );
+
+         /**
+          * Using the identity request build up the data request informtion.
+          */
+         req.add( new AttributeRequest( "data", getDataInfo(ir) ) );
+
+         return ticketPlan;
+     }
+
+     /**
+      * Post approval build a summary of the items with the decisions and
+      * add them to an existing ticket.
+      */
+     private ProvisioningPlan buildPostApprovalTicketPlan(String action, IdentityRequest ir, String application) {
+         ProvisioningPlan ticketPlan = new ProvisioningPlan();
+         ObjectRequest req = initPlan(ticketPlan, action, ir, application);
+
+         /**
+          * Using the identity request build up the base request informtion.
+          */
+         getTransactionData( req, ir, "request_update" );
+
+         /**
+          * Using the identity request build up the data request informtion.
+          */
+         Map dataMap = new HashMap();
+         dataMap.put( "unique_key", ir.getName() );
+         dataMap.put( "status", "In Progress" );
+
+         /**
+          * Using the identity request build up the Account request
+          * informtion.
+          */
+          List itemsList = getItemsList(ir);
+          if ( null != itemsList ) {
+               dataMap.put( "items", itemsList );
+          }
+
+         dataMap.put( "created", stdformat );
+         dataMap.put( "updated", stdformat );
+         dataMap.put( "comments", "IdentityIQ Performing Provisioning" );
+
+         req.add( new AttributeRequest( "data", dataMap ) );
+
+         return ticketPlan;
+     }
+
+     /**
+      * Post provisioning build a summary of the items and the provisioning
+      * status for each of the items and add them to an existng
+      * ticket.
+      */
+     private ProvisioningPlan buildPostProvisioningTicketPlan(String action, IdentityRequest ir, String application) {
+         ProvisioningPlan ticketPlan = new ProvisioningPlan();
+         ObjectRequest req = initPlan(ticketPlan, action, ir, application);
+
+         /**
+          * Using the identity request build up the base request informtion.
+          */
+         getTransactionData( req, ir, "request_update" );
+
+         /**
+          * Using the identity request build up the data request informtion.
+          */
+         Map dataMap = new HashMap();
+         dataMap.put( "unique_key", ir.getName() );
+         dataMap.put( "status", "Completed" );
+
+         /**
+          * Using the identity request build up the Account request
+          * informtion.
+          */
+          List itemsList = getItemsList(ir);
+          if ( null != itemsList ) {
+               dataMap.put( "items", itemsList );
+          }
+
+         dataMap.put( "created", stdformat );
+         dataMap.put( "updated", stdformat );
+         dataMap.put( "comments", "IdentityIQ Provisioning Request Finishing" );
+
+         req.add( new AttributeRequest( "data", dataMap ) );
+
+         return ticketPlan;
+     }
+
+     /**
+      * After the workflow has completed with or without error) summarize the
+      * overall request status.
+      */
+     private ProvisioningPlan buildCompleteProvisioningTicketPlan(String action, IdentityRequest ir, String application) {
+         ProvisioningPlan ticketPlan = new ProvisioningPlan();
+         ObjectRequest req = initPlan(ticketPlan, action, ir, application);
+
+         /**
+          * Using the identity request build up the base request informtion.
+          */
+         getTransactionData( req, ir, "request_update" );
+
+         /**
+          * Using the identity request build up the data request informtion.
+          */
+         Map dataMap = new HashMap();
+
+         dataMap.put( "unique_key", ir.getName() );
+         dataMap.put( "created", stdformat );
+         dataMap.put( "updated", stdformat );
+
+         /**
+          * Using the identity request build up the Account request
+          * informtion.
+          */
+          List itemsList = getItemsList(ir);
+          if ( null != itemsList ) {
+               dataMap.put( "items", itemsList );
+          }
+
+         if ( ir.isTerminated() ) {
+              dataMap.put( "status", "Cancelled" );
+              dataMap.put( "comments", "IdentityIQ Provisioning Request Canceled" );
+         } else
+         if ( ir.isSuccessful() ) {
+              dataMap.put( "status", "Closed" );
+              dataMap.put( "comments", "IdentityIQ Provisioning Request Completed" );
+         } else
+         if ( ir.isIncomplete() ) {
+              dataMap.put( "status", "Closed" );
+              dataMap.put( "comments", "IdentityIQ Provisioning Request - One or more items failed" );
+         }  else
+         if ( ir.isFailure() ) {
+              dataMap.put( "status", "Closed" );
+              dataMap.put( "comments", "IdentityIQ Provisioning Request Failed" );
+         }
+
+         req.add( new AttributeRequest( "data", dataMap ) );
+
+         return ticketPlan;
+     }
+
+     ////////////////////////////////////////////////////////////////////////////////////////////////////
+     // Main
+     ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+     /*
+     System.out.println("ENTER1. Ticket plan generation rule start.ticketId="  ticketId);
+     System.out.println("ENTER1. Ticket plan generation rule start.priority="  priority);
+     System.out.println("ENTER1. Ticket plan generation rule start.application="  application);
+     System.out.println("ENTER1. Ticket plan generation rule start.action="  action);
+     System.out.println("ENTER1. Ticket plan generation rule start.identityRequest="  identityRequest);
+     System.out.println("ENTER1. Ticket plan generation rule start.identityRequestId="  identityRequestId);
+     System.out.println("ENTER1. Ticket plan generation rule start.project="  project);
+     System.out.println("ENTER1. Ticket plan generation rule start.appName="  appName);
+     System.out.println("ENTER1. Ticket plan generation rule start.ticketManagementApplication="  ticketManagementApplication);
+     System.out.println("ENTER1. Ticket plan generation rule start.context="  context);
+     System.out.println("ENTER1. Ticket plan generation rule start.wfc="  wfc);
+     System.out.println("ENTER1. Ticket plan generation rule start.wfcase="  wfcase);
+     System.out.println("ENTER1. Ticket plan generation rule start.log="  log);
+     System.out.println("ENTER1. Ticket plan generation rule start.wfcontex="  wfcontex);
+     System.out.println("ENTER1. Ticket plan generation rule start.workflow="  workflow);
+     */
+     ProvisioningPlan ticketPlan = null;
+
+     if ( void == appName || null == appName ) {
+        if (null != ticketManagementApplication)
+            appName = ticketManagementApplication;
+        else
+            throw new Exception("appName was null, unable to build ticket plan.");
+     }
+
+     if ( void == action || null == action ) {
+         Map wArgs = workflow.getVariables();
+         action = wArgs.get("action");
+         if ( null == action ){
+            throw new Exception("Action was null, unable to build ticket plan.");
+         }
+     }
+
+     if ( void == identityRequest || null == identityRequest ) {
+         if ( null != identityRequestId ) {
+             identityRequest = context.getObjectByName(IdentityRequest.class, identityRequestId);
+             if (null == identityRequest){
+                 throw new Exception("Identity request was null, unable to build ticket plan.");
+             }
+         }
+         else {
+             throw new Exception("identityRequestId was null, unable to build ticket plan.");
+         }
+     }
+
+     if ( void == wfc || null == wfc ) {
+        if ( null != wfcase ){
+            wfc = wfcase;
+        }
+        else {
+            throw new Exception("workflow context was null, unable to build ticket plan.");
+        }
+     }
+
+     if ( Util.nullSafeEq(action, "open" ) || Util.nullSafeEq(action, "openNoApproval" ) ) {
+          ticketPlan = buildOpenTicketPlan(action, identityRequest, appName);
+     } else
+     if ( Util.nullSafeEq(action, "postApproval" ) ) {
+          ticketPlan = buildPostApprovalTicketPlan(action, identityRequest, appName);
+     } else
+     if ( Util.nullSafeEq(action, "postProvisioning" ) ) {
+          ticketPlan = buildPostProvisioningTicketPlan(action, identityRequest, appName);
+     } else
+      if ( Util.nullSafeEq(action, "complete" ) ) {
+          ticketPlan = buildCompleteProvisioningTicketPlan(action, identityRequest, appName);
+     } else {
+          throw new Exception("Unhandled action "+action+"' passed into ticket generation rule. Plan could not be generated");
+     }
+     /* System.out.println("EXIT1. Ticket plan generation rule end.\n" + ticketPlan.toXml()); */
+     return ticketPlan;
+    ]]>
+  </Source>
+</Rule>
+
+ <!-- This flag enables the display and search-ability of the externalTicketId -->
+ <ImportAction name="merge">
+   <Configuration name="SystemConfiguration">
+     <Attributes>
+       <Map>
+         <entry key="lcmShowExternalTicketId" value="true"/>
+       </Map>
+     </Attributes>
+   </Configuration>
+ </ImportAction>
+
+ <Application connector="sailpoint.connector.OpenConnectorAdapter" featuresString="NO_AGGREGATION, PROVISIONING" name="SailPointServiceCatalog" type="ServiceNow">
+   <Attributes>
+     <Map>
+       <entry key="connectorClass" value="openconnector.connector.ServiceNowTicketConnector"/>
+       <entry key="ticketDataGenerationRule" value="SailPointServiceCatalogIntegration"/>
+       <entry key="url" value=" "/>
+       <entry key="username" value=" "/>
+	   <entry key="password" value=" "/>
+     </Map>
+   </Attributes>
+  <Schemas>
+   <Schema displayAttribute="servicenow_number" featuresString="PROVISIONING" identityAttribute="servicenow_number" nativeObjectType="ticket" objectType="ticket">
+     <AttributeDefinition name="transaction_id" type="string">
+       <Description>Transaction ID</Description>
+     </AttributeDefinition>
+     <AttributeDefinition name="result" type="string">
+       <Description>Result</Description>
+     </AttributeDefinition>
+     <AttributeDefinition name="result_code" type="string">
+       <Description>Result Code</Description>
+     </AttributeDefinition>
+     <AttributeDefinition name="transaction_date" type="string">
+       <Description>Transaction Date</Description>
+     </AttributeDefinition>
+     <AttributeDefinition name="data" type="string">
+       <Description>Data</Description>
+     </AttributeDefinition>
+   </Schema>
+  </Schemas>
+ </Application>
+
+</sailpoint>

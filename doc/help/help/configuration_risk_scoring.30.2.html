@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Access Risk Scoring Definitions</title>
+    <link rel="StyleSheet" href="css/configuration_risk_scoring.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_getting_started.html">Section II Configure IdentityIQ</a> : <a class="WebWorks_Breadcrumb_Link" href="configuration_risk_scoring.30.1.html">Configure Risk Scoring</a> : Access Risk Scoring Definitions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading1"><a name="3278177">Access Risk Scoring Definitions</a></div>
+      <div class="BodyLevel1"><a name="3269220">Use the risk scoring configuration pages to define the algorithms that IdentityIQ uses to determine risk scores for identities and applications in your organization. There are a number of scores, or types of scores, that contribute to the overall Identity Risk Score, or Composite Risk for each IdentityIQ user. </a></div>
+      <div class="BodyLevel1"><a name="3269390">IdentityIQ applies a series of compensating factors to each base risk score to calculate compensated scores. These compensated scores are then weighted using a maximum contribution percentage and combined to form an overall Composite Risk Score for each user.</a></div>
+      <div class="BodyLevel1"><a name="3269404">The compensating factors and weighted values enable IdentityIQ to accurately identify high risk users based on more than just the roles they are assigned within your enterprise. </a></div>
+      <div class="BodyLevel1"><a name="3269414">For example, a user assigned only low risk roles may be considered high risk if they were never included in a certification process or the roles they do have are in violation of separation of duty policies.</a></div>
+      <div class="BodyLevel1"><span style="color: #727272; font-family: Cambria; font-style: italic; font-weight: bold"><a name="3278186">Additional Information:</a></span></div>
+      <div class="BulletLevel1_outer" style="margin-left: 25.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="BulletLevel1_inner" style="width: 10.8pt; white-space: nowrap">
+                <span class="Bold">•	</span>
+              </div>
+            </td>
+            <td width="100%">
+              <div class="BulletLevel1_inner"><a href="javascript:WWHClickedPopup('help', 'configuration_risk_scoring.30.1.html', '');" title="Configure Risk Scoring" name="3278196">Configure Risk Scoring</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Anchor"><a name="3278199">&nbsp;</a></div>
+      <table class="StandardTable" style="width: 434.29824pt" cellspacing="0" summary="">
+        <caption>
+          <div class="TableTitle">Table 1—<a name="3268729">Access Risk Scoring Definitions</a></div>
+        </caption>
+        <tr>
+          <td style="border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 107.2944pt">
+            <div class="CellHeading"><a name="3268733">Score</a></div>
+          </td>
+          <td style="border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 327.00384pt">
+            <div class="CellHeading"><a name="3268735">Definition</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268737">Base Risk Score</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #3f3f3f; border-top-style: solid; border-top-width: 2.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268739">The score assigned to each role, entitlement, or policy violation.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268741">Total Base Risk Score</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268743">The total score of all base risk scores of the same component type on a per user basis. <br />For example, add the base risk scores for all roles assigned to a specific user together to determine the role total base risk score.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268745">Compensated Risk Score</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268747">The value of the base risk score for a component multiplied by the compensating factor for that component type.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268749">Total Compensated Risk Score</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268751">The Total Base Risk Score for a specific component type multiplied by the Compensated Risk Score for that component type.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #3f3f3f; border-left-style: solid; border-left-width: 2.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268753">Composite Risk Score or Identity Risk Score</a></div>
+          </td>
+          <td style="border-bottom-color: #3f3f3f; border-bottom-style: solid; border-bottom-width: 2.0pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #3f3f3f; border-right-style: solid; border-right-width: 2.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="CellBody"><a name="3268755">The overall risk score for a user after the composite weighting, or maximum contribution to total score factor, is applied to the total compensated risk scores for each component. <br />The time since the last certification was performed on the user can also figured into this score with the total compensated scores for role, entitlement, and policy violation.</a></div>
+          </td>
+        </tr>
+      </table>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

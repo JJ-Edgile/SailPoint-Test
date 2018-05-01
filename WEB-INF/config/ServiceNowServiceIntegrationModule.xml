@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+
+<!--(c) Copyright 2015 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<!-- DOCUMENTATION
+     This document provides the required information for configuring IdentityIQ to integrate with ServiceNow Fuji instance and later.
+	 The IntegrationConfig xml file provides configuration for ServiceNow's Service Request operation.
+-->
+
+<sailpoint>
+
+    <!-- DOCUMENTATION
+	     Integration Rule.
+
+		 Expected return values are one of the following:
+		    1. nothing
+			2. null
+			3. sailpoint.integration.RequestResult
+			4. sailpoint.object.ProvisioningResult
+    -->
+	<Rule language='beanshell' name='ServiceNowServiceIntegration' type='Integration'>
+	  <Description>
+		Use this rule to customize the data loaded into the Provisioning Plan object.
+		The provisioning plan and its integrationData object are used by Velocity to populate values in the XML templates for the web service calls.
+	  </Description>
+	  <Signature returnType='Object'>
+		<Inputs>
+		  <Argument name='identity'>
+			<Description>
+			  A sailpoint.object.Identity representing the person being remediated.
+			</Description>
+		  </Argument>
+		  <Argument name='plan'>
+			<Description>
+			  A sailpoint.object.ProvisioningPlan representing remediation.
+			</Description>
+		  </Argument>
+		  <Argument name='integration'>
+			<Description>
+			  A sailpoint.object.IntegrationConfig representing configuration object.
+			</Description>
+		  </Argument>
+		  <Argument name='context'>
+			<Description>
+			  A sailpoint.api.SailPointContext object that can be used to query the database to find the Rule.
+			</Description>
+		  </Argument>
+		  <Argument name='log'>
+			<Description>
+			  A Log object to help report and/or debug the Rule.
+			</Description>
+		  </Argument>
+		</Inputs>
+	  </Signature>
+	  <Source>
+	    <![CDATA[
+	      import sailpoint.object.Identity;
+	      import sailpoint.object.Link;
+
+	      /**
+	       * Fields
+	       */
+	      String application = "ServiceNow";
+	      // Default user on ServiceNow to whom ticket will be assigned if Requester do not have account on ServiceNow
+	      String defaultUserOpenedBy = "admin";
+	      // Default user on ServiceNow for which ticket will be created if user do not have account on ServiceNow
+	      String defaultUserRequestedFor = "admin";
+	      // Identity attribute on IdentityIQ/ UserID on ServiceNow
+	      String userId = "user_name";
+
+	      /**
+	       * Get ServiceNow Account name for Identity
+	       */
+	      private getServiceNowLink(Identity identity) {
+	          if (identity == null) {
+	              return null;
+	          }
+
+	          List links = identity.getLinks();
+	          String linkName = null;
+	          if (links != null ) {
+	              for (Link link : links) {
+	                  String appType = link.getApplication().getType();
+	                  if (appType != null && appType.equals(application)) {
+	                      if(link.getAttribute(userId) != null) {
+	                          String userName = link.getAttribute(userId).toString();
+	                          if(userName != null) {
+	                              linkName = userName;
+	                              break;
+	                          }
+	                      }
+	                  }
+	              }
+	          }
+
+	          return linkName;
+	      }
+
+	      ////////////////////////////////////////////////////////////////
+	      // Main
+	      ////////////////////////////////////////////////////////////////
+	      Map arguments = (Map)plan.getArguments();
+	      List<Identity> requesterList = plan.getRequesters();
+	      Identity requester = null;
+	      if (requesterList != null) {
+	          requester = requesterList.get(0);
+	          requester = context.getObjectByName(Identity.class, requester.getName());
+	      }
+	      // Get ServiceNow Account name
+	      String openedBy = getServiceNowLink(requester);
+	      String requestedFor = getServiceNowLink(identity);
+
+	      // If the user for which ticket is created has ServiceNow Account put that value
+	      // else put default value 
+	      if (requestedFor != null) {
+	          arguments.put("requestedFor", requestedFor);
+	      } else {
+	          arguments.put("requestedFor", defaultUserRequestedFor);
+	      }
+
+	      // If Requetser has ServiceNow Account put that value
+	      // else put default value
+	      if (openedBy != null) {
+	          arguments.put("openedBy", openedBy);
+	      } else {
+	          arguments.put("openedBy", defaultUserOpenedBy);
+	      }
+	    ]]>
+	  </Source>
+	</Rule>
+
+    <!-- DOCUMENTATION
+	     Integration Config <entry key> documentation
+         1> key='noProvisioningRequests'
+				 when set to true disables the saving of provisioning request objects.
+		 2> key='operations'
+                 Provides support operation for this integration configuration (Create,Modify,Delete,Enable,Unlock,SetPassword).
+		 3> key='dateFormat'
+                 Date format for dateTime XML data type.
+				 Default is - yyyy-MM-dd'T'HH:mm:ss
+		 4> key='username'
+		         Username for web service (SOAP) authentication.
+		 5> key='password'
+		         The current password for the user.
+		 6> key='authType'
+		         Authentication level for ServiceNow web service calls can be one of the following:
+				 1) Basic authentication - Set the value of authType as "Basic" or empty.
+				 2) WS-Security  - The value of authType should be "WS-Security".
+				 3) Basic and WS-Security - The value of authType should be "Basic And WS-Security".
+				 4) WS-Security and UsernameToken - The value of authType should be "WS-Security And UsernameToken".
+
+				 Please ensure you have defined WS Security profile and other relevant settings on ServiceNow side.
+         7> key='keystorePath'
+			     Full path of java keystore e.g. C:/kestore/testkeystore.jks
+		 8> key='keystorePass'
+	 			 Keystore password.
+         9> key='keystoreType'
+		         Keystore type e.g. jks
+		10> key='alias'
+		         Keystore alias which will be used to sign soap messages.
+		11> key='keyPass'
+		         KeyPassword of alias. It might be same as keystore password.
+		12> key='catalogItem'
+		         Map of Catalog items on ServiceNow defined for IdentityIQ Applications.
+		13> key='provision'
+			     Contains SOAP envelope template to send ticket creation request to ServiceNow. This uses SOAP over HTTP.
+				 It contains below <entry key> parameters.
+		         a> key='endpoint'
+				    ServiceNow endpoint to send create ticket request. 
+				    For ServiceNow 'Service Request' operation - https://demo.service-now.com/ScRequestGenerator.do?SOAP
+		         b> key='prefix'
+				         The SOAP namespace prefix is 'scr'.
+				 c> key='SOAPAction'
+			             The SOAPAction header is not required, but some customer may need it to verify the incoming SOAP request,
+						 using some 3rd party tools like xml gateway.
+						 e.g. http://demo.service-now.com/ScRequestGenerator/insert
+				 d> key='responseElement'
+				         The SOAP response element.
+				 e> key='soapMessage'
+				         The SOAP envelope to send over HTTP.
+        14> key='statusMap'
+                The following IdentityIQ 'RequestResult' status codes are available, and you can use it in IntegrationConfig to relate to most suitable state of ServiceNow service operation.
+                    success
+                    failure
+                    committed
+                    retry
+                    warning
+                    notStarted
+                    inProcess
+		15> key='getRequestStatus'
+   			     Contains SOAP envelope template to get ticket status from ServiceNow. This uses SOAP over HTTP.
+				 It contains below <entry key> parameters.
+				 a> key='endpoint'
+       				     ServiceNow endpoint to get ticket status.
+				         To get 'Requested Item's' status - https://demo.service-now.com/sc_req_item.do?SOAP
+                 b> key='prefix'
+				         The SOAP namespace prefix for 'Service Request' - default is 'sc'.
+				 c> key='SOAPAction'
+				        The SOAPAction header is not required, but some customer may need it to verify the incoming SOAP request,
+						 using some 3rd party tools like xml gateway.
+						 e.g. http://demo.service-now.com/sc_req_item/getRecords
+                 d> key='responseElement'
+				         The SOAP response element.
+				 e> key='soapMessage'
+				         The SOAP envelop to send over HTTP. 
+	-->
+
+	<IntegrationConfig name="ServiceNowServiceIntegrationModule"
+					   executor="sailpoint.integration.servicenow.ServiceNowIntegrationExecutor"
+					   roleSyncStyle="none">
+
+	  <PlanInitializer>
+		<Reference class="sailpoint.object.Rule" name="ServiceNowServiceIntegration"/>
+	  </PlanInitializer>
+
+	  <Attributes>
+	    <Map>
+		  <entry key='noProvisioningRequests' value='false'/>
+		  <entry key='operations' value='Create,Modify,Delete,Enable,Unlock,SetPassword'/>
+		  <entry key='dateFormat' value="yyyy-MM-dd'T'HH:mm:ss"/>
+		  <entry key='username' value=''/>
+		  <entry key='password' value=''/>
+		  <entry key='authType' value=''/>
+		  <entry key="keystorePath" value=''/>
+		  <entry key='keystorePass' value=''/>
+		  <entry key='keystoreType' value=''/>
+		  <entry key='alias' value=''/>
+		  <entry key='keyPass' value=''/>
+		  <entry key="catalogItem">
+		    <value>
+		      <Map>
+		        <entry key="Active_Directory" value="IdentityIQ Access Request"/>
+		        <entry key="Procurement_System" value="IdentityIQ Access Request"/>
+		      </Map>
+		    </value>
+		  </entry>
+
+          <!-- #SERVICE REQUEST -->
+          <entry key='provision'>
+            <value>
+              <Map>
+                <entry key='endpoint' value=''/>
+                <entry key='prefix' value='scr'/>
+                <entry key='SOAPAction' value=''/>
+                <entry key='responseElement' value='scResult'/>
+                <entry key='soapMessage'>
+                  <value>
+                    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+                      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:scr="http://www.service-now.com/ScRequestGenerator">
+                        <soapenv:Header></soapenv:Header>
+                        <soapenv:Body>
+                          <scr:insert>
+                            <screquest>
+                              <opened_by>$!provisioningPlan.integrationData.openedBy</opened_by>
+                              <requested_for>$!provisioningPlan.integrationData.requestedFor</requested_for>
+                              <short_description>IdentityIQ Access Request $!provisioningPlan.integrationData.identityRequestId</short_description>
+                              <req_description>The Service Request created by IdentityIQ ServiceNow Service Integration Module (SIM).</req_description>
+
+                              <screqitems>
+                                #if ($config.multipleItem == 'true')
+                                  #if (($config.groupItemBy) && ($config.groupItemBy.toLowerCase() == 'application'))
+                                    #set ($requestGroupByApp = {})
+                                    #foreach ($request in $provisioningPlan.accountRequests)
+                                      #if($requestGroupByApp.containsKey($request.application))
+                                        $requestList = $!requestGroupByApp.get($request.application)
+                                        $!requestList.add($request)
+                                        $!requestGroupByApp.put($request.application, $requestList)
+                                      #else
+                                        #set ($requestList = [])
+                                        $!requestList.add($request)
+                                        $!requestGroupByApp.put($request.application, $requestList)
+                                      #end
+                                    #end
+
+                                    #foreach ($mapEntry in $requestGroupByApp.entrySet())
+                                      <item>
+                                        <tracking_id>$!mapEntry.value.get(0).trackingId</tracking_id>
+                                        <cat_item>$!catalogItem.get($!mapEntry.value.get(0).application)</cat_item>
+<description>
+#foreach ($request in $mapEntry.value)
+#if ($request.attributeRequests)
+#if($request.operation == 'Create')
+Create Account on application $request.application
+#else
+For $request.nativeIdentity in application $request.application
+#end
+#foreach ($att in $request.attributeRequests)
+
+$att.operation attribute $att.name: $att.value
+#end
+#elseif ($request.permissionRequests)
+For $request.nativeIdentity in application $request.application
+#foreach ($att in $request.permissionRequests)
+
+$att.operation Right $att.rights on $att.target
+#end
+#else
+$request.operation $request.application nativeIdentity $request.nativeIdentity
+#end
+#end
+
+</description>
+                                      </item>
+                                    #end
+                                  #end
+                                #end
+                              </screqitems>
+
+                            </screquest>
+                          </scr:insert>
+                        </soapenv:Body>
+                      </soapenv:Envelope> ]]>
+                    </String>
+                  </value>
+                </entry>
+              </Map>
+            </value>
+          </entry>
+          <entry key='statusMap'>
+            <value>
+              <Map>
+                <entry key='-5' value='inProcess'/>
+                <entry key='1' value='inProcess'/>
+                <entry key='2' value='inProcess'/>
+                <entry key='4' value='failure'/>
+                <entry key='7' value='failure'/>
+                <entry key='3' value='committed'/>
+              </Map>
+            </value>
+          </entry>
+          <entry key='getRequestStatus'>
+            <value>
+              <Map>
+                <entry key='endpoint' value=''/>
+                <entry key='prefix' value='sc'/>
+                <entry key="SOAPAction" value=''/>
+                <entry key='responseElement' value='state'/>
+                <entry key='soapMessage'>
+                  <value>
+                    <String><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+                      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sc="http://www.service-now.com/sc_req_item">
+                        <soapenv:Header></soapenv:Header>
+                        <soapenv:Body>
+                          <sc:getRecords>
+                            <number>$requestID</number>
+                          </sc:getRecords>
+                        </soapenv:Body>
+                      </soapenv:Envelope>]]>
+                    </String>
+                  </value>
+                </entry>
+              </Map>
+            </value>
+          </entry>
+	    </Map>
+	  </Attributes>
+
+	  <ManagedResources>
+	    <ManagedResource>
+	      <ApplicationRef>
+		    <Reference class="sailpoint.object.Application" name="Active_Directory"/>
+		  </ApplicationRef>
+	    </ManagedResource>
+	    <ManagedResource>
+	      <ApplicationRef>
+		    <Reference class="sailpoint.object.Application" name="Procurement_System"/>
+		  </ApplicationRef>
+	    </ManagedResource>
+	  </ManagedResources>
+
+	</IntegrationConfig>
+
+</sailpoint>

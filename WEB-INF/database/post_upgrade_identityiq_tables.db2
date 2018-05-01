@@ -1,0 +1,15 @@
+--
+-- This script contains DDL statements to cleanup a database schema after
+-- an upgrade has occurred.  In some circumstances, we may need to keep legacy
+-- columns/tables around to perform an upgrade.  After the upgrade has been
+-- successfully completed, this script will remove the columns and tables that
+-- are no longer necessary.
+--
+
+CONNECT TO iiq;
+
+-- have to defer this until after the hashes are populated
+alter table identityiq.spt_managed_attribute alter column hash set not null;
+reorg table identityiq.spt_managed_attribute;
+alter table identityiq.spt_managed_attribute add constraint unique_hash unique(hash);
+

@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC
+                "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- (c) Copyright 2008 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:sp="http://sailpoint.com/ui">
+<body>
+
+<ui:composition>
+
+    <script type="text/javascript">
+      <!--//--><![CDATA[//><!--
+        helpKey = 'APPLICATION';
+
+        function getFieldValue(field) {
+            var val = null;
+            var fileName = $(field);
+            if ( fileName ) {
+               val = fileName.value;
+            }
+            return val;
+        }
+
+        //Function for show and hide inner operation panel menu
+        function showhideInnerMenu(val){
+            
+            if(val == 1){
+                 document.getElementById('editForm:testButton').style.display = "";
+                 document.getElementById('OperationsDetailsContainer').style.display = "";
+                 document.getElementById("GeneralDetailsContainer").style.display = "";
+                 document.getElementById("innerOPDetailsContainer").style.display = 'none';
+             }
+            if(val == 2){
+                document.getElementById('editForm:testButton').style.display = 'none';
+                document.getElementById('testResultsDiv').style.display = 'none';
+                document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                document.getElementById("innerOPDetailsContainer").style.display = "";
+                document.getElementById('headerPanel').style.display = "";
+                document.getElementById("bodyPanel").style.display = 'none';
+                document.getElementById("responsePanel").style.display = 'none';
+                document.getElementById("beforeRuleDivInfo").style.display = 'none';
+                document.getElementById("afterRuleDivInfo").style.display = 'none';
+            }
+            if(val == 3){
+                document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                document.getElementById("innerOPDetailsContainer").style.display = "";
+                document.getElementById('headerPanel').style.display = 'none';
+                document.getElementById("bodyPanel").style.display = "";
+                document.getElementById("responsePanel").style.display = 'none';
+                document.getElementById("beforeRuleDivInfo").style.display = 'none';
+                document.getElementById("afterRuleDivInfo").style.display = 'none';
+                document.getElementById('rawFormdata').style.display = 'none';
+                
+            }
+            if(val == 4){
+                document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                document.getElementById("innerOPDetailsContainer").style.display = "";
+                document.getElementById('headerPanel').style.display = 'none';
+                document.getElementById("bodyPanel").style.display = 'none';
+                document.getElementById("responsePanel").style.display = "";
+                document.getElementById("beforeRuleDivInfo").style.display = 'none';
+                document.getElementById("afterRuleDivInfo").style.display = 'none';
+                document.getElementById('rawFormdata').style.display = 'none';
+            }
+            if(val == 5){
+                 document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                 document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                 document.getElementById("innerOPDetailsContainer").style.display = "";
+                 document.getElementById('headerPanel').style.display = 'none';
+                 document.getElementById("bodyPanel").style.display = 'none';
+                 document.getElementById("responsePanel").style.display = 'none';
+                 document.getElementById("beforeRuleDivInfo").style.display = 'none';
+                 document.getElementById("afterRuleDivInfo").style.display = 'none';
+                 document.getElementById('rawFormdata').style.display = 'none';
+             }
+            if(val == 6){
+                document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                document.getElementById("innerOPDetailsContainer").style.display = "";
+                document.getElementById('headerPanel').style.display = 'none';
+                document.getElementById("bodyPanel").style.display = 'none';
+                document.getElementById("responsePanel").style.display = 'none';
+                document.getElementById("beforeRuleDivInfo").style.display = "";
+                document.getElementById("afterRuleDivInfo").style.display = 'none';
+                document.getElementById('rawFormdata').style.display = 'none';
+            }
+            if(val == 7){
+                document.getElementById('OperationsDetailsContainer').style.display = 'none';
+                document.getElementById("GeneralDetailsContainer").style.display = 'none';
+                document.getElementById("innerOPDetailsContainer").style.display = "";
+                document.getElementById('headerPanel').style.display = 'none';
+                document.getElementById("bodyPanel").style.display = 'none';
+                document.getElementById("responsePanel").style.display = 'none';
+                document.getElementById("beforeRuleDivInfo").style.display = 'none';
+                document.getElementById("afterRuleDivInfo").style.display = "";
+                document.getElementById('rawFormdata').style.display = 'none';
+            }
+            bodyradiotypeFunction(false);
+        }
+        
+        //Function to show and hide login parameter based on auth method type
+        function authmethodtypeFunction(){
+            var x = document.getElementById("editForm:selectmethodtypeId").value;
+            if(x == "No Auth"){
+                document.getElementById('basicauthDivinfo').style.display = 'none';
+                document.getElementById("oauthDivinfo").style.display = 'none';
+            } else if (x == "BasicLogin"){
+                document.getElementById('basicauthDivinfo').style.display = "";
+                document.getElementById("oauthDivinfo").style.display = 'none';
+            } else if (x == "OAuthLogin"){
+                document.getElementById('basicauthDivinfo').style.display = 'none';
+                document.getElementById("oauthDivinfo").style.display = "";
+            }
+        }
+        function moveOrder(ordVal, ordDir){
+         
+           document.getElementById('editForm:inputOrderNo').value = ordVal;
+           if (ordDir == "up")
+             document.getElementById('editForm:hiddenUpOrderBtn').click();
+           else
+             document.getElementById('editForm:hiddenDownOrderBtn').click();
+        }
+
+        
+        //Function to show and hide form-data and raw type based on selected radio button type
+        function bodyradiotypeFunction(isRadioSelected){
+            var x = document.getElementById("editForm:selectbodyradiooption:0").checked;
+            var y = document.getElementById("editForm:selectbodyradiooption:1").checked;
+            if(y == true){
+                document.getElementById('editForm:btnAddBodyObj').style.display = 'none';
+                document.getElementById('bodyFormdata').style.display = 'none';
+                document.getElementById("rawFormdata").style.display = "";
+            }
+            if(x == true){
+                if (isRadioSelected == true) {
+                  document.getElementById('editForm:hiddenBodyFormatBtn').click();
+                }
+                document.getElementById('editForm:btnAddBodyObj').style.display = "";
+                document.getElementById('bodyFormdata').style.display = "";
+                document.getElementById("rawFormdata").style.display = 'none';
+            }
+            if(x == false && y == false){
+                   document.getElementById('bodyFormdata').style.display = 'none';
+                   document.getElementById("rawFormdata").style.display = ""; 
+                   document.getElementById("editForm:selectbodyradiooption:1").checked = true;
+            }   
+        }
+        
+        //Function to show and hide general setting Div
+        function GeneralSettingHideShow(val){
+            if(val == 1){
+                document.getElementById('GeneralSettingHideDiv').style.display = "";
+               // document.getElementById("GeneralSettingShowbtnid").click();
+            }else{
+                document.getElementById('GeneralSettingHideDiv').style.display = 'none';
+            }
+        }
+
+        Ext.onReady(function () {
+
+            
+            //Initial show and hide when page gets load
+            authmethodtypeFunction();
+            document.getElementById("innerOPDetailsContainer").style.display = "none";
+            document.getElementById("editForm:DetailsOperationPanel").style.display = "none";
+            Ext.QuickTips.init();
+            
+            // This is our validation hook
+            Page.on('beforeSave', function() {
+                
+                var url = document.getElementById("editForm:BaseUrlID").value;
+                Validator.validateNonBlankString(url, '#{msgs.err_msg_rws_empty_url}');
+
+                var x = document.getElementById("editForm:selectmethodtypeId").value;
+                if(x == "BasicLogin"){
+                      var username = document.getElementById("editForm:BaseUsernameID").value;
+                      Validator.validateNonBlankString(username, '#{msgs.err_msg_rws_empty_uname}');
+                      var password = document.getElementById("editForm:BasePasswordID").value;
+                      Validator.validateNonBlankString(password, '#{msgs.err_msg_rws_empty_password}');
+                } else if (x == "OAuthLogin") {
+                      var accesstoken = document.getElementById("editForm:BaseaccesstokenID").value;
+                      Validator.validateNonBlankString(accesstoken, '#{msgs.err_msg_rws_empty_token}');
+                }
+                
+                var errors = Validator.getErrors();
+                if (errors && errors.length > 0) {
+                    Validator.displayErrors('appErrorsTop');
+                    return false;
+                }
+                //return false will kill cancel the save
+                return true;
+            });
+        });
+        
+       //--><!]]>
+    </script>
+    <f:view>
+   
+     <div class="container-fluid greyborder" id="GeneralDetailsContainer"> 
+      <a4j:outputPanel  id="generalPanel">
+               <div class ="row breadcrumb" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-10">
+               <label for="name"><h:outputText value="#{msgs.label_general_setting}"/></label>
+               </div>
+               <div class="col-md-2" style="text-align:right" >
+                  <button  type="button" class="btn"  onclick="GeneralSettingHideShow(1);">
+                          <span class="glyphicon glyphicon-menu-down" ></span>
+                   </button>
+                   <button  type="button" class="btn"  onclick="GeneralSettingHideShow(2);">
+                          <span class="glyphicon glyphicon-menu-up" ></span>
+                   </button>
+               </div>
+           </div>
+          <div id="GeneralSettingHideDiv">
+              <div class ="row" style='margin-top: 15px'>
+               <div class="col-md-12">
+                    <label for="name"><h:outputText value="#{msgs.label_baseurl_setting}"/>
+                      <h:outputText styleClass="requiredText" value=" *"/>
+                    </label>
+                    <h:graphicImage id="imgHlpBUrlName1" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                   alt="#{help.help_con_form_rws_url}"/>
+                    
+               </div>
+           </div>
+            <div class ="row">
+               <div class="col-md-12">
+               <h:inputText value="#{applicationObject.attributes['genericWebServiceBaseUrl']}" class="form-control" id="BaseUrlID" placeholder="Enter URL" style="width:100%"/>
+            </div>
+           </div>
+            
+              <div class ="row" style='margin-top: 15px'>
+               <div class="col-md-12">
+               <label for="name"><h:outputText value="#{msgs.label_auth_method}"/>
+                 <h:outputText styleClass="requiredText" value=" *"/> 
+               </label>
+               <h:graphicImage id="imgHlpAMethod" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                   alt="#{help.help_con_form_rws_authentication_method}"/>
+               </div>
+           </div>
+            <div class ="row">
+               <div class="col-md-6">
+               <h:selectOneMenu id="selectmethodtypeId" style="width:100%"
+                               name="authmethodtype"
+                               disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                               readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                               value="#{applicationObject.attributes['authenticationMethod']}" class="form-control"  onchange="authmethodtypeFunction();">
+                        <f:selectItems value="#{manageRest.authMethodTypeList}"/>
+                  </h:selectOneMenu>
+            </div>
+            </div>
+            <div id="basicauthDivinfo" style='margin-top: 15px'>
+            <div class ="row" >
+               <div class="col-md-6">
+                 <label for="name"><h:outputText value="#{msgs.label_user_name}"/>
+                   <h:outputText styleClass="requiredText" value=" *"/>
+                 </label>
+                 <h:graphicImage id="imgHlpUName" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                   alt="#{help.help_con_form_rws_uname}"/>
+               </div>
+               <div class="col-md-6">
+                 <label for="name"><h:outputText value="#{msgs.label_password}"/>
+                   <h:outputText styleClass="requiredText" value=" *"/>
+                 </label>
+                 <h:graphicImage id="imgHlppass" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"  alt="#{help.help_con_form_rws_password}"/>
+               </div>
+           </div> 
+           <div class ="row">
+               <div class="col-md-6">
+                <h:inputText value="#{applicationObject.attributes['username']}" class="form-control" id="BaseUsernameID" placeholder="Enter User Name" style="width:100%"/>
+               </div>
+           <div class="col-md-6">
+                <sp:inputSecret value="#{applicationObject.attributes['password']}"  id="BasePasswordID" redisplay="true" style="width:100%"/>
+          </div>
+           </div>
+           </div>
+           
+           <div id="oauthDivinfo" style='margin-top: 15px'>
+            <div class ="row" >
+               <div class="col-md-12">
+               <label for="name"><h:outputText value="#{msgs.label_access_token}"/>
+                 <h:outputText styleClass="requiredText" value=" *"/>
+               </label>
+                <h:graphicImage id="imgHlpaccesstoken" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                              alt="#{help.help_con_form_rws_acctoken}"/>
+               </div>
+           </div> 
+           <div class ="row">
+           <div class="col-md-12">
+                <h:inputText value="#{applicationObject.attributes['accesstoken']}" class="form-control" id="BaseaccesstokenID" placeholder="Enter access token" style="width:100%"/>
+          </div>
+           </div>
+           </div>
+           
+          <div id="EnableSchAtt">
+            <div class="row">
+                <div class="col-md-6" style="margin-top: 15px">
+                    <label for="name"><h:outputText
+                        value="#{msgs.label_enable_attribute}" /></label>
+
+                    <h:graphicImage id="imgHlpSchEnable" styleClass="helpIcon"
+                        url="/images/icons/dashboard_help_16.png"
+                        alt="#{help.help_con_form_rws_enablestatus}" />
+                </div>
+                <div class="col-md-6" style="margin-top: 15px">
+                    <label for="name"><h:outputText
+                            value="#{msgs.label_timeout_seconds}" /></label>
+                    <h:graphicImage id="imgHlpTimeout" styleClass="helpIcon"
+                            url="/images/icons/dashboard_help_16.png"
+                            alt="#{help.help_con_form_rws_timeout_seconds}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h:inputText
+                        value="#{applicationObject.attributes['enableStatus']}"
+                        class="form-control" style="width:50%" />
+                </div>
+                <div class="col-md-6">
+                    <h:inputText
+                        value="#{applicationObject.attributes['timeoutInSeconds']}"
+                        class="form-control" style="width:50%" id="timeoutSeconds">
+                            <f:validateLongRange minimum="1" maximum="999" />
+                    </h:inputText>
+                </div>
+            </div>
+        </div>
+           
+           <br></br>
+             <div class ="row" style='margin-bottom: 15px'>
+               <div class="col-md-offset-10 col-md-1">
+               </div>
+               
+           </div>
+           </div>
+           </a4j:outputPanel>
+         </div>
+   <!-- **************************************************************************************************************************** -->
+
+     <div class="container-fluid greyborder" id="OperationsDetailsContainer" style='margin-top: 15px'> 
+      <a4j:outputPanel id="OperationPanel">
+              <div class ="row breadcrumb" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-2">
+               <label for="name"><h:outputText value="#{msgs.label_connector_operations}"/></label>
+               </div>
+               <div class="col-md-offset-8 col-md-2">
+                 <a4j:commandButton id='addConParameters' value="Add Operation"  oncomplete="GeneralSettingHideShow(2);" onclick="this.disabled=true" styleClass="primaryBtn" action="#{manageRest.addNewConnectionParameters}" render="OperationPanel"/>
+               </div>
+           </div>
+          
+             <div class ="row"  >
+             <div class="col-md-12"> 
+                                    <table id="ftable" class="table table-bordered" cellspacing="0">
+                                        <thead class="thead-default" style="background-color: #f5f5f5; margin-bottom: 15px">
+                                            <tr>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_order}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_op}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_name}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_status}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_brule}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_arule}"/></b></th>
+                                                <th style="text-align:left"><b><h:outputText value="#{msgs.label_head_connector_operation_actions}"/></b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <a4j:repeat value="#{manageRest.connectionParametersList}" var="rest" id="restInfo" rowKeyVar="index">
+                                                <tr>
+                                                  <td style="width: 70px;">
+                                                       <h:selectBooleanCheckbox styleClass="toggleable" style="display:none" id="#{rest.id}checkbox" value="#{manageRest.selectedParams[rest.id]}" />
+                                                        <h:inputText value="#{rest.object.order}" id="Order#{index}" style="display:none; width: 30px; margin-left:0px; margin-right:0px;"/>
+                                                      <button  type="button"  class="btn move up" onclick="moveOrder('#{rest.object.order}','up')">
+                                                             <span class="glyphicon glyphicon-menu-up" ></span>
+                                                       </button >
+                                                      <button  type="button" class="btn move down" onclick="moveOrder('#{rest.object.order}', 'down')">
+                                                             <span class="glyphicon glyphicon-menu-down" ></span>
+                                                       </button>
+                                                  </td>         
+                                                  <td style="width: 120px;">
+                                                    <h:selectOneMenu
+                                                            id="opid" style="width:100%;"
+                                                            disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                                            readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                                            class="form-control"  value="#{rest.object.operation}">
+                                                            <f:selectItem itemValue="" itemLabel="#{msgs.label_choose_operation}"/>
+                                                            <f:selectItems value="#{rest.object.operationList}"/>
+                                                    </h:selectOneMenu>
+                                                  </td>
+                                                  <td style="width: 200px;">
+                                                    <h:inputText value="#{rest.object.name}" style="width:100%; margin-left:0px;" redisplay="true" autocomplete="off"/>
+                                                  </td>
+                                                  <td style="width:75px;">
+                                                    <h:outputText rendered="#{rest.object.status == msgs.label_connector_operation_configured_status}" value="#{rest.object.status}" style="width:100%; margin-left:0px;" redisplay="true" autocomplete="off"/>
+                                                    <h:outputText rendered="#{rest.object.status == msgs.label_connector_operation_notconfigured_status}" value="#{rest.object.status}" style="width:100%; margin-left:0px;color: #ff0000;" redisplay="true" autocomplete="off"/>
+                                                    
+                                                  </td>
+                                                  <td  style="width:50px; text-align: center; vertical-align: middle;">
+                                                    <ui:fragment rendered="#{!empty rest.object.beforeRule}">
+                                                        <input type="checkbox" disabled="disabled" checked="checked"  name="bRuleCheck" />
+                                                    </ui:fragment>
+                                                    <ui:fragment rendered="#{empty rest.object.beforeRule}">
+                                                        <input type="checkbox" disabled="disabled"  name="bRuleUnCheck" />
+                                                    </ui:fragment>
+                                                  </td>
+                                                  <td  style="width:50px; text-align: center; vertical-align: middle;">
+                                                    <ui:fragment rendered="#{!empty rest.object.afterRule}">
+                                                        <input type="checkbox" disabled="disabled" checked="checked"  name="aRuleCheck" />
+                                                    </ui:fragment>
+                                                    <ui:fragment rendered="#{empty rest.object.afterRule}">
+                                                        <input type="checkbox" disabled="disabled"  name="aRuleUnCheck" />
+                                                    </ui:fragment>
+                                                  </td>
+                                                  <td  style="width: 130px;"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a4j:commandLink  action="#{manageRest.configConnectionParameters(rest.id)}" oncomplete="showhideInnerMenu(2)" 
+                                                      render="DetailsOperationPanel" style="width:100px;height:30px; display:inline;">
+                                                        <h:graphicImage value="../../images/icons/pencil-small-bg.png"  />
+                                                    </a4j:commandLink> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a4j:commandLink action="#{manageRest.deleteConnectionParameters(rest.id, rest.object.order)}"   render="OperationPanel" >
+                                                      <h:graphicImage value="../../images/icons/CloseDelete_disabled.png" style="vertical-align:middle;margin-right:6px;" /> 
+                                                    </a4j:commandLink>
+                                                  </td>
+                                                </tr>
+                                              </a4j:repeat>
+                                          </tbody>
+                                            <h:inputHidden id="inputOrderNo" name="inputOrderNo" value="#{manageRest.orderNo}"/>  
+                                            <a4j:commandButton style="display:none" id="hiddenUpOrderBtn" onclick="this.disabled=true"
+                                                action="#{manageRest.orderChange(true)}" render="OperationPanel"/> 
+                                            <a4j:commandButton style="display:none" id="hiddenDownOrderBtn" onclick="this.disabled=true" 
+                                                action="#{manageRest.orderChange(false)}" render="OperationPanel"/> 
+                                        </table>
+               </div>
+               </div>
+               <div class ="row"  >
+               <div class="col-md-12">
+                    <label for="name"><h:outputText style="color: #ff0000;" rendered="#{empty manageRest.connectionParametersList}" value="#{msgs.label_no_operation_added}"/></label>
+               </div></div>
+                </a4j:outputPanel>
+   </div>            
+    
+    <!-- ######################################################################################################################################## -->
+    
+        <div class="container-fluid greyborder" id="innerOPDetailsContainer">
+        <a4j:outputPanel id="DetailsOperationPanel" layout="block">
+            <div class ="row breadcrumb" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-12">
+               <a4j:commandButton value="Back" oncomplete="showhideInnerMenu(1)" action="#{manageRest.updateConnectorList}"  
+                 styleClass="secondaryBtn" render="OperationPanel"/>&nbsp;&nbsp;
+               <label for="name"><h:outputText value="#{msgs.label_connection_settings}"/></label>
+               </div>
+           </div>
+         
+              <div class ="row" >
+               <div class="col-md-6">
+               <label for="name"><h:outputText value="#{msgs.label_context_url}"/></label>
+               <h:graphicImage id="imgHlpconturl" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                alt="#{help.help_con_form_rws_contexturl}"/>
+               </div>
+               <div class="col-md-6">
+               <label for="name"><h:outputText value="#{msgs.label_method}"/></label>
+               <h:graphicImage id="imgHlpmethod" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                alt="#{help.help_con_form_rws_methodtype}"/>
+               </div>
+           </div>
+           <div class ="row">
+               <div class="col-md-6">
+                <h:inputText  value="#{manageRest.innerobj.object.contextUrl}" class="form-control" id="contextendpoint" placeholder="Enter Endpoint" style="width:100%"/>
+               </div>
+               <div class="col-md-6">
+                <h:selectOneMenu
+                id="methodid"
+                disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                value="#{manageRest.innerobj.object.httpMethodType}" class="form-control">
+                <f:selectItems value="#{manageRest.innerobj.object.methodTypeList}"/>
+                </h:selectOneMenu>
+               </div>
+           </div>
+           <br></br>   
+           <div class ="row">
+               <div class="col-md-12">
+                </div>            
+            </div>           
+           <div class ="row">
+               <div class="col-md-2">
+                 <div class ="row">
+                   <div class="col-md-12">
+                  <button type="button" class="secondaryBtn"  style="width:100% !important;"  onclick="showhideInnerMenu(2)" > Header </button>
+                 </div></div><div class ="row">
+                   <div class="col-md-12">
+                  <button type="button" class="secondaryBtn" style="width:100% !important;"  onclick="showhideInnerMenu(3)" > Body</button>
+                 </div></div><div class ="row">
+                   <div class="col-md-12">
+                  <button type="button" class="secondaryBtn" style="width:100% !important;"  onclick="showhideInnerMenu(4)" > Response</button>
+                  </div></div><div class ="row">
+                   <div class="col-md-12">
+                  <button type="button" class="secondaryBtn" style="width:100% !important;" onclick="showhideInnerMenu(6)" > Before Rule</button>
+                  </div></div><div class ="row">
+                   <div class="col-md-12">
+                  <button type="button" class="secondaryBtn" style="width:100% !important;" onclick="showhideInnerMenu(7)" > After Rule</button>
+                </div></div></div>
+         <div class="col-md-10" id="HeaderpanelId">
+     <!-- ######################################################################################################################################## -->
+         <div id="headerPanel">
+          <ui:fragment rendered="#{sp:hasRight(facesContext, 'ManageApplication')}">
+            <div class ="row panel panel-default" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-2">
+               <label for="name" style="margin-top: 10px"><h:outputText value="#{msgs.label_header}" /></label>
+               </div>
+               <div class="col-md-offset-8 col-md-2">
+                  <a4j:commandButton value="Add Row"  oncomplete="showhideInnerMenu(2)" action="#{manageRest.addHeaderObject}" onclick="this.disabled=true"  styleClass="secondaryBtn" render="DetailsOperationPanel"/>
+               </div>
+           </div>
+            <div class ="row">
+               <div class="col-md-5" style="margin:0px">
+               <label for="name"><h:outputText rendered="#{!empty manageRest.innerobj.object.header}" value="Key"/></label>
+               </div>
+               <div class="col-md-7" style="margin:0px">
+               <label for="name"><h:outputText rendered="#{!empty manageRest.innerobj.object.header}" value="Value"/></label>
+               </div>
+           </div>
+           <ui:repeat value="#{manageRest.innerobj.object.header}" var="headerObj" id="innerobjHeaderInfo" >
+      <div class="row">
+      <div class="col-md-5">
+                   <h:inputText value="#{headerObj.key}"  style="width:100%"/>
+      </div>
+      <div class="col-md-5">
+                 <h:inputText value="#{headerObj.value}" style="width:100%"/>
+      </div>
+        <div class="col-md-2">
+          <a4j:commandLink oncomplete="showhideInnerMenu(2)" action="#{manageRest.deleteHeaderObject(headerObj.id)}"   render="DetailsOperationPanel" >
+            <h:graphicImage value="../../images/icons/CloseDelete_disabled.png" style="vertical-align:middle;margin-right:4px;" /> 
+          </a4j:commandLink>
+      </div>
+    </div>  </ui:repeat>
+       </ui:fragment> 
+        </div>
+     <!-- ######################################################################################################################################## -->
+   <div id="bodyPanel">
+             <ui:fragment rendered="#{sp:hasRight(facesContext, 'ManageApplication')}">
+            <div class ="row panel panel-default" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-2">
+               <label for="name" style="margin-top: 10px"><h:outputText value="#{msgs.label_body}"/></label>
+               </div>
+               <div class="col-md-offset-8 col-md-2">
+                    <a4j:commandButton id="btnAddBodyObj" value="Add Row"   oncomplete="showhideInnerMenu(3)" action="#{manageRest.addBodyObject}" onclick="this.disabled=true" styleClass="secondaryBtn" render="DetailsOperationPanel"/>
+               </div>
+           </div>             
+                 <div class="row">
+                  <div class="col-md-12">
+                         <h:selectOneRadio value="#{manageRest.innerobj.object.bodyFormat}" id="selectbodyradiooption"  onchange="bodyradiotypeFunction(true);">
+                              <f:selectItem itemValue="formData" itemLabel="form-data" />
+                             <f:selectItem itemValue="raw" itemLabel="raw" />
+                         </h:selectOneRadio>
+                         <a4j:commandButton style="display:none" id="hiddenBodyFormatBtn" oncomplete="showhideInnerMenu(3)" action="#{manageRest.settingBodyFormat}" render="DetailsOperationPanel"/>
+                  </div>
+                 </div>
+       <!-- ********************************************************************************************************************************* -->
+            <div id="bodyFormdata">
+            
+             <div class ="row">
+               <div class="col-md-5" style="margin:0px">
+               <label for="name"><h:outputText rendered="#{!empty manageRest.innerobj.object.body}" value="Key"/></label>
+               </div>
+               <div class="col-md-7" style="margin:0px">
+               <label for="name"><h:outputText rendered="#{!empty manageRest.innerobj.object.body}" value="Value"/></label>
+               </div>
+           </div>
+         <ui:repeat value="#{manageRest.innerobj.object.body}" var="bodyObj" id="innerobjbodyInfo" >
+      <div class="row">
+      <div class="col-md-5">
+                   <h:inputText value="#{bodyObj.key}"  style="width:100%"/>
+      </div>
+      <div class="col-md-5">
+                            <h:inputText value="#{bodyObj.value}" style="width:100%"/>
+      </div>
+        <div class="col-md-2">
+          <a4j:commandLink oncomplete="showhideInnerMenu(3)" action="#{manageRest.deleteBodyObject(bodyObj.id)}" render="DetailsOperationPanel" >
+            <h:graphicImage value="../../images/icons/CloseDelete_disabled.png" style="vertical-align:middle;margin-right:4px;" /> 
+          </a4j:commandLink>
+      </div>
+    </div>  </ui:repeat>
+    </div>
+   <!-- ********************************************************************************************************************************* -->
+            <div id="rawFormdata">
+            <div class ="row">
+               <div class="col-md-12" style="margin:0px">
+               <h:inputTextarea value="#{manageRest.innerobj.object.jsonBody}" class="form-control" rows="3"/>
+               </div>
+           </div>
+           </div>
+   <!-- ********************************************************************************************************************************* -->
+   </ui:fragment>
+  </div>
+       <!-- ######################################################################################################################################## -->
+     <div id="responsePanel">
+     
+                  <ui:fragment rendered="#{sp:hasRight(facesContext, 'ManageApplication')}">
+            <div class ="row panel panel-default" style="background-color: #f5f5f5; margin-bottom: 15px">
+               <div class="col-md-6">
+               <label for="name" style="margin-top: 10px" ><h:outputText value="#{msgs.label_res_attribute_mapping}"/></label>
+               </div>
+               <div class="col-md-offset-4 col-md-2">
+                    <a4j:commandButton value="Add Row"   oncomplete="showhideInnerMenu(4)" action="#{manageRest.addResAttributeObject}"  onclick="this.disabled=true" styleClass="secondaryBtn" render="DetailsOperationPanel"/>
+               </div>
+           </div>
+            
+      <div class ="row">
+               <div class="col-md-5" style="margin:0px">
+               <ui:fragment rendered="#{!empty manageRest.innerobj.object.resAttMapObj}">  
+               <label for="name" ><h:outputText  value="#{msgs.label_schema_attribute}"/>
+               <h:graphicImage id="imgHlpschAttr" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                title="#{help.help_con_form_rws_schema_attr}"/>
+                </label>
+                </ui:fragment>
+               </div>
+               <div class="col-md-7" style="margin:0px">
+               <ui:fragment rendered="#{!empty manageRest.innerobj.object.resAttMapObj}">  
+               <label for="name"><h:outputText value="#{msgs.label_json_path}"/>
+               <h:graphicImage id="imgHlpjsonpath" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                title="#{help.help_con_form_rws_json_path}"/>
+                </label>
+                </ui:fragment>
+               </div>
+           </div>
+                    <ui:repeat value="#{manageRest.innerobj.object.resAttMapObj}" var="resObj" id="innerobjResobjInfo" >
+      <div class="row">
+      <div class="col-md-5">
+                   <h:inputText value="#{resObj.key}"  style="width:100%"/>
+      </div>
+      <div class="col-md-5">
+                            <h:inputText value="#{resObj.value}" style="width:100%"/>
+      </div>
+        <div class="col-md-2">
+          <a4j:commandLink oncomplete="showhideInnerMenu(4)" action="#{manageRest.deleteResAttributeObject(resObj.id)}" render="DetailsOperationPanel" >
+            <h:graphicImage value="../../images/icons/CloseDelete_disabled.png" style="vertical-align:middle;margin-right:4px;" /> 
+          </a4j:commandLink>
+      </div>
+    </div>  </ui:repeat>
+    <div class ="row">
+      <div class="col-md-6" style="margin-top: 15px">
+        <label for="name"><h:outputText value="#{msgs.label_root_path}"/></label>
+          <h:graphicImage id="imgHlprootpath" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+              alt="#{help.help_con_form_rws_rootpath}"/>
+      </div>
+      <div class="col-md-12" style="margin:0px">
+        <h:inputTextarea value="#{manageRest.innerobj.object.rootPath}" class="form-control" rows="1"/>
+      </div>
+    </div>
+     <div class ="row">
+               
+               <div class="col-md-6" style="margin-top: 15px">
+               <label for="name"><h:outputText value="#{msgs.label_success_res_code}"/></label>
+               <h:graphicImage id="imgHlprescode" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                alt="#{help.help_con_form_rws_responsecode}"/>
+               </div>
+               <div class="col-md-12" style="margin:0px">
+               <h:inputTextarea value="#{manageRest.innerobj.object.responseCode}" class="form-control" rows="1"/>
+               </div>
+           </div>
+         </ui:fragment>
+     </div> 
+       <!-- ######################################################################################################################################## -->
+       <!-- ######################################################################################################################################## -->
+  <div id="beforeRuleDivInfo" class="spContent">
+    <a4j:outputPanel id="ruleBeforepanel">
+      <table cellspacing="0" cellpadding="5" class="paddedTbl">
+        <tr>
+          <td> 
+            <h:outputText styleClass="textBold" value="#{msgs.label_before_operation_rule}" />
+            <h:graphicImage id="imgHlpbefprov" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                alt="#{help.help_con_form_rws_beforeprovrule}"/>
+          </td>
+          <td>
+            <h:selectOneMenu id="beforeOpRule" style="width:300px" value="#{manageRest.innerobj.object.beforeRule}"
+            disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}" readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}">
+            <f:selectItems value="#{applicationObject.webServiceBeforeOperationRules}" />
+            </h:selectOneMenu>
+          </td>
+          <ui:fragment
+            rendered="#{sp:hasRight(facesContext, 'ManageRules')}">
+            <td><input type="button" value="#{msgs.button_ellipsis}"
+            class="ruleEditorBtn" onclick="SailPoint.Rule.Editor.edit(Ext.getDom('editForm:beforeOpRule').value,
+            'WebServiceBeforeOperationRule', Ext.get('editForm:refreshBeforeRulButton'))" />
+            <a4j:commandButton id="refreshBeforeRulButton" style="display:none"
+                immediate="true" render="ruleBeforepanel" /></td>
+          </ui:fragment>
+        </tr>
+      </table>
+    </a4j:outputPanel>
+  </div>
+
+  <div id="afterRuleDivInfo" class="spContent">
+    <a4j:outputPanel id="ruleAfterpanel">
+      <table cellspacing="0" cellpadding="5" class="paddedTbl">
+          <tr>
+          <td>
+          <h:outputText styleClass="textBold" value="#{msgs.label_after_operation_rule}" />
+          <h:graphicImage id="imgHlpafterprov" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png" 
+                alt="#{help.help_con_form_rws_afterprovrule}"/>
+          </td>
+          <td>
+          <h:selectOneMenu id="afterOpRule" style="width:300px"
+           value="#{manageRest.innerobj.object.afterRule}"
+           disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+           readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}">
+           <f:selectItems value="#{applicationObject.webServiceAfterOperationRules}" />
+           </h:selectOneMenu>
+         </td>
+         <ui:fragment rendered="#{sp:hasRight(facesContext, 'ManageRules')}" >
+         <td>
+           <input type="button" value="#{msgs.button_ellipsis}" class="ruleEditorBtn"
+           onclick="SailPoint.Rule.Editor.edit(Ext.getDom('editForm:afterOpRule').value,
+           'WebServiceAfterOperationRule', Ext.get('editForm:refreshAfterRulButton'))"  />
+           <a4j:commandButton id="refreshAfterRulButton"
+           style="display:none"
+           immediate="true"
+           render="ruleAfterpanel"/>
+         </td>
+         </ui:fragment>
+        </tr>
+      </table>
+    </a4j:outputPanel>
+  </div> 
+        </div>
+        </div>
+        <br></br>
+         <div class ="row" style='margin-bottom: 15px'>
+               <div class="col-md-offset-10 col-md-1">
+               <a4j:commandButton value="Cancel"  action="#{manageRest.resetConnectionParameters}"  oncomplete="showhideInnerMenu(2)" styleClass="secondaryBtn" render="DetailsOperationPanel" />
+               </div>
+               <div class="col-md-1">
+               <a4j:commandButton value="Save"  styleClass="primaryBtn" oncomplete="showhideInnerMenu(1)" action="#{manageRest.updateRestInnerObj}" render="OperationPanel"/>
+               </div>
+           </div>
+           </a4j:outputPanel>
+        </div>   
+    </f:view>
+</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+
+<!-- (c) Copyright 2008 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<!--
+  This is used by 'iiq upgrade' to drive upgrading the schema and data between
+  revisions.  
+
+  There are two files that define the upgrade: upgrade.xml and 
+  upgradeObjects.xml.  If you have LCM enabled, there are two additional
+  files, upgrade-lcm.xml and upgradeObjects-lcm.xml.
+
+  upgrade.xml and upgrade-lcm.xml are processed in a special way before
+  Hibernate is started so that changes can be made at the JDBC level.
+  These files should only contain <ImportAction> elements that use the
+  "execute" command to  call upgrader classes.  
+  *DO NOT PUT STATIC XML OBJECTS IN UPGRADE.XML OR UPGRADE-LCM.XML* 
+
+  upgradeObjects.xml and upgradeObjects-lcm.xml (this file) are
+  included by upgrade.xml and will be imported after Hibernate is started.
+  Any changes to objects that can be respesented as static XML or as
+  ImportActions with the "merge" command must go in these files to ensure
+  that they are parsed after Hibernate has been started so that
+  references can be resolved.  
+-->
+<sailpoint>
+
+  <!--
+     This will reimport some updated objects
+     and should be safe to do for every release.
+   -->
+  <ImportAction name="include" value="WEB-INF/config/lcmemailtemplates.xml"/>
+  <ImportAction name="include" value="WEB-INF/config/lcmworkflows.xml"/>
+  <ImportAction name="include" value="WEB-INF/config/lcmworkflowConfigForms.xml"/>
+  <ImportAction name="include" value="WEB-INF/config/batchworkflows.xml"/>
+  <ImportAction name="include" value="WEB-INF/config/lcmrules.xml"/>
+  <ImportAction name="include" value="WEB-INF/config/identityRequestWorkflowSubs.xml"/>
+  <ImportAction name='include' value='WEB-INF/config/lcmReportForms.xml'/>
+  <ImportAction name="include" value="WEB-INF/config/lcmReportTasks.xml"/>
+  <!-- End of object updates -->
+
+
+
+
+
+
+
+
+  <DashboardContent regionSize="0" name="Online Tutorials" title="dash_title_online_tutorials"
+                    source="dashboard/contentFlashBasedTraining.xhtml" type="My">
+    <Description>dash_description_online_tutorials</Description>
+    <Attributes>
+      <Map>
+        <entry key="tutorials">
+          <value>
+            <List>
+              <Map>
+                <entry key="title_key" value="help_tutorial_access_review_identity"/>
+                <entry key="description_key" value="help_tutorial_access_review_identity_description"/>
+                <entry key="page" value="manager_access_review/manager_access_review/index.html"/>
+              </Map>
+              <Map>
+                <entry key="title_key" value="help_tutorial_access_review_entitlement"/>
+                <entry key="description_key" value="help_tutorial_access_review_entitlement_description"/>
+                <entry key="page" value="entitlement_owner_access_review/entitlement_owner_access_review/index.html"/>
+              </Map>
+              <Map>
+                <entry key="title_key" value="help_tutorial_home_page_overview"/>
+                <entry key="description_key" value="help_tutorial_home_page_overview_description"/>
+                <entry key="page" value="home_page/home_page/index.html"/>
+              </Map>
+              <Map>
+                <entry key="title_key" value="help_tutorial_lifecycle_manager_overview"/>
+                <entry key="description_key" value="help_tutorial_lifecycle_manager_overview_description"/>
+                <entry key="page" value="lcm_overview/lcm_overview/index.html"/>
+              </Map>
+              <Map>
+                <entry key="title_key" value="help_tutorial_individual_access_request"/>
+                <entry key="description_key" value="help_tutorial_individual_access_request_description"/>
+                <entry key="page" value="access_request/access_request/index.html"/>
+              </Map>
+            </List>
+          </value>
+        </entry>
+      </Map>
+    </Attributes>
+  </DashboardContent>
+
+  <ImportAction name="merge">
+    <UIConfig name='UIConfig'>
+      <Attributes>
+        <Map>
+          <entry key="uiIdentityRequestCardColumns">
+            <value>
+              <List>
+                <ColumnConfig property="id" fieldOnly="true" />
+                <ColumnConfig property="created" headerKey="ui_identity_request_column_date" fieldOnly="true" dataIndex="createdDate" sortable="true" secondarySort="priority,targetDisplayName,name" />
+                <ColumnConfig property="endDate" headerKey="ui_identity_request_column_completion_date" fieldOnly="true" sortable="true" secondarySort="created,priority,targetDisplayName,name" />
+                <ColumnConfig property="name" dataIndex="requestId" headerKey="ui_identity_request_column_request_id" fieldOnly="true" sortable="true"/>
+                <ColumnConfig property="targetDisplayName" headerKey="ui_identity_request_column_requestee" fieldOnly="true" sortable="true" secondarySort="created,priority,name" />
+                <ColumnConfig property="requesterDisplayName" headerKey="ui_identity_request_column_requester" fieldOnly="true" sortable="true" secondarySort="created,priority,targetDisplayName,name" />
+                <ColumnConfig property="priority" headerKey="ui_identity_request_column_priority" fieldOnly="true" sortable="true" secondarySort="created,targetDisplayName,name" />
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestItemsColumns">
+            <value>
+              <List>
+                <ColumnConfig property="id" fieldOnly="true"/>
+                <ColumnConfig headerKey="ui_identity_request_item_operation" property="operation" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemOperation"/>
+                <ColumnConfig headerKey="ui_identity_request_item_item" property="name" sortable="true" secondarySort="value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_value" property="value" sortable="true" secondarySort="name,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_displayableValue" minWidth="100" dataIndex="displayableValue" sortable="false" renderer="spIdentityRequestItemDetailsLink" />
+                <ColumnConfig headerKey="ui_identity_request_item_accountName" property="nativeIdentity" dataIndex="accountName" sortable="true" renderer="spIdentityRequestItemAccount" secondarySort="application,instance,name,value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_application" property="application" dataIndex="applicationName" sortable="true"  secondarySort="instance,nativeIdentity,name,value,id" />
+                <ColumnConfig headerKey="ui_identity_request_item_instance" property="instance" hidden="true" sortable="true" secondarySort="application,nativeIdentity,name,value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_comments" dataIndex="requesterComments" minWidth="150" sortable="false" renderer="spMoreLessToggleColumn"/>
+                <ColumnConfig headerKey="ui_identity_request_item_approvalState" property="approvalState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemApprovalState"/>
+                <ColumnConfig headerKey="ui_identity_request_item_provisioningState" property="provisioningState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemProvisioningState"/>
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestItemsPasswordColumns">
+            <value>
+              <List>
+                <ColumnConfig property="id" fieldOnly="true"/>
+                <ColumnConfig headerKey="ui_identity_request_item_operation" property="operation" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemOperation"/>
+                <ColumnConfig headerKey="ui_identity_request_item_item" property="name" sortable="true" secondarySort="value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_accountName" property="nativeIdentity" dataIndex="accountName" sortable="true" renderer="spIdentityRequestItemAccount" secondarySort="application,instance,name,value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_application" property="application" dataIndex="applicationName" sortable="true"  secondarySort="instance,nativeIdentity,name,value,id" />
+                <ColumnConfig headerKey="ui_identity_request_item_instance" property="instance" hidden="true" sortable="true" secondarySort="application,nativeIdentity,name,value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_comments" dataIndex="requesterComments" minWidth="150" sortable="false" renderer="spMoreLessToggleColumn"/>
+                <ColumnConfig headerKey="ui_identity_request_item_approvalState" property="approvalState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemApprovalState"/>
+                <ColumnConfig headerKey="ui_identity_request_item_provisioningState" property="provisioningState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemProvisioningState"/>
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestItemsIdentityColumns">
+            <value>
+              <List>
+                <ColumnConfig property="id" fieldOnly="true"/>
+                <ColumnConfig headerKey="ui_identity_request_item_operation" property="operation" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemOperation"/>
+                <ColumnConfig headerKey="ui_identity_request_item_item" property="name" sortable="true" secondarySort="value,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_value" property="value" sortable="true" secondarySort="name,id"/>
+                <ColumnConfig headerKey="ui_identity_request_item_displayableValue" dataIndex="displayableValue" minWidth="100" sortable="false" renderer="spIdentityRequestItemDetailsLink" />
+                <ColumnConfig headerKey="ui_identity_request_item_comments" dataIndex="requesterComments" minWidth="150" sortable="false" renderer="spMoreLessToggleColumn" />
+                <ColumnConfig headerKey="ui_identity_request_item_approvalState" property="approvalState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemApprovalState" />
+                <ColumnConfig headerKey="ui_identity_request_item_provisioningState" property="provisioningState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemProvisioningState" />
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestPolicyViolationsColumns">
+            <value>
+              <List>
+                <ColumnConfig headerKey="ui_identity_request_policy_violations_policy_name" property="policyName" percentWidth="50"/>
+                <ColumnConfig headerKey="ui_identity_request_policy_violations_policy_type" property="policyType" percentWidth="20"/>
+                <ColumnConfig headerKey="ui_identity_request_policy_violations_rule_name" property="ruleName" renderer="spMoreLessToggleColumn" percentWidth="30"/>
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestMessagesColumns">
+            <value>
+              <List>
+                <ColumnConfig headerKey="ui_identity_request_messages_type" property="type" sortable="true"/>
+                <ColumnConfig headerKey="ui_identity_request_messages_message" property="messageOrKey" />
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestInteractionsColumns">
+            <value>
+              <List>
+                <ColumnConfig dataIndex="description" headerKey="ui_identity_request_interactions_description" percentWidth="25" sortable="true" />
+                <ColumnConfig dataIndex="ownerDisplayName" headerKey="ui_identity_request_interactions_owner" percentWidth="10" sortable="true" renderer="spIdentityRequestInteractionsEmail" />
+                <ColumnConfig dataIndex="openDate" dateStyle="short" headerKey="ui_identity_request_interactions_open_date" percentWidth="10" sortable="true" />
+                <ColumnConfig dataIndex="completeDate" dateStyle="short" headerKey="ui_identity_request_interactions_complete_date" percentWidth="10" sortable="true" />
+                <ColumnConfig dataIndex="status" headerKey="ui_identity_request_interactions_status" renderer="spTranslate" percentWidth="10" sortable="true" />
+                <ColumnConfig dataIndex="comments" headerKey="ui_identity_request_interactions_comments" renderer="spIdentityRequestHistoryCommentColumn" percentWidth="30" sortable="false" />
+                <ColumnConfig headerKey="ui_identity_request_interactions_details" renderer="spIdentityRequestInteractionsDetailColumn" percentWidth="5" />
+              </List>
+            </value>
+          </entry>
+          <entry key="uiIdentityRequestChangeItemsColumns">
+            <value>
+              <List>
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_provisioning_engine" property="provisioningEngine" fieldOnly="true" sortable="true" renderer="spIdentityRequestProvisioningEngineName" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_operation" property="operation" sortable="true" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_item" property="name" sortable="true" secondarySort="value,id" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_value" property="value" sortable="true" renderer="spIdentityRequestItemDetailsLink" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_account" property="nativeIdentity" dataIndex="accountName" sortable="true" renderer="spIdentityRequestItemAccount" secondarySort="application,instance,name,value,id" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_application" property="application" dataIndex="applicationName" sortable="true" secondarySort="instance,nativeIdentity,name,value,id" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_status" property="provisioningState" sortable="true" secondarySort="name,value,id" renderer="spIdentityRequestItemProvisioningState" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_retries" property="retries" sortable="true" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_request_id" dataIndex="provisioningRequestId" sortable="false"/>
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_start_date" property="startDate" dateStyle="short" sortable="true" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_end_date" property="endDate" dateStyle="short" sortable="true" />
+                <ColumnConfig headerKey="ui_identity_request_provisioning_items_reason" property="compilationStatus" sortable="true" renderer="spIdentityRequestItemCompilationStatus" />
+              </List>
+            </value>
+          </entry>
+        </Map>
+      </Attributes>
+    </UIConfig>
+  </ImportAction>
+
+</sailpoint>

@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpIX version="5.0" xmlns="urn:WebWorks-Help-Index-Schema">
+  <g t="A" o="002">
+    <i t="access certification">
+      <i t="report page">
+        <i t="account group list overview">
+          <j l="41#1762511" />
+        </i>
+        <i t="business role list overview">
+          <j l="33#1764492" />
+        </i>
+      </i>
+    </i>
+    <i t="access request status">
+      <i t="lifecycle manager">
+        <j l="120" />
+      </i>
+    </i>
+    <i t="account  group membership">
+      <i t="report">
+        <j l="225" />
+        <j l="226" />
+      </i>
+    </i>
+    <i t="account attribute report">
+      <j l="241" />
+      <j l="242" />
+      <j l="251" />
+    </i>
+    <i t="account group">
+      <i t="configuration">
+        <j l="82#3282074" />
+      </i>
+      <i t="search page">
+        <j l="166" />
+      </i>
+      <i t="search results">
+        <j l="168" />
+      </i>
+    </i>
+    <i t="account group certification">
+      <i t="report">
+        <j l="217" />
+      </i>
+    </i>
+    <i t="activity">
+      <i t="search page">
+        <j l="169" />
+      </i>
+      <i t="search results">
+        <j l="171" />
+      </i>
+    </i>
+    <i t="advanced analytics">
+      <i t="overview">
+        <j l="155#1196465" />
+      </i>
+    </i>
+    <i t="advanced certification">
+      <i t="report">
+        <j l="218" />
+      </i>
+    </i>
+    <i t="analysis">
+      <i t="role model">
+        <j l="260#1691641" />
+      </i>
+    </i>
+    <i t="application">
+      <i t="certification status">
+        <i t="dashboard">
+          <j l="130" />
+        </i>
+      </i>
+      <i t="configuration">
+        <i t="overview">
+          <j l="72" />
+        </i>
+      </i>
+      <i t="risk score page">
+        <j l="200" />
+      </i>
+    </i>
+    <i t="application account attribute report">
+      <j l="244" />
+    </i>
+    <i t="application account by attribute report">
+      <j l="243" />
+      <j l="247" />
+      <j l="248" />
+    </i>
+    <i t="application delimited file status report">
+      <i t="report">
+        <j l="239#1691476" />
+      </i>
+    </i>
+    <i t="application owner certification">
+      <i t="report">
+        <j l="219" />
+        <j l="221" />
+      </i>
+    </i>
+    <i t="application risk score chart">
+      <i t="dashboard">
+        <j l="131" />
+      </i>
+    </i>
+    <i t="application status">
+      <i t="dashboard">
+        <j l="133" />
+      </i>
+    </i>
+    <i t="applications risk report">
+      <j l="257" />
+    </i>
+    <i t="audit">
+      <i t="search page">
+        <j l="172" />
+      </i>
+      <i t="search results">
+        <j l="174" />
+        <j l="180" />
+      </i>
+    </i>
+  </g>
+  <g t="C" o="002">
+    <i t="certification">
+      <i t="allow exceptions">
+        <j l="53" />
+      </i>
+      <i t="approve">
+        <i t="how to">
+          <j l="51" />
+        </i>
+      </i>
+      <i t="continuous">
+        <i t="overview">
+          <j l="6#1683525" />
+          <j l="68#2671969" />
+        </i>
+      </i>
+      <i t="delegate">
+        <i t="how to">
+          <j l="52" />
+        </i>
+      </i>
+      <i t="event">
+        <i t="definition">
+          <j l="65" />
+        </i>
+      </i>
+      <i t="events">
+        <j l="64#3075776" />
+        <j l="317#3273719" />
+      </i>
+      <i t="overview">
+        <j l="5#1686591" />
+      </i>
+      <i t="page">
+        <j l="9#1625420" />
+        <j l="334#3536160" />
+      </i>
+      <i t="periodic">
+        <i t="overview">
+          <j l="6#1683469" />
+          <j l="68#2672001" />
+        </i>
+      </i>
+      <i t="policy violations">
+        <i t="allow">
+          <j l="57" />
+        </i>
+      </i>
+      <i t="reassign">
+        <i t="how to">
+          <j l="50" />
+        </i>
+      </i>
+      <i t="report page">
+        <j l="12" />
+        <i t="certification information">
+          <j l="13" />
+        </i>
+        <i t="employee data">
+          <j l="16" />
+        </i>
+        <i t="identity list overview">
+          <j l="20#1760177" />
+          <j l="27#1764512" />
+          <j l="34#1763042" />
+          <j l="41#1762511" />
+          <j l="361#3711043" />
+        </i>
+        <i t="list overview">
+          <j l="14" />
+        </i>
+        <i t="sections">
+          <j l="12#1661278" />
+        </i>
+      </i>
+      <i t="revocation">
+        <i t="how to">
+          <j l="54" />
+        </i>
+      </i>
+      <i t="schedule">
+        <i t="results">
+          <j l="67" />
+        </i>
+      </i>
+      <i t="search page">
+        <j l="160" />
+      </i>
+      <i t="search results">
+        <j l="162" />
+      </i>
+    </i>
+    <i t="certification activity by application">
+      <i t="report">
+        <j l="220" />
+      </i>
+    </i>
+    <i t="certification completion chart">
+      <i t="dashboard">
+        <j l="126" />
+      </i>
+    </i>
+    <i t="certification completion status">
+      <i t="dashboard">
+        <j l="127" />
+      </i>
+    </i>
+    <i t="certification decision">
+      <i t="report">
+        <j l="215" />
+      </i>
+    </i>
+    <i t="certification decision chart">
+      <i t="dashboard">
+        <j l="128" />
+      </i>
+    </i>
+    <i t="certification owner status by group">
+      <i t="dashboard">
+        <j l="129" />
+      </i>
+    </i>
+    <i t="certification signoff">
+      <i t="report">
+        <j l="216" />
+      </i>
+    </i>
+    <i t="certification, see certification">
+      <j l="9#1625420" />
+      <j l="334#3536160" />
+    </i>
+    <i t="configure">
+      <i t="application">
+        <i t="overview">
+          <j l="72" />
+        </i>
+      </i>
+      <i t="risk scoring">
+        <j l="88#3278832" />
+      </i>
+    </i>
+    <i t="configured application archive">
+      <i t="report">
+        <j l="237" />
+      </i>
+    </i>
+    <i t="configured application detail">
+      <i t="report">
+        <j l="238" />
+      </i>
+    </i>
+    <i t="continuous certification">
+      <i t="see certification">
+        <j l="6#1683525" />
+        <j l="68#2671969" />
+      </i>
+    </i>
+  </g>
+  <g t="D" o="002">
+    <i t="dashboard">
+      <i t="application certification status">
+        <j l="130" />
+      </i>
+      <i t="application risk score chart">
+        <j l="131" />
+      </i>
+      <i t="application status">
+        <j l="133" />
+      </i>
+      <i t="arranging">
+        <j l="138" />
+      </i>
+      <i t="certification completion chart">
+        <j l="126" />
+      </i>
+      <i t="certification completion status">
+        <j l="127" />
+      </i>
+      <i t="certification decision chart">
+        <j l="128" />
+      </i>
+      <i t="certification owner status by group">
+        <j l="129" />
+      </i>
+      <i t="components">
+        <j l="116#1822596" />
+      </i>
+      <i t="editing">
+        <j l="138" />
+      </i>
+      <i t="group certification status">
+        <j l="134" />
+      </i>
+      <i t="inbox">
+        <j l="118" />
+      </i>
+      <i t="my certification status">
+        <j l="122" />
+      </i>
+      <i t="online tutorials">
+        <j l="123" />
+      </i>
+      <i t="outbox">
+        <j l="119" />
+      </i>
+      <i t="overview">
+        <j l="99#3545955" />
+      </i>
+      <i t="owner status">
+        <j l="121" />
+      </i>
+      <i t="policy violation chart">
+        <j l="135" />
+      </i>
+      <i t="policy violations status">
+        <j l="124" />
+      </i>
+      <i t="risk score chart">
+        <j l="136" />
+      </i>
+      <i t="signoff status">
+        <j l="137" />
+      </i>
+    </i>
+    <i t="delegate">
+      <i t="certification">
+        <i t="how to">
+          <j l="52" />
+        </i>
+      </i>
+    </i>
+    <i t="delegated">
+      <i t="access certification">
+        <i t="how to complete">
+          <j l="59" />
+        </i>
+      </i>
+    </i>
+  </g>
+  <g t="E" o="002">
+    <i t="event">
+      <i t="certification">
+        <j l="64#3075776" />
+        <j l="317#3273719" />
+      </i>
+    </i>
+    <i t="exception">
+      <i t="certification">
+        <j l="53" />
+      </i>
+    </i>
+  </g>
+  <g t="F" o="002">
+    <i t="forwarded">
+      <i t="access certification">
+        <i t="how to complete">
+          <j l="61" />
+          <j l="62" />
+        </i>
+      </i>
+    </i>
+  </g>
+  <g t="G" o="002">
+    <i t="group">
+      <i t="configuration">
+        <j l="82#3282074" />
+      </i>
+    </i>
+    <i t="group certification completion status">
+      <i t="dashboard">
+        <j l="134" />
+      </i>
+    </i>
+  </g>
+  <g t="H" o="002">
+    <i t="help desk">
+      <i t="revocation">
+        <j l="54#2083926" />
+        <j l="55#2084392" />
+        <j l="55#2084392" />
+        <j l="195#3295242" />
+      </i>
+    </i>
+  </g>
+  <g t="I" o="002">
+    <i t="identity">
+      <i t="advanced">
+        <i t="search page">
+          <j l="158" />
+        </i>
+      </i>
+      <i t="management">
+        <i t="overview">
+          <j l="139#3282852" />
+        </i>
+      </i>
+      <i t="page">
+        <j l="140" />
+        <i t="column descriptions">
+          <j l="140#1837721" />
+        </i>
+      </i>
+      <i t="risk score page">
+        <j l="199" />
+        <i t="column descriptions">
+          <j l="199#1647633" />
+        </i>
+      </i>
+      <i t="search page">
+        <j l="156" />
+        <j l="178" />
+        <j l="181" />
+      </i>
+      <i t="search results">
+        <j l="159" />
+        <j l="183" />
+      </i>
+      <i t="view identity page">
+        <j l="141" />
+        <i t="activity tab">
+          <j l="147" />
+        </i>
+        <i t="identity events tab">
+          <j l="150" />
+        </i>
+        <i t="identity user rights tab">
+          <j l="149" />
+        </i>
+        <i t="risk tab">
+          <j l="148" />
+        </i>
+      </i>
+    </i>
+    <i t="identity risk report">
+      <j l="258" />
+    </i>
+    <i t="identity role report">
+      <j l="261" />
+    </i>
+    <i t="identity search page">
+      <j l="156" />
+      <j l="178" />
+      <j l="181" />
+    </i>
+    <i t="inbox">
+      <i t="dashboard">
+        <j l="118" />
+      </i>
+    </i>
+  </g>
+  <g t="L" o="002">
+    <i t="lifecycle manager">
+      <i t="dashboard widgets">
+        <j l="269#1825209" />
+        <i t="access request status">
+          <j l="120" />
+        </i>
+      </i>
+    </i>
+  </g>
+  <g t="M" o="002">
+    <i t="manager certification">
+      <i t="report">
+        <j l="222" />
+      </i>
+    </i>
+    <i t="mitigation, see exception">
+      <j l="53" />
+    </i>
+    <i t="my certification status">
+      <i t="dashboard">
+        <j l="122" />
+      </i>
+    </i>
+    <i t="my reports tab">
+      <j l="202" />
+    </i>
+  </g>
+  <g t="O" o="002">
+    <i t="online tutorials">
+      <i t="dashboard">
+        <j l="123" />
+      </i>
+    </i>
+    <i t="outbox">
+      <i t="dashboard">
+        <j l="119" />
+      </i>
+    </i>
+    <i t="owner status">
+      <i t="dashboard">
+        <j l="121" />
+      </i>
+    </i>
+  </g>
+  <g t="P" o="002">
+    <i t="policy">
+      <i t="oveview">
+        <j l="86#3278464" />
+      </i>
+      <i t="violation">
+        <i t="allow">
+          <j l="57" />
+        </i>
+      </i>
+      <i t="violations">
+        <i t="work items">
+          <j l="187" />
+          <j l="197" />
+        </i>
+      </i>
+    </i>
+    <i t="policy violation chart">
+      <i t="dashboard">
+        <j l="135" />
+      </i>
+    </i>
+    <i t="policy violation status">
+      <i t="dashboard">
+        <j l="124" />
+      </i>
+    </i>
+    <i t="population">
+      <i t="configuration">
+        <j l="82#3282074" />
+      </i>
+    </i>
+  </g>
+  <g t="R" o="002">
+    <i t="reassigned">
+      <i t="access certification">
+        <i t="how to complete">
+          <j l="61" />
+          <j l="62" />
+        </i>
+      </i>
+    </i>
+    <i t="remediated">
+      <i t="access certification">
+        <i t="how to complete">
+          <j l="60" />
+        </i>
+      </i>
+    </i>
+    <i t="reports">
+      <i t="editing">
+        <j l="208" />
+      </i>
+      <i t="list">
+        <j l="211" />
+      </i>
+      <i t="my reports tab">
+        <j l="202" />
+      </i>
+      <i t="page">
+        <i t="field descriptions">
+          <j l="202#3488776" />
+          <j l="203#3447444" />
+        </i>
+      </i>
+      <i t="standard properties">
+        <j l="212" />
+        <j l="213" />
+      </i>
+      <i t="types">
+        <i t="account attributes">
+          <j l="241" />
+          <j l="242" />
+          <j l="251" />
+        </i>
+        <i t="account group certification">
+          <j l="217" />
+        </i>
+        <i t="account group membership">
+          <j l="225" />
+          <j l="226" />
+        </i>
+        <i t="advanced certification">
+          <j l="218" />
+        </i>
+        <i t="application account attributes">
+          <j l="244" />
+        </i>
+        <i t="application account by attribute">
+          <j l="243" />
+          <j l="247" />
+          <j l="248" />
+        </i>
+        <i t="application delimited file status report">
+          <j l="239#1691476" />
+        </i>
+        <i t="application owner certification">
+          <j l="219" />
+          <j l="221" />
+        </i>
+        <i t="applications risk">
+          <j l="257" />
+        </i>
+        <i t="certification activity by application">
+          <j l="220" />
+        </i>
+        <i t="certification decision">
+          <j l="215" />
+        </i>
+        <i t="certification signoff">
+          <j l="216" />
+        </i>
+        <i t="configured application archive">
+          <j l="237" />
+        </i>
+        <i t="configured application detail">
+          <j l="238" />
+        </i>
+        <i t="identity risk">
+          <j l="258" />
+        </i>
+        <i t="identity role">
+          <j l="261" />
+        </i>
+        <i t="manager certification">
+          <j l="222" />
+        </i>
+        <i t="revocation">
+          <j l="234" />
+        </i>
+        <i t="risky accounts by application">
+          <j l="259" />
+        </i>
+        <i t="role archive">
+          <j l="262" />
+        </i>
+        <i t="role certification">
+          <j l="223" />
+        </i>
+        <i t="role change management">
+          <j l="263" />
+        </i>
+        <i t="role composition">
+          <j l="266" />
+        </i>
+        <i t="role detail">
+          <j l="264" />
+        </i>
+        <i t="role membership">
+          <j l="265" />
+        </i>
+        <i t="uncorrelated user accounts detail">
+          <j l="249" />
+          <j l="250" />
+        </i>
+        <i t="user activity detailed">
+          <j l="228" />
+        </i>
+        <i t="user by application">
+          <j l="253" />
+        </i>
+        <i t="user detail">
+          <j l="245" />
+          <j l="252" />
+        </i>
+        <i t="user forwarding">
+          <j l="246" />
+        </i>
+        <i t="violation archive">
+          <j l="321" />
+          <j l="323" />
+        </i>
+        <i t="violation detail">
+          <j l="255" />
+          <j l="319" />
+          <j l="320" />
+          <j l="322" />
+        </i>
+        <i t="work item">
+          <j l="235" />
+        </i>
+      </i>
+    </i>
+    <i t="revocation">
+      <i t="automated">
+        <j l="54#2083926" />
+        <j l="55#2084392" />
+        <j l="55#2084392" />
+        <j l="195#3295242" />
+      </i>
+      <i t="certification">
+        <i t="how to">
+          <j l="54" />
+        </i>
+      </i>
+      <i t="help desk">
+        <j l="54#2083926" />
+        <j l="55#2084392" />
+        <j l="55#2084392" />
+        <j l="195#3295242" />
+      </i>
+      <i t="manual">
+        <j l="54#2083926" />
+        <j l="55#2084392" />
+        <j l="55#2084392" />
+        <j l="195#3295242" />
+      </i>
+    </i>
+    <i t="revocation report">
+      <j l="234" />
+    </i>
+    <i t="risk score chart">
+      <i t="dashboard">
+        <j l="136" />
+      </i>
+    </i>
+    <i t="risk scores">
+      <i t="application">
+        <j l="200" />
+      </i>
+      <i t="configuration">
+        <j l="88#3278832" />
+      </i>
+      <i t="identity">
+        <j l="199" />
+        <j l="199#1647633" />
+      </i>
+      <i t="overview">
+        <j l="88#3278832" />
+      </i>
+    </i>
+    <i t="risky accounts by application report">
+      <j l="259" />
+    </i>
+    <i t="role">
+      <i t="analytics">
+        <j l="260#1691641" />
+      </i>
+      <i t="inheritence">
+        <j l="81#3269514" />
+      </i>
+      <i t="mining">
+        <j l="81#3270265" />
+      </i>
+      <i t="nested">
+        <j l="81#3269514" />
+      </i>
+      <i t="search page">
+        <j l="163" />
+        <j l="175" />
+      </i>
+      <i t="search results">
+        <j l="165" />
+      </i>
+    </i>
+    <i t="role archive report">
+      <j l="262" />
+    </i>
+    <i t="role certification">
+      <i t="report">
+        <j l="223" />
+      </i>
+    </i>
+    <i t="role change management report">
+      <j l="263" />
+    </i>
+    <i t="role composition report">
+      <j l="266" />
+    </i>
+    <i t="role detail report">
+      <j l="264" />
+    </i>
+    <i t="role management">
+      <i t="overview">
+        <j l="80#3290226" />
+        <j l="80#3290226" />
+      </i>
+    </i>
+    <i t="role membership report">
+      <j l="265" />
+    </i>
+    <i t="role modeling">
+      <i t="analytics">
+        <j l="260#1691641" />
+      </i>
+    </i>
+  </g>
+  <g t="S" o="002">
+    <i t="schedule">
+      <i t="certifications">
+        <i t="results">
+          <j l="67" />
+        </i>
+      </i>
+    </i>
+    <i t="search, see advance analytics">
+      <j l="155#1196465" />
+    </i>
+    <i t="searches">
+      <i t="account group">
+        <j l="166" />
+      </i>
+      <i t="activities">
+        <j l="169" />
+      </i>
+      <i t="audit">
+        <j l="172" />
+      </i>
+      <i t="certification">
+        <j l="160" />
+      </i>
+      <i t="identities">
+        <j l="156" />
+        <j l="178" />
+        <j l="181" />
+        <i t="advanced">
+          <j l="158" />
+        </i>
+      </i>
+      <i t="role">
+        <j l="163" />
+        <j l="175" />
+      </i>
+    </i>
+    <i t="signoff status">
+      <i t="dashboard">
+        <j l="137" />
+      </i>
+    </i>
+  </g>
+  <g t="T" o="002">
+    <i t="tasks">
+      <i t="overview">
+        <j l="154#3273119" />
+      </i>
+    </i>
+  </g>
+  <g t="U" o="002">
+    <i t="uncorrelated user accounts detail report">
+      <j l="249" />
+      <j l="250" />
+    </i>
+    <i t="user activity detailed">
+      <i t="report">
+        <j l="228" />
+      </i>
+    </i>
+    <i t="user by application report">
+      <j l="253" />
+    </i>
+    <i t="user detail report">
+      <j l="245" />
+      <j l="252" />
+    </i>
+    <i t="user forwarding report">
+      <j l="246" />
+    </i>
+  </g>
+  <g t="V" o="002">
+    <i t="view identity page">
+      <j l="141" />
+      <i t="activity tab">
+        <j l="147" />
+      </i>
+      <i t="identity events tab">
+        <j l="150" />
+      </i>
+      <i t="identity user rights tab">
+        <j l="149" />
+      </i>
+      <i t="risk tab">
+        <j l="148" />
+      </i>
+    </i>
+    <i t="view work items page">
+      <i t="action buttons">
+        <j l="113#3562292" />
+      </i>
+      <i t="comments">
+        <j l="113#3562259" />
+      </i>
+      <i t="details">
+        <j l="113#3562279" />
+      </i>
+      <i t="summary">
+        <j l="113#3585404" />
+      </i>
+      <i t="work items page">
+        <j l="113#3562028" />
+      </i>
+    </i>
+    <i t="violation">
+      <i t="policy">
+        <i t="allow">
+          <j l="57" />
+        </i>
+      </i>
+    </i>
+    <i t="violation archive report">
+      <j l="321" />
+      <j l="323" />
+    </i>
+    <i t="violation detail">
+      <i t="report">
+        <j l="255" />
+        <j l="319" />
+        <j l="320" />
+        <j l="322" />
+      </i>
+    </i>
+  </g>
+  <g t="W" o="002">
+    <i t="work items">
+      <i t="access certifications">
+        <i t="delegated">
+          <j l="59" />
+        </i>
+        <i t="forwarded">
+          <j l="61" />
+          <j l="62" />
+        </i>
+        <i t="reassigned">
+          <j l="61" />
+          <j l="62" />
+        </i>
+        <i t="remediated">
+          <j l="60" />
+        </i>
+      </i>
+      <i t="policy violations">
+        <j l="187" />
+        <j l="197" />
+      </i>
+      <i t="report">
+        <j l="235" />
+      </i>
+      <i t="view work items page">
+        <j l="113#3562028" />
+        <i t="action buttons">
+          <j l="113#3562292" />
+        </i>
+        <i t="comments">
+          <j l="113#3562259" />
+        </i>
+        <i t="details">
+          <j l="113#3562279" />
+        </i>
+        <i t="summary">
+          <j l="113#3585404" />
+        </i>
+      </i>
+    </i>
+    <i t="workflow management">
+      <i t="overview">
+        <j l="90#3287012" />
+      </i>
+    </i>
+  </g>
+</WebWorksHelpIX>

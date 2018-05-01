@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Application Risk Score Chart</title>
+    <link rel="StyleSheet" href="css/dashboard.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body onload="WWHUpdate();" onunload="WWHUnload();" onkeydown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onkeypress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onkeyup="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="section_using.html">Section III  Using IdentityIQ</a> : <a class="WebWorks_Breadcrumb_Link" href="dashboard.36.01.html">IdentityIQ Dashboards</a> : <a class="WebWorks_Breadcrumb_Link" href="dashboard.36.10.html">Compliance Dashboard Components</a> : Application Risk Score Chart</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading2"><a name="3273421">Application Risk Score Chart</a></div>
+      <div class="BodyLevel1"><a name="1823457">A graphic view of the risk score for every application to which you have access. The chart displays as many risk levels as are configured for you enterprise.</a></div>
+      <div class="BodyLevel1"><a name="3348718">Click the chart to display the Application Risk Scores page. See </a><a href="javascript:WWHClickedPopup('help', 'configuration_risk_scoring.30.1.html', '');" title="Configure Risk Scoring">Configure Risk Scoring</a>.</div>
+      <div class="BodyLevel1"><a name="3348730">The algorithms used by the Refresh Application Scoring task to update this page are defined on the Application Risk page. See </a><a href="javascript:WWHClickedPopup('help', 'configuration_risk_scoring.30.1.html', '');" title="Configure Risk Scoring">Configure Risk Scoring</a>.</div>
+      <div class="BodyLevel1"><a name="1828430">All scores are calculated by first determining the percentage of accounts that have the qualities tested by the component score. For example, if 10 out of 100 accounts are flagged as service accounts, then the raw percentage is ten percent (.10). This number is then multiplied by a sensitivity value which can be used to increase or decrease the impact of the original percentage. The default sensitivity value is 5 making the adjusted percentage fifty percent (.50). This final percentage is then applied to the score range of 1000 resulting in a component score of 500.</a></div>
+      <div class="BodyLevel1"><a name="1823493">After the component score is calculated, a weight or compensating factor is applied to each component score to determine the amount each item contributes to the overall risk score for the application. For example, a few violator accounts can increase risk more than many inactive accounts.</a></div>
+      <div class="BodyLevel1"><a name="1823497">Service, Inactive, and Privileged component scores look for links that have a configured attribute. For example, the component </a><span class="code">service</span> with a configured value <span class="code">true</span>. </div>
+      <div class="BodyLevel1"><a name="1823507">The Dormant Account score looks for a configured attribute that is expected to have a date value, for example </a><span class="code">lastLogin</span>. This algorithm has an argument, <span class="code">daysTillDormant</span>, that defaults to thirty (30). If the last login date is more than thirty (30) days prior to the current date, the account is considered dormant and is factored into the risk score.</div>
+      <div class="BodyLevel1"><a name="1823517">The Risky Account score looks for links whose owning identity has a composite risk score greater than a configured threshold. The default threshold is five hundred (500).</a></div>
+      <div class="BodyLevel1"><a name="1823521">The Violator Account score looks for links whose owning identity has a number of policy violations greater than a configured threshold. The default threshold is ten (10).</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>

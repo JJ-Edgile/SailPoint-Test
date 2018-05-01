@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    /**
+     * Helper method for common Plugin related functions
+     */
+    var PluginHelper = (function() {
+
+        return {
+
+            getCsrfToken: function () {
+                return '#{base.csrfToken}';
+            },
+
+            getCurrentUserId: function () {
+                return '#{base.loggedInUser.id}';
+            },
+
+            getCurrentUsername: function () {
+                return '#{sp:escapeJavascript(base.loggedInUserName)}';
+            },
+
+            getCurrentUserDisplayableName: function () {
+                return '#{sp:escapeJavascript(base.loggedInUser.displayableName)}';
+            },
+
+            getPluginFileUrl: function (pluginName, file) {
+                return encodeURI('#{base.requestContextPath}/plugin/' + pluginName + '/' + file);
+            },
+
+            getPluginRestUrl: function(path) {
+                return encodeURI('#{base.requestContextPath}/plugin/rest/' + path);
+            }
+
+        };
+    })();
+</script>

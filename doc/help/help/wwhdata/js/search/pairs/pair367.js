@@ -1,0 +1,19 @@
+function FileData_Pairs(x)
+{
+x.t("mobile","device");
+x.t("mobile","password");
+x.t("mobile","devices");
+x.t("account","unlock");
+x.t("device","recover");
+x.t("identityiq","mobile");
+x.t("recover","passwords");
+x.t("recovery","account");
+x.t("section","identityiq");
+x.t("unlock","mobile");
+x.t("unlock","section");
+x.t("unlock","accounts");
+x.t("passwords","unlock");
+x.t("password","recovery");
+x.t("accounts","anywhere");
+x.t("devices","mobile");
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC
+        "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- (c) Copyright 2008 SailPoint Technologies, Inc., All Rights Reserved. -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:sp="http://sailpoint.com/ui">
+<body>
+
+<ui:composition>
+
+<script type="text/javascript">
+
+    helpKey = 'APPLICATION';
+
+    function getFieldValue(field) {
+        var val = null;
+        var fileName = Ext.getDom(field);
+        if ( fileName ) {
+            val = fileName.value;
+        }
+        return val;
+    }
+
+    //True if the targetHostSelector should be enabled
+    function showTargetHostSelector() {
+        var show = false;
+        show = validateConnectionParams(false);
+        Validator.clearErrors();
+        return show;
+    }
+
+    function updateHostConfigs() {
+        Ext.getDom('editForm:updateHostConfigsBtn').click();
+    }
+
+    function validateConnectionParams(displayErrors) {
+
+        var valid = true;
+
+        var url = getFieldValue('editForm:url');
+        Validator.validateNonBlankString(url, "Database URL cannot be null");
+        var driverClass = getFieldValue('editForm:driverClass');
+        Validator.validateNonBlankString(driverClass, "DriverClass cannot be null");
+        var user = getFieldValue('editForm:dbUserName');
+        Validator.validateNonBlankString(user, "UserName cannot be null");
+        var pass = getFieldValue('editForm:password');
+        Validator.validateNonBlankString(pass, "Password cannot be null");
+        var schema = getFieldValue('editForm:dbSchema');
+        Validator.validateNonBlankString(schema, "Schema cannot be null");
+
+        var errors = Validator.getErrors();
+        if (errors &amp;&amp; errors.length &gt; 0) {
+            if (displayErrors) {
+                Validator.displayErrors('appErrorsTop');
+            }
+            //return false will kill cancel the save
+            valid = false;
+        }
+        return valid;
+    }
+
+    Ext.onReady(function () {
+        Ext.QuickTips.init();
+        buildTooltips();
+        // This is our validation hook
+        Page.on('beforeSave', function() {
+
+            validateConnectionParams(false);
+            var hosts = Ext.getDom('editForm:targetHosts');
+            Validator.validateSelectedValues(hosts, 1, "Must have at least 1 Target Host Selected");
+
+            var errors = Validator.getErrors();
+            if (errors &amp;&amp; errors.length &gt; 0) {
+                Validator.displayErrors('appErrorsTop');
+                return false;
+            }
+            //return false will kill cancel the save
+            return true;
+        });
+    });
+
+
+</script>
+<f:view>
+
+    <h:outputText styleClass="sectionHeader" value="#{msgs.siq_header}"/><br/><br/>
+
+
+    <div id="accountSettings" class='spContent'>
+
+        <table class="spTable" style="border:0px" cellspacing="0">
+            <tr>
+                <td class="titleColumn">
+                    <h:outputText styleClass="subSectionHeader" value="#{msgs.siq_conn_header}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_db_url}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpURLs" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_url}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <h:inputText id="url"
+                                 value="#{targetSource.siqConfig.url}"
+                                 required="true"
+                                 size="80"
+                                 disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                 readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_db_driver}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpdriverClass" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_driver}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <h:inputText id="driverClass"
+                                 value="#{targetSource.siqConfig.driverClass}"
+                                 required="true"
+                                 size="80"
+                                 disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                 readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_db_username}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpdbIUserName" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_userName}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <h:inputText id="dbUserName"
+                                 value="#{targetSource.siqConfig.userName}"
+                                 required="true"
+                                 size="80"
+                                 disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                 readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_db_password}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpPassword" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_password}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <sp:inputSecret id="password"
+                                    value="#{targetSource.siqConfig.password}"
+                                    required="true"
+                                    autocomplete="off"
+                                    redisplay="true"
+                                    size="80"
+                                    disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                    readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_db_schemaName}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpdbSchema" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_schema}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <h:inputText id="dbSchema"
+                                 value="#{targetSource.siqConfig.schemaName}"
+                                 required="true"
+                                 size="80"
+                                 disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                 readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='titleColumn'>
+
+                </td>
+                <td class="certScheduleHelpCol"/>
+                <td class="certScheduleOptionCol">
+                    <a4j:commandButton id="testButton"
+                                       value="#{msgs.button_test_connection}"
+                                       styleClass="secondaryBtn rightAlignedColumn"
+                                       style="display: block; margin-left: 375px"
+                                       action="#{targetSource.siqConfig.testConfiguration}"
+                                       onclick="return validateConnectionParams(true);"
+                                       render="testResultsPanel, configSettings"/>
+                    <a4j:outputPanel id="testResultsPanel" layout="block">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div id="testResultsDiv" class="#{targetSource.siqConfig.testError ? 'failText' : 'successText'}">
+                                        <h:outputText value="#{targetSource.siqConfig.testResult}"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </a4j:outputPanel>
+                </td>
+            </tr>
+
+            <td class="titleColumn">
+                <h:outputText styleClass="subSectionHeader" value="#{msgs.siq_settings_header}"/>
+            </td>
+            <tr>
+                <td class='titleColumn'>
+                    <h:outputText style='padding:5px' value="#{msgs.siq_agg_inherited}"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlpaggInherited" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_agg_inherited}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <h:selectBooleanCheckbox id="aggInherited"
+                                 value="#{targetSource.siqConfig.aggregateInherited}"
+                                 disabled="#{!sp:hasRight(facesContext, 'ManageApplication')}"
+                                 readonly="#{!sp:hasRight(facesContext, 'ManageApplication')}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titleColumn">
+                    <h:outputText style='padding:5px' value="#{msgs.siq_agg_target_hosts}"/>
+                    <h:outputText styleClass="requiredText" value="*"/>
+                </td>
+                <td class="certScheduleHelpCol">
+                    <h:graphicImage id="imgHlptargetHosts" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                    alt="#{help.help_siq_collector_target_hosts}"/>
+                </td>
+                <td class="certScheduleOptionCol">
+                    <a4j:outputPanel id="targetHostPanel" layout="block">
+                        <a4j:commandLink id="discoverHostsBtn"
+                                           value="#{msgs.siq_discover_hosts}"
+                                           onchange="return validateConnectionParams(true);"
+                                           action="#{targetSource.siqConfig.discoverTargetHosts}"
+                                           style="display: block"
+                                           render="targetHostPanel"/>
+                        <h:selectManyListbox id="targetHosts" size="15"
+                                             value="#{targetSource.siqConfig.targetHosts}"
+                                             style="display: block"
+                                             onclick="updateHostConfigs(); return true;"
+                                             rendered="#{not empty targetSource.siqConfig.availableHosts}">
+                            <f:selectItems value="#{targetSource.siqConfig.targetHostSelectItems}"/>
+                        </h:selectManyListbox>
+                    </a4j:outputPanel>
+                </td>
+            </tr>
+
+            <a4j:outputPanel id="targetHostConfigs" ajaxRendered="true">
+
+                <t:dataList value="${targetSource.siqConfig.targetHostConfigs}" var="hostConfig">
+
+                    <tr>
+                        <td class="titleColumn">
+                            <h:outputText styleClass="subSectionHeader" value="#{hostConfig.hostName}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="titleColumn">
+                            <h:outputText value="#{msgs.siq_host_config_paths}"/>
+                        </td>
+                        <td class="helpColumn">
+                            <h:graphicImage id="imgHlphostPaths" styleClass="helpIcon" url="/images/icons/dashboard_help_16.png"
+                                            alt="#{help.help_siq_collector_target_host_paths}"/>
+                        </td>
+                        <td class="certScheduleOptionCol">
+                            <h:inputText id="#{hostConfig.hostName}paths" value="#{hostConfig.pathsCSV}" size="80"/>
+                        </td>
+
+                    </tr>
+                </t:dataList>
+
+            </a4j:outputPanel>
+
+        </table>
+    </div>
+
+
+
+    <a4j:commandButton id="updateHostConfigsBtn" style="display: none"
+                       action="#{targetSource.siqConfig.updateTargetHostConfigs}" render="targethostConfigs"/>
+
+</f:view>
+</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpBook version="5.0" name="help" context="help" locale="en" xmlns="urn:WebWorks-Help-Book-Files-Schema">
+  <CommonWordsToSkip minlen="3">
+    a about after all also am an and another any are as at
+    be because been before being between both but by
+    came can come copyright corp corporation could
+    did do does
+    each etc
+    for from
+    get goes got
+    had has have he her here him himself his how
+    if in inc into is it its
+    let like
+    make many me might more most much must my
+    never nor not now
+    of off on one only or other our out over own
+    reserved rights
+    said same see set shall she should since so some still such
+    take than that the their them then there these they this those though through to too
+    under us use
+    very
+    was way we well were what when where which while who why will with would
+    yes yet you your
+   </CommonWordsToSkip>
+  <ScoringPrefs>
+    <meta name="keywords" weight="100" />
+    <meta name="description" weight="50" />
+    <meta name="summary" weight="50" />
+    <title weight="20" />
+    <h1 weight="15" />
+    <h2 weight="10" />
+    <caption weight="10" />
+    <h3 weight="7" />
+    <th weight="5" />
+    <h4 weight="5" />
+    <h5 weight="4" />
+    <h6 weight="3" />
+    <h7 weight="2" />
+  </ScoringPrefs>
+  <DocumentInfo>
+    <Document title="SailPoint IdentityIQ Version 7.2 User’s Guide" href="cover_user_guide_online.html" />
+    <Document title="IdentityIQ Administration Guide" href="admin_guide_link.html" />
+    <Document title="Introduction" href="section_introduction.html" />
+    <Document title="IdentityIQ Introduction" href="user_guide_introduction.html" />
+    <Document title="Section I Certification" href="section_access_certification.html" />
+    <Document title="Certification Overview" href="access_certifications_overview.06.1.html" />
+    <Document title="Certification Schedules" href="access_certifications_overview.06.2.html" />
+    <Document title="Certification Types and Phases" href="access_certifications_overview.06.3.html" />
+    <Document title="Certification Terms" href="access_certifications_overview.06.4.html" />
+    <Document title="My Access Reviews Page" href="access_certifications_page.07.1.html" />
+    <Document title="Display Options" href="access_certifications_page.07.2.html" />
+    <Document title="Features" href="access_certifications_page.07.3.html" />
+    <Document title="Access Review Page Overview" href="access_certifications_report_overview.html" />
+    <Document title="Access Review - Common Information" href="access_certifications_report_cert_info.html" />
+    <Document title="Access Review Decisions Tab- Access Review Types" href="access_certifications_report_list.html" />
+    <Document title="Access Review Page - Recent Changes Tab" href="access_certifications_report_recent_tab.html" />
+    <Document title="Access Review Details - Employee Data" href="access_certifications_report_employee_tab.html" />
+    <Document title="Access Review Details - Group Information" href="access_certifications_report_group_tab.html" />
+    <Document title="Access Review Page - Risk Data" href="access_certifications_risk_data_tab.html" />
+    <Document title="Manager, Application Owner, Advance Certifications" href="access_certifications_identity_list.15.1.html" />
+    <Document title="Access Review Details - Identity List" href="access_certifications_identity_list.15.2.html" />
+    <Document title="Identity List Page Features" href="access_certifications_identity_list.15.3.html" />
+    <Document title="Important Tab" href="access_certifications_identity_list.15.4.html" />
+    <Document title="The Open Tab" href="access_certifications_identity_list.15.5.html" />
+    <Document title="Complete Tab" href="access_certifications_identity_list.15.6.html" />
+    <Document title="How To Perform an Identity List Access Review" href="access_certifications_identity_list.15.7.html" />
+    <Document title="Role Membership and Entitlement Owner Access Reviews" href="access_certifications_object_list.16.1.html" />
+    <Document title="Access Review Details - Object List" href="access_certifications_object_list.16.2.html" />
+    <Document title="Object List Page Features" href="access_certifications_object_list.16.3.html" />
+    <Document title="Important Tab" href="access_certifications_object_list.16.4.html" />
+    <Document title="The Open Tab" href="access_certifications_object_list.16.5.html" />
+    <Document title="Complete Tab" href="access_certifications_object_list.16.6.html" />
+    <Document title="How to Perform an Object List Access Review" href="access_certifications_object_list.16.7.html" />
+    <Document title="Role Composition Access Reviews" href="access_certifications_role_comp_list.17.1.html" />
+    <Document title="Access Review Details - Role Composition List" href="access_certifications_role_comp_list.17.2.html" />
+    <Document title="Object List Page Features" href="access_certifications_role_comp_list.17.3.html" />
+    <Document title="Important Tab" href="access_certifications_role_comp_list.17.4.html" />
+    <Document title="The Open Tab" href="access_certifications_role_comp_list.17.5.html" />
+    <Document title="Complete Tab" href="access_certifications_role_comp_list.17.6.html" />
+    <Document title="How to Perform a Role Composition Access Review" href="access_certifications_role_comp_list.17.7.html" />
+    <Document title="Account Group Membership and Account Group Permission Access Reviews" href="access_certifications_account_group_list.18.1.html" />
+    <Document title="Access Review Details - Account Group List" href="access_certifications_account_group_list.18.2.html" />
+    <Document title="Object List Page Features" href="access_certifications_account_group_list.18.3.html" />
+    <Document title="Important Tab" href="access_certifications_account_group_list.18.4.html" />
+    <Document title="The Open Tab" href="access_certifications_account_group_list.18.5.html" />
+    <Document title="Complete Tab" href="access_certifications_account_group_list.18.6.html" />
+    <Document title="How to Perform an Account Group Access Review" href="access_certifications_account_group_list.18.7.html" />
+    <Document title="Access Review Decisions/Operations" href="access_certifications_how_to.19.01.html" />
+    <Document title="Basic Access Review Procedure" href="access_certifications_how_to.19.02.html" />
+    <Document title="Access Review Decisions" href="access_certifications_how_to.19.03.html" />
+    <Document title="Reassign Access Reviews" href="access_certifications_how_to.19.04.html" />
+    <Document title="Approve Access Reviews" href="access_certifications_how_to.19.05.html" />
+    <Document title="Delegate Access Reviews" href="access_certifications_how_to.19.06.html" />
+    <Document title="Allow Exceptions on Access Reviews" href="access_certifications_how_to.19.07.html" />
+    <Document title="Revoke or Edit Access From Access Reviews" href="access_certifications_how_to.19.08.html" />
+    <Document title="Revoke an Account on Access Reviews" href="access_certifications_how_to.19.09.html" />
+    <Document title="Respond to a Challenged Revocation" href="access_certifications_how_to.19.10.html" />
+    <Document title="Allow Policy Violations on Access Reviews" href="access_certifications_how_to.19.11.html" />
+    <Document title="How to Complete Access Review Work Items" href="access_certifications_work_items.20.1.html" />
+    <Document title="How to Complete Delegated Access Reviews" href="access_certifications_work_items.20.2.html" />
+    <Document title="How to Complete Revocation Work Items" href="access_certifications_work_items.20.3.html" />
+    <Document title="How to Complete Reassigned or Forwarded Access Reviews" href="access_certifications_work_items.20.4.html" />
+    <Document title="How to Perform Multi-Level Sign Off on Access Reviews" href="access_certifications_work_items.20.5.html" />
+    <Document title="How to Challenge a Revocation Request" href="access_certifications_work_items.20.6.html" />
+    <Document title="Certification Events" href="access_certifications_events.21.1.html" />
+    <Document title="Define a Certification Event" href="access_certifications_events.21.2.html" />
+    <Document title="Certifications Page" href="schedule_access_certifications.22.1.html" />
+    <Document title="Certifications Tab" href="schedule_access_certifications.22.2.html" />
+    <Document title="Certification Schedules Tab" href="schedule_access_certifications.22.3.html" />
+    <Document title="Schedule New Certification" href="schedule_access_certifications.22.4.html" />
+    <Document title="Schedule Certification Field Descriptions" href="schedule_access_certifications.22.5.html" />
+    <Document title="Section II Configure IdentityIQ" href="section_getting_started.html" />
+    <Document title="Configure Applications" href="configuration_applications.html" />
+    <Document title="Entitlement Catalog" href="entitlement_catalog.25.1.html" />
+    <Document title="View Entitlement Catalog" href="entitlement_catalog.25.2.html" />
+    <Document title="Import and Export" href="entitlement_catalog.25.3.html" />
+    <Document title="New Entitlement Parameters" href="entitlement_catalog.25.4.html" />
+    <Document title="Standard Properties" href="entitlement_catalog.25.5.html" />
+    <Document title="Group Properties" href="entitlement_catalog.25.6.html" />
+    <Document title="Members" href="entitlement_catalog.25.7.html" />
+    <Document title="Role Management" href="modeler.26.1.html" />
+    <Document title="Role Management Concepts" href="modeler.26.2.html" />
+    <Document title="Group and Population User Interface" href="group_list.27.1.html" />
+    <Document title="Groups" href="group_list.27.2.html" />
+    <Document title="Populations and Workgroups" href="group_list.27.3.html" />
+    <Document title="Configure Activity Settings" href="configuration_activity_settings.html" />
+    <Document title="Define Policies" href="configuration_policy.29.1.html" />
+    <Document title="Policy Page" href="configuration_policy.29.2.html" />
+    <Document title="Configure Risk Scoring" href="configuration_risk_scoring.30.1.html" />
+    <Document title="Access Risk Scoring Definitions" href="configuration_risk_scoring.30.2.html" />
+    <Document title="Business Process Editor" href="workflow_editor.html" />
+    <Document title="System Setup" href="configuration_main_list.html" />
+    <Document title="Section III Using IdentityIQ" href="section_using.html" />
+    <Document title="Getting Started with IdentityIQ" href="getting_started.34.1.html" />
+    <Document title="New User Registration" href="getting_started.34.2.html" />
+    <Document title="Multi-Factor Authentication" href="getting_started.34.3.html" />
+    <Document title="Password Recovery - Account Unlock" href="getting_started.34.4.html" />
+    <Document title="Answer Authentication Questions" href="getting_started.34.5.html" />
+    <Document title="Send a Text Message with a Verification Code" href="getting_started.34.6.html" />
+    <Document title="IdentityIQ Home Page and Navigation" href="home_page.35.01.html" />
+    <Document title="New User Registration" href="home_page.35.02.html" />
+    <Document title="QuickLinks" href="home_page.35.03.html" />
+    <Document title="QuickLink Menu" href="home_page.35.04.html" />
+    <Document title="QuickLink Cards" href="home_page.35.05.html" />
+    <Document title="Home Page Widgets" href="home_page.35.06.html" />
+    <Document title="How to Manage Widgets on Your Home Page" href="home_page.35.07.html" />
+    <Document title="Navigation Menu Bar" href="home_page.35.08.html" />
+    <Document title="Home" href="home_page.35.09.html" />
+    <Document title="My Work" href="home_page.35.10.html" />
+    <Document title="Identities" href="home_page.35.11.html" />
+    <Document title="Applications" href="home_page.35.12.html" />
+    <Document title="Intelligence" href="home_page.35.13.html" />
+    <Document title="Setup" href="home_page.35.14.html" />
+    <Document title="Bell Icon - Work Item Menu" href="home_page.35.15.html" />
+    <Document title="Gear Icon - Administration Menu" href="home_page.35.16.html" />
+    <Document title="User Name - User Menu" href="home_page.35.17.html" />
+    <Document title="IdentityIQ Dashboards" href="dashboard.36.01.html" />
+    <Document title="My Dashboard Components" href="dashboard.36.02.html" />
+    <Document title="Inbox" href="dashboard.36.03.html" />
+    <Document title="Outbox" href="dashboard.36.04.html" />
+    <Document title="Access Requests" href="dashboard.36.05.html" />
+    <Document title="Access Review Owner Status" href="dashboard.36.06.html" />
+    <Document title="My Access Reviews" href="dashboard.36.07.html" />
+    <Document title="Online Tutorials" href="dashboard.36.08.html" />
+    <Document title="Policy Violation Status" href="dashboard.36.09.html" />
+    <Document title="Compliance Dashboard Components" href="dashboard.36.10.html" />
+    <Document title="Access Review Completion Chart" href="dashboard.36.11.html" />
+    <Document title="Access Review Completion Status" href="dashboard.36.12.html" />
+    <Document title="Certification Decision Chart" href="dashboard.36.13.html" />
+    <Document title="Access Review Owner Status By Group" href="dashboard.36.14.html" />
+    <Document title="Application Access Review Status" href="dashboard.36.15.html" />
+    <Document title="Application Risk Score Chart" href="dashboard.36.16.html" />
+    <Document title="Certifications" href="dashboard.36.17.html" />
+    <Document title="Application Status" href="dashboard.36.18.html" />
+    <Document title="Group Access Review Status" href="dashboard.36.19.html" />
+    <Document title="Policy Violations Chart" href="dashboard.36.20.html" />
+    <Document title="Risk Score Chart" href="dashboard.36.21.html" />
+    <Document title="Signoff Status" href="dashboard.36.22.html" />
+    <Document title="How to Edit the Dashboard" href="dashboard.36.23.html" />
+    <Document title="Identity Management" href="identities_management_overview.html" />
+    <Document title="Identity Warehouse Page" href="identities_list_page.html" />
+    <Document title="Identity Details Page" href="identity_view_detail_page_overview.html" />
+    <Document title="View Identity Attributes Tab" href="identity_view_detail_page_attribute_tab.html" />
+    <Document title="View Identity Entitlement Tab" href="identity_view_detail_page_entitlements_tab.html" />
+    <Document title="View Identity Application Accounts Tab" href="identity_view_detail_page_app_accounts_tab.html" />
+    <Document title="View Identity Policy Tab" href="identity_view_detail_page_policy_tab.html" />
+    <Document title="View Identity History Tab" href="identity_view_detail_page_history_tab.html" />
+    <Document title="View Identity Activity Tab" href="identity_view_detail_page_activity_tab.html" />
+    <Document title="View Identity Risk Tab" href="identity_view_detail_page_risk_tab.html" />
+    <Document title="View Identity User Rights Tab" href="identity_view_detail_page_user_rights_tab.html" />
+    <Document title="View Identity Events Tab" href="identity_view_detail_page_events_tab.html" />
+    <Document title="Manual Correlation of Identity Cubes" href="identities_manual_correlation.49.1.html" />
+    <Document title="How to Perform Manual Identity Correlation" href="identities_manual_correlation.49.2.html" />
+    <Document title="Alerts" href="alerts.html" />
+    <Document title="Tasks" href="tasks.html" />
+    <Document title="Advanced Analytics" href="search_overview.html" />
+    <Document title="Identity Search" href="identity_search.53.1.html" />
+    <Document title="Identity Search Criteria" href="identity_search.53.2.html" />
+    <Document title="Advanced Identity Search" href="identity_search.53.3.html" />
+    <Document title="Identity Search Results" href="identity_search.53.4.html" />
+    <Document title="Access Review Search" href="certification_search.54.1.html" />
+    <Document title="Access Review Search Criteria" href="certification_search.54.2.html" />
+    <Document title="Access Review Search Results" href="certification_search.54.3.html" />
+    <Document title="Role Search" href="role_search.55.1.html" />
+    <Document title="Role Search Criteria" href="role_search.55.2.html" />
+    <Document title="Role Search Results" href="role_search.55.3.html" />
+    <Document title="Entitlement Search" href="account_group_search.56.1.html" />
+    <Document title="Entitlement Search Criteria" href="account_group_search.56.2.html" />
+    <Document title="Entitlement Search Results" href="account_group_search.56.3.html" />
+    <Document title="Activity Search" href="activity_search.57.1.html" />
+    <Document title="Activity Search Criteria" href="activity_search.57.2.html" />
+    <Document title="Activity Search Results" href="activity_search.57.3.html" />
+    <Document title="Audit Search" href="audit_search.58.1.html" />
+    <Document title="Audit Search Criteria" href="audit_search.58.2.html" />
+    <Document title="Audit Search Results" href="audit_search.58.3.html" />
+    <Document title="Process Metrics Search" href="process_metrics_search.59.1.html" />
+    <Document title="Process Metrics Search Criteria" href="process_metrics_search.59.2.html" />
+    <Document title="Process Metrics Search Results" href="process_metrics_search.59.3.html" />
+    <Document title="Access Requests Search" href="access_requests_search.60.1.html" />
+    <Document title="Access Requests Search Criteria" href="access_requests_search.60.2.html" />
+    <Document title="Access Requests Search Results" href="access_requests_search.60.3.html" />
+    <Document title="Syslog Search" href="syslog_search.61.1.html" />
+    <Document title="Syslog Search Criteria" href="syslog_search.61.2.html" />
+    <Document title="Syslog Search Results" href="syslog_search.61.3.html" />
+    <Document title="Manage Work Items" href="manage_workitems.62.1.html" />
+    <Document title="Work Item Administration" href="manage_workitems.62.2.html" />
+    <Document title="How to Assign Work Items from the Work Items Page" href="manage_workitems.62.3.html" />
+    <Document title="How to Complete Policy Violation Work Items" href="manage_workitems.62.4.html" />
+    <Document title="Work Item Archive" href="manage_workitems.62.5.html" />
+    <Document title="Policy Violations" href="policy_violation.63.1.html" />
+    <Document title="Overview" href="policy_violation.63.2.html" />
+    <Document title="Access" href="policy_violation.63.3.html" />
+    <Document title="Display Options" href="policy_violation.63.4.html" />
+    <Document title="Violations QuickLink Card" href="policy_violation.63.5.html" />
+    <Document title="Policy Violations Open Tab" href="policy_violation.63.6.html" />
+    <Document title="Violation Decisions and Actions" href="policy_violation.63.7.html" />
+    <Document title="Policy Violations Complete Tab" href="policy_violation.63.8.html" />
+    <Document title="Policy Violation Work Items" href="policy_violation.63.9.html" />
+    <Document title="Managing Application and Identity Risk Scores" href="application_risk_scores_page.64.1.html" />
+    <Document title="Identity Risk Scores" href="application_risk_scores_page.64.2.html" />
+    <Document title="Application Risk Scores" href="application_risk_scores_page.64.3.html" />
+    <Document title="Reports" href="reports.65.01.html" />
+    <Document title="My Reports Tab" href="reports.65.02.html" />
+    <Document title="Reports Tab" href="reports.65.03.html" />
+    <Document title="Report Results Tab" href="reports.65.04.html" />
+    <Document title="Working With Reports" href="reports.65.05.html" />
+    <Document title="How to Create a New Report" href="reports.65.06.html" />
+    <Document title="How to Run a Report" href="reports.65.07.html" />
+    <Document title="How to Edit a Report" href="reports.65.08.html" />
+    <Document title="How to Schedule a Report" href="reports.65.09.html" />
+    <Document title="How to Complete Report Work Items" href="reports.65.10.html" />
+    <Document title="Report List" href="report_list.html" />
+    <Document title="Standard Report Properties" href="report_standard_properties.67.1.html" />
+    <Document title="Report Layout" href="report_standard_properties.67.2.html" />
+    <Document title="Access Review and Certification Reports" href="report_access_review_certification.68.01.html" />
+    <Document title="Access Review Decision Report" href="report_access_review_certification.68.02.html" />
+    <Document title="Access Review Signoff Live Report" href="report_access_review_certification.68.03.html" />
+    <Document title="Account Group Access Review Live Report" href="report_access_review_certification.68.04.html" />
+    <Document title="Advanced Access Review Live Report" href="report_access_review_certification.68.05.html" />
+    <Document title="Application Owner Access Review Live Report" href="report_access_review_certification.68.06.html" />
+    <Document title="Certification Activity by Application Report" href="report_access_review_certification.68.07.html" />
+    <Document title="Entitlement Owner Access Review Live Report" href="report_access_review_certification.68.08.html" />
+    <Document title="Manager Access Review Report" href="report_access_review_certification.68.09.html" />
+    <Document title="Role Access Review Report" href="report_access_review_certification.68.10.html" />
+    <Document title="Account Group Reports" href="report_account_group_report.69.1.html" />
+    <Document title="Account Group Members Report" href="report_account_group_report.69.2.html" />
+    <Document title="Account Group Membership Totals Report" href="report_account_group_report.69.3.html" />
+    <Document title="Activity Reports" href="report_activity_reports.70.1.html" />
+    <Document title="User Activity Report" href="report_activity_reports.70.2.html" />
+    <Document title="Administration Reports" href="report_adminstration_reports.71.1.html" />
+    <Document title="Detailed Provisioning Transaction Object Report" href="report_adminstration_reports.71.2.html" />
+    <Document title="Environment Information Report" href="report_adminstration_reports.71.3.html" />
+    <Document title="Mitigation Report" href="report_adminstration_reports.71.4.html" />
+    <Document title="Provisioning Transaction Object Report" href="report_adminstration_reports.71.5.html" />
+    <Document title="Revocation Live Report" href="report_adminstration_reports.71.6.html" />
+    <Document title="Work Item Archive Report" href="report_adminstration_reports.71.7.html" />
+    <Document title="Configured Resource Reports" href="report_configured_resource.72.1.html" />
+    <Document title="Configured Applications Archive Report" href="report_configured_resource.72.2.html" />
+    <Document title="Configured Applications Detail Report" href="report_configured_resource.72.3.html" />
+    <Document title="Delimited File Application Status Report" href="report_configured_resource.72.4.html" />
+    <Document title="Identity and User Reports" href="report_identity_and_user.73.01.html" />
+    <Document title="Account Attributes Live Report" href="report_identity_and_user.73.02.html" />
+    <Document title="Application Account Summary Report" href="report_identity_and_user.73.03.html" />
+    <Document title="Application Account by Attribute Report" href="report_identity_and_user.73.04.html" />
+    <Document title="Identity Effective Access Live Report" href="report_identity_and_user.73.05.html" />
+    <Document title="Identity Entitlements Detail Report" href="report_identity_and_user.73.06.html" />
+    <Document title="Identity Forwarding Report" href="report_identity_and_user.73.07.html" />
+    <Document title="Identity Status Summary Report" href="report_identity_and_user.73.08.html" />
+    <Document title="Privileged User Access Report" href="report_identity_and_user.73.09.html" />
+    <Document title="Uncorrelated Accounts Report" href="report_identity_and_user.73.10.html" />
+    <Document title="User Account Attributes Report" href="report_identity_and_user.73.11.html" />
+    <Document title="User Account Authentication Question Status Report" href="report_identity_and_user.73.12.html" />
+    <Document title="User Details Report" href="report_identity_and_user.73.13.html" />
+    <Document title="Users by Application Report" href="report_identity_and_user.73.14.html" />
+    <Document title="Policy Enforcement Reports" href="report_policy_enforcement.74.1.html" />
+    <Document title="Policy Violation Report" href="report_policy_enforcement.74.2.html" />
+    <Document title="Risk Reports" href="report_risk.75.1.html" />
+    <Document title="Applications Risk Live Report" href="report_risk.75.2.html" />
+    <Document title="Identity Risk Live Report" href="report_risk.75.3.html" />
+    <Document title="Risky Accounts Report" href="report_risk.75.4.html" />
+    <Document title="Role Management Reports" href="report_role_management.76.1.html" />
+    <Document title="Identity Roles Report" href="report_role_management.76.2.html" />
+    <Document title="Role Archive Report" href="report_role_management.76.3.html" />
+    <Document title="Role Change History Report" href="report_role_management.76.4.html" />
+    <Document title="Role Details Report" href="report_role_management.76.5.html" />
+    <Document title="Role Members Report" href="report_role_management.76.6.html" />
+    <Document title="Role Profiles Composition Report" href="report_role_management.76.7.html" />
+    <Document title="Section IV Lifecycle Manager" href="section_lcm.html" />
+    <Document title="Lifecycle Manager Overview" href="LCM_overview.html" />
+    <Document title="Lifecycle Manager Components" href="dashboard_widgets.79.01.html" />
+    <Document title="How to Manage Access" href="dashboard_widgets.79.02.html" />
+    <Document title="Request Violations" href="dashboard_widgets.79.03.html" />
+    <Document title="Access Request Violations Options" href="dashboard_widgets.79.04.html" />
+    <Document title="Manage Accounts" href="dashboard_widgets.79.05.html" />
+    <Document title="Manage Accounts" href="dashboard_widgets.79.06.html" />
+    <Document title="Manage Accounts Page" href="dashboard_widgets.79.07.html" />
+    <Document title="Account Passwords" href="dashboard_widgets.79.08.html" />
+    <Document title="Account Password Tasks" href="dashboard_widgets.79.09.html" />
+    <Document title="Track My Requests" href="dashboard_widgets.79.10.html" />
+    <Document title="Access Requests Page" href="dashboard_widgets.79.11.html" />
+    <Document title="How to Manage Identities" href="dashboard_widgets.79.12.html" />
+    <Document title="Create Identity" href="dashboard_widgets.79.13.html" />
+    <Document title="Edit Identity" href="dashboard_widgets.79.14.html" />
+    <Document title="View Identity" href="dashboard_widgets.79.15.html" />
+    <Document title="Identity Details Menu" href="dashboard_widgets.79.16.html" />
+    <Document title="Lifecycle Manager Optional Links" href="dashboard_widgets.79.17.html" />
+    <Document title="Batch Requests" href="manage_batch_requests.80.01.html" />
+    <Document title="Batch Request Types and Examples" href="manage_batch_requests.80.02.html" />
+    <Document title="Create Identity" href="manage_batch_requests.80.03.html" />
+    <Document title="Modify Identity" href="manage_batch_requests.80.04.html" />
+    <Document title="Create Account" href="manage_batch_requests.80.05.html" />
+    <Document title="Delete Account" href="manage_batch_requests.80.06.html" />
+    <Document title="Enable/Disable Account" href="manage_batch_requests.80.07.html" />
+    <Document title="Unlock Account" href="manage_batch_requests.80.08.html" />
+    <Document title="Add Role" href="manage_batch_requests.80.09.html" />
+    <Document title="Remove Role" href="manage_batch_requests.80.10.html" />
+    <Document title="Add Entitlement" href="manage_batch_requests.80.11.html" />
+    <Document title="Remove Entitlement" href="manage_batch_requests.80.12.html" />
+    <Document title="Change Password" href="manage_batch_requests.80.13.html" />
+    <Document title="Batch Requests Page" href="manage_batch_requests.80.14.html" />
+    <Document title="View Batch Requests" href="manage_batch_requests.80.15.html" />
+    <Document title="Batch Request Details Page" href="manage_batch_requests.80.16.html" />
+    <Document title="Create Batch Request Page" href="manage_batch_requests.80.17.html" />
+    <Document title="Manage User Access Page" href="request_access.81.01.html" />
+    <Document title="Access for Multiple Users" href="request_access.81.02.html" />
+    <Document title="Access for a Single User" href="request_access.81.03.html" />
+    <Document title="Selecting and Deselecting Items" href="request_access.81.04.html" />
+    <Document title="Request Access Tasks" href="request_access.81.05.html" />
+    <Document title="Request Access" href="request_access.81.06.html" />
+    <Document title="Remove Access" href="request_access.81.07.html" />
+    <Document title="View Details" href="request_access.81.08.html" />
+    <Document title="View and Post Comments" href="request_access.81.09.html" />
+    <Document title="Edit an Access Request" href="request_access.81.10.html" />
+    <Document title="Request Violations" href="request_access.81.11.html" />
+    <Document title="Access Request Violations Options" href="request_access.81.12.html" />
+    <Document title="Lifecycle Events" href="define_lifecycle_events.82.1.html" />
+    <Document title="Lifecycle Events Page" href="define_lifecycle_events.82.2.html" />
+    <Document title="How To Create Lifecycle Events" href="define_lifecycle_events.82.3.html" />
+    <Document title="Lifecycle Manager Reports" href="report_lifecycle_manager_lcm.83.1.html" />
+    <Document title="Access Request Status Report" href="report_lifecycle_manager_lcm.83.2.html" />
+    <Document title="Account Requests Status Report" href="report_lifecycle_manager_lcm.83.3.html" />
+    <Document title="Identity Requests Status Report" href="report_lifecycle_manager_lcm.83.4.html" />
+    <Document title="Password Management Requests Report" href="report_lifecycle_manager_lcm.83.5.html" />
+    <Document title="Registration Requests Status Report" href="report_lifecycle_manager_lcm.83.6.html" />
+    <Document title="Lifecycle Manager Setup" href="setup_LCM_configuration.html" />
+    <Document title="Section V IdentityIQ on Mobile Devices" href="section_mobile_devices.html" />
+    <Document title="IdentityIQ on Mobile Devices" href="mobile.86.01.html" />
+    <Document title="Mobile Login Page" href="mobile.86.02.html" />
+    <Document title="Password Recovery and Account Unlock Options" href="mobile.86.03.html" />
+    <Document title="New User Registration" href="mobile.86.04.html" />
+    <Document title="Mobile Home Page" href="mobile.86.05.html" />
+    <Document title="Manage User Access" href="mobile.86.06.html" />
+    <Document title="Manage Passwords" href="mobile.86.07.html" />
+    <Document title="Manage Accounts" href="mobile.86.08.html" />
+    <Document title="Access Reviews" href="mobile.86.09.html" />
+    <Document title="Approvals" href="mobile.86.10.html" />
+    <Document title="Forms" href="mobile.86.11.html" />
+    <Document title="Request Violations" href="mobile.86.12.html" />
+    <Document title="Mobile Work Items" href="mobile.86.13.html" />
+    <Document title="Mobile Approvals" href="mobile%20_approvals.87.1.html" />
+    <Document title="My Approvals Page" href="mobile%20_approvals.87.2.html" />
+    <Document title="Mobile Approval Tasks" href="mobile%20_approvals.87.3.html" />
+    <Document title="Complete an Approval" href="mobile%20_approvals.87.4.html" />
+    <Document title="Forward an Approval" href="mobile%20_approvals.87.5.html" />
+    <Document title="View Details" href="mobile%20_approvals.87.6.html" />
+    <Document title="View and Post Comments" href="mobile%20_approvals.87.7.html" />
+    <Document title="Edit an Approval" href="mobile%20_approvals.87.8.html" />
+    <Document title="Mobile Access Requests" href="mobile%20_request_access.88.01.html" />
+    <Document title="Manage User Access Page" href="mobile%20_request_access.88.02.html" />
+    <Document title="Access for Multiple Users" href="mobile%20_request_access.88.03.html" />
+    <Document title="Access for a Single User" href="mobile%20_request_access.88.04.html" />
+    <Document title="Selecting and Deselecting Items" href="mobile%20_request_access.88.05.html" />
+    <Document title="Request Access Tasks" href="mobile%20_request_access.88.06.html" />
+    <Document title="Request Access" href="mobile%20_request_access.88.07.html" />
+    <Document title="Remove Access" href="mobile%20_request_access.88.08.html" />
+    <Document title="View Details" href="mobile%20_request_access.88.09.html" />
+    <Document title="View and Post Comments" href="mobile%20_request_access.88.10.html" />
+    <Document title="Edit an Access Request" href="mobile%20_request_access.88.11.html" />
+    <Document title="Request Violations" href="mobile%20_request_access.88.12.html" />
+    <Document title="Access Request Violations Options" href="mobile%20_request_access.88.13.html" />
+    <Document title="Mobile Access Reviews" href="mobile%20_access_reviews.89.1.html" />
+    <Document title="Access Review Details - Identity List" href="mobile%20_access_reviews.89.2.html" />
+    <Document title="Identity List Page Features" href="mobile%20_access_reviews.89.3.html" />
+    <Document title="Important Tab" href="mobile%20_access_reviews.89.4.html" />
+    <Document title="The Open Tab" href="mobile%20_access_reviews.89.5.html" />
+    <Document title="Complete Tab" href="mobile%20_access_reviews.89.6.html" />
+    <Document title="How To Perform an Identity List Access Review" href="mobile%20_access_reviews.89.7.html" />
+    <Document title="Mobile Password Recovery - Account Unlock" href="pwd_recovery_acct_unlock.90.1.html" />
+    <Document title="Password Recovery - Account Unlock" href="pwd_recovery_acct_unlock.90.2.html" />
+    <Document title="Answer Authentication Questions" href="pwd_recovery_acct_unlock.90.3.html" />
+    <Document title="Send a Text Message with a Verification Code" href="pwd_recovery_acct_unlock.90.4.html" />
+    <Document title="Section VI Appendixes" href="section_appendixes.html" />
+    <Document title="Glossary" href="glossary.html" />
+  </DocumentInfo>
+  <TopicMap />
+</WebWorksHelpBook>
