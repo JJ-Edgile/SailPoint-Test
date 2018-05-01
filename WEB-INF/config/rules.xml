@@ -8013,7 +8013,6 @@ String explanation = "";
 
 String logHeader = "Exclusion Rule: Removing Inactive Accounts";
 log.info(logHeader + ": Starting Rule....");
-log.info(logHeader + ": Checking if manager is null");
     if (entity.getManager() != null) {
         for (Object item : items) {
             itemsToExclude.add(item);
